@@ -50,6 +50,7 @@ patCardItem: {
 | data      | 資料來源                 | object   | -          | -          |
 | hasFooter | 是否顯示卡片下方區塊     | boolean  | -          | true       |
 | No        | 序號，不帶此屬性則不顯示 | number   | -          | -          |
+| fontSize  | 字型大小                 | string   | sm/md/lg   | md         |
 
 #### data欄位
 
@@ -185,6 +186,42 @@ patCardItem: {
 ```html
 <template v-slot:status>文字</template>
 ```
+
+
+
+### 8/4 字型大小
+
+`fontSize="lg"`、`fontSize="md"`、`fontSize="sm"`
+
+使用範例：
+
+```html
+<PatCard :data="item" fontSize="lg"></PatCard>
+```
+
+> 如果卡片內容使用插槽 (見**7/21 補充&新增功能**)，請手動加入樣式類別，範例如下：
+>
+> ```html
+> <PatCard :data="item" fontSize="lg">
+>   <span class="card-item card-item-left lg">
+>     {{ 標題 }}&nbsp;
+>     <p>{{ 內容 }}</p>
+>     <p style="color:red">({{ 補充說明/狀態等等 }})</p>
+>   </span>
+> </PatCard>
+> ```
+
+lg   ( font-size : 14px )
+
+![image-20210804191759613](https://raw.githubusercontent.com/cynthia204z/mybed1/master/img/image-20210804191759613.png)
+
+md  ( font-size : 13px )
+
+![image-20210804192758607](https://raw.githubusercontent.com/cynthia204z/mybed1/master/img/image-20210804192758607.png)
+
+sm   ( font-size : 12px )
+
+![image-20210804192151639](https://raw.githubusercontent.com/cynthia204z/mybed1/master/img/image-20210804192151639.png)
 
 
 
