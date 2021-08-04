@@ -1,8 +1,8 @@
 # 顏色 / 標題大小
 
-![螢幕擷取畫面 2021-08-04 091830](C:\note\his-clin-note\his_clin\螢幕擷取畫面 2021-08-04 091830.png)
+![螢幕擷取畫面 2021-08-04 091830](https://raw.githubusercontent.com/cynthia204z/mybed1/master/img/螢幕擷取畫面 2021-08-04 091830.png)
 
-![螢幕擷取畫面 2021-08-04 091939](C:\note\his-clin-note\his_clin\螢幕擷取畫面 2021-08-04 091939.png)
+![螢幕擷取畫面 2021-08-04 091939](https://raw.githubusercontent.com/cynthia204z/mybed1/master/img/螢幕擷取畫面 2021-08-04 091939.png)
 
 ```html
 <div class="bg-color-1">bg-color-1</div>
