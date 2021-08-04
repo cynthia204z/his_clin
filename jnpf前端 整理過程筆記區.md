@@ -61,3 +61,63 @@
 
 
 
+# CSS樣式類別示範備份
+
+```html
+<el-tab-pane label="CSS-CLASS EXAMPLE" name="3" style="padding: 10px">
+  <div class="class-example">
+    <div class="bg-color-1">bg-color-1</div>
+    <div class="bg-color-2">bg-color-2</div>
+    <div class="bg-color-3">bg-color-3</div>
+    <div class="border-color-1">border-color-1</div>
+    <div class="border-color-2">border-color-2</div>
+    <div class="border-color-3">border-color-3</div>
+    <div class="font-color-1">font-color-1</div>
+    <div class="font-color-2">font-color-2</div>
+    <div class="font-color-3">font-color-3</div>
+  </div>
+  <groupTitle content="groupTitle標題字型大小 xs" class="xs" />
+  <groupTitle content="groupTitle標題字型大小 sm" class="sm" />
+  <groupTitle content="groupTitle標題字型大小 md" class="md" />
+  <groupTitle content="groupTitle標題字型大小 lg" class="lg" />
+  <groupTitle content="groupTitle標題字型大小 xl" class="xl" />
+  <groupTitle content="groupTitle標題字型大小 xxl" class="xxl" />
+</el-tab-pane>
+```
+
+```scss
+.class-example {
+  font-size: 16px;
+  display: flex;
+  div {
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    margin: 10px;
+    &.bg-color-1,
+    &.bg-color-2 {
+      color: #fff;
+    }
+    &.bg-color-3 {
+      color: #000;
+    }
+    &.border-color-1,
+    &.border-color-2,
+    &.border-color-3 {
+      border-style: solid;
+      border-width: 10px;
+      line-height: 80px;
+    }
+    &.font-color-1,
+    &.font-color-2,
+    &.font-color-3 {
+      font-weight: 800;
+    }
+  }
+}
+.groupTitle {
+  margin-top: 5px;
+}
+```
+
