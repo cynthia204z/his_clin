@@ -39,11 +39,11 @@ patCardItem: {
 },
 ```
 
-### 參數說明
+### 1-1 參數說明
 
 #### `<PatCard>`標籤屬性
 
-==Attributes==
+Attributes
 
 | **參數**  | **說明**                 | **類型** | **可選值** | **預設值** |
 | --------- | ------------------------ | -------- | ---------- | ---------- |
@@ -54,7 +54,7 @@ patCardItem: {
 
 #### data欄位
 
-==data Attributes==
+data Attributes
 
 | **欄位**    | **說明**                                         | **類型**        | **可選值**            | **預設值** |
 | ----------- | ------------------------------------------------ | --------------- | --------------------- | ---------- |
@@ -67,7 +67,7 @@ patCardItem: {
 
 #### 卡片文字內容(details)欄位
 
-==details-item Attributes==
+details-item Attributes
 
 | **欄位** | **說明**                     | **類型**        | **可選值** | **預設值** |
 | -------- | ---------------------------- | --------------- | ---------- | ---------- |
@@ -75,13 +75,13 @@ patCardItem: {
 | value    | 欄位值文字                   | string / number | -          | -          |
 | disc     | 註解文字，不帶此屬性則不顯示 | string / number | -          | -          |
 
-### 插槽使用範例
+### 1-2 插槽使用範例
 
 ![image-20210712222227218](https://raw.githubusercontent.com/cynthia204z/mybed1/master/img/image-20210712222227218.png)
 
 ![image-20210713085149268](https://raw.githubusercontent.com/cynthia204z/mybed1/master/img/image-20210713085149268.png)
 
-#### 插槽說明： ==Slot==
+#### 插槽說明： Slot
 
 | **name** | **說明**                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -203,11 +203,11 @@ patCardItem: {
 >
 > ```html
 > <PatCard :data="item" fontSize="lg">
->   <span class="card-item card-item-left lg">
->     {{ 標題 }}&nbsp;
->     <p>{{ 內容 }}</p>
->     <p style="color:red">({{ 補充說明/狀態等等 }})</p>
->   </span>
+>     <span class="card-item card-item-left lg">
+>        {{ 標題 }}&nbsp;
+>        <p>{{ 內容 }}</p>
+>        <p style="color:red">({{ 補充說明/狀態等等 }})</p>
+>     </span>
 > </PatCard>
 > ```
 
@@ -527,7 +527,7 @@ export default {
 
 ### 參數說明
 
-#### ==Patpanel Attributes==
+#### Patpanel Attributes
 
 | **參數** | **說明**         | **類型** | **可選值** | **預設值** |
 | -------- | ---------------- | -------- | ---------- | ---------- |
@@ -535,7 +535,7 @@ export default {
 | photo    | 是否顯示圖片區域 | boolean  | -          | true       |
 | patInfo  | 其他病患資訊設定 | array    | -          | -          |
 
-#### ==Patpanel data Attributes==
+#### Patpanel data Attributes
 
 | **欄位**  | **說明**                                                   | **類型**        | **可選值** | **預設值** |
 | --------- | ---------------------------------------------------------- | --------------- | ---------- | ---------- |
@@ -546,7 +546,7 @@ export default {
 | birthDate | 帶入生日顯示年齡，不帶此屬性則不顯示(頭像姓名下方病患資訊) | string / number | -          | -          |
 | mobile    | 手機號碼，不帶此屬性則不顯示(頭像姓名下方病患資訊)         | string / number | -          | -          |
 
-#### ==Patpanel patInfo Attributes==
+#### Patpanel patInfo Attributes
 
 | **欄位** | **說明**          | **類型** | **可選值** | **預設值** |
 | -------- | ----------------- | -------- | ---------- | ---------- |
@@ -561,7 +561,7 @@ export default {
 
 ### 參數說明
 
-#### ==Patpanel-block Attributes==
+#### Patpanel-block Attributes
 
 | **參數** | **說明**                  | **類型** | **可選值** | **預設值** |
 | -------- | ------------------------- | -------- | ---------- | ---------- |
@@ -569,14 +569,14 @@ export default {
 | dateText | 日期標題與文字內容設定    | object   | -          | -          |
 | data     | 非date類型的block資料來源 | object   | -          | -          |
 
-#### ==Patpanel-block dateText-item Attributes==
+#### Patpanel-block dateText-item Attributes
 
 | **欄位** | **說明**     | **類型**        | **可選值** | **預設值** |
 | -------- | ------------ | --------------- | ---------- | ---------- |
 | label    | 欄位標題文字 | string / number | -          | -          |
 | value    | 欄位值文字   | string / number | -          | -          |
 
-#### ==Patpanel-block data-item Attributes==
+#### Patpanel-block data-item Attributes
 
 | **欄位** | **說明**                           | **類型**        | **可選值** | **預設值** |
 | -------- | ---------------------------------- | --------------- | ---------- | ---------- |
@@ -584,7 +584,7 @@ export default {
 | title    | 標題文字                           | string / number | -          | -          |
 | details  | 詳細內容                           | array           | -          | -          |
 
-#### ==Patpanel-block details-item Attributes==
+#### Patpanel-block details-item Attributes
 
 | **欄位** | **說明**                     | **類型**        | **可選值** | **預設值** |
 | -------- | ---------------------------- | --------------- | ---------- | ---------- |
@@ -716,7 +716,7 @@ export default {
   },
 };
 ```
-### 插槽說明： ==Patpanel-block Slot==
+### 插槽說明： Patpanel-block Slot
 
 | **name**     | **說明**                       |
 | ------------ | ------------------------------ |
