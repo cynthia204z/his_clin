@@ -15,6 +15,18 @@
   COM_ICD10_DEPTOFTEN
 
   COM_ICD10GROUP
+  
+  COM_ICD10CMMMP
+  
+  COM_ICD10PCS
+  
+  COM_ICD10PCS_DEPTOFTEN
+  
+  COM_ICD10PCS_GROUP
+  
+  COM_ICD10_PCSMMP
+  
+  COM_ICD10_PSC_LEVEL
 
 ![image-20210810181800069](https://raw.githubusercontent.com/cynthia204z/mybed1/master/img/image-20210810181800069.png)
 
@@ -24,6 +36,7 @@
 - 手術麻醉
 - 衛材
 - ICD9
+- 計價(?)
 
 ...
 
