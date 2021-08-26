@@ -22,9 +22,17 @@
 
 
 
+## table底線
+
+```css
+border-bottom: 1px solid #ebeef5 !important;
+```
+
+
+
 ## 排版
 
-#### 0. class
+### 0. class
 
 JNPF-common-layout
 
@@ -34,7 +42,7 @@ JNPF-common-layout-center
 
 JNPF-common-layout-left
 
-#### 1.
+### 1.
 
 <img src="https://raw.githubusercontent.com/cynthia204z/mybed1/master/img/image-20210819162028991.png" alt="image-20210819162028991" style="zoom:33%;" />
 
