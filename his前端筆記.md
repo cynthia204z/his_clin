@@ -803,13 +803,51 @@ getchartNoOptions() {
 
 # 其他
 
-## 表單標題
+- 標題
 
-- form
+  ```html
+  <el-col :span="24">
+    <groupTitle content="維護資料"/>
+  </el-col>
+  ```
 
-```html
-<el-col :span="24">
-  <groupTitle content="維護資料"/>
-</el-col>
-```
+- 日期
 
+  ```html
+  <el-date-picker
+  	v-model="query.opdDate"
+  	type="date"
+  	placeholder="請選擇"
+  	value-format="timestamp"
+  	format="yyyy-MM-dd"
+  />
+  ```
+
+- btn group
+
+  ```html
+  <el-button-group style="width: 100%">
+    <el-tooltip effect="light" content="新增目錄" placement="bottom">
+      <el-button
+                 plain
+                 size="mini"
+                 icon="ym-custom el-icon-folder-add"
+                 class="emrfrequent-btn-panel"
+                 @click="addTreeItem"
+                 />
+    </el-tooltip>
+    <el-tooltip effect="light" content="編輯目錄" placement="bottom">
+      <el-button
+                 plain
+                 size="mini"
+                 icon="ym-custom el-icon-edit"
+                 class="emrfrequent-btn-panel"
+                 @click="EditTreeItem"
+                 :disabled="isTreeTop"
+                 />
+    </el-tooltip>
+  
+  </el-button-group>
+  ```
+
+  
