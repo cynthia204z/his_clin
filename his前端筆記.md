@@ -850,4 +850,10 @@ getchartNoOptions() {
   </el-button-group>
   ```
 
+- filter
+
+  ```vue
+  {{ scope.row.feeCode | dynamicText(feeCodeOptions) }}
+  ```
+
   
