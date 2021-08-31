@@ -38,3 +38,53 @@
 }
 ```
 
+# OrderSys、OrderType
+
+```json
+{
+  orderType: "ICD10CM",
+  o: "ICD10",
+  id: "ICD10"
+},
+{
+  orderType: "PHM",
+  fullName: "藥囑",
+  id: "PHM"
+},
+{
+  orderType: "TRE",
+  fullName: "處置",
+  id: "TREDEN"
+},
+{
+  orderType: "EXAM",
+  fullName: "檢查檢驗",
+  id: "EXAM"
+},
+{
+  orderType: "OR",
+  fullName: "手術麻醉",
+  id: "ORAN"
+},
+{
+  orderType: "MTRL",
+  fullName: "衛材",
+  id: "MTRL"
+},
+{
+  orderType: "",
+  fullName: "其他",
+  id: "OTH"
+},
+{
+  orderType: "NOTE",
+  fullName: "Note",
+  id: "NOTE"
+},
+{
+  orderType: "ICD9",
+  fullName: "ICD9",
+  id: "ICD9"
+}
+```
+
