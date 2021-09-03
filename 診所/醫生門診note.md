@@ -82,7 +82,7 @@
 
 **尚未解決**
 
-<font style="color:transparent; border:#fff 1px solid; padding:2px; margin:0 5px 0 5px"> ✔ </font>拖曳縮放文字編輯區（split）
+<font style="color:LawnGreen; border:#fff 1px solid; padding:2px; margin:0 5px 0 5px"> ✔ </font>拖曳縮放文字編輯區（split）
 
 <font style="color:LawnGreen; border:#fff 1px solid; padding:2px; margin:0 5px 0 5px">✔ </font>ICD9是什麼 (com_Icd10Cm ICD10CM診斷、com_icd10_pcs ICD10-PCS)
 
