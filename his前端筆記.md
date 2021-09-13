@@ -852,9 +852,48 @@ getchartNoOptions() {
 
 - filter
 
-  ```vue
+  ```js
+  // 一般
   {{ scope.row.feeCode | dynamicText(feeCodeOptions) }}
   ```
 
+  
 
+  ```js
+  // DD
+  
+  // js
+  filters: {
+      comCodeDynamicText(value, options) {
+        if (!value) return "";
+        if (Array.isArray(value)) {
+          if (!options || !Array.isArray(options)) return value.join();
+          const textList = [];
+          for (let i = 0; i < value.length; i++) {
+            const item = options.filter((o) => o.CODE_NO === value[i])[0];
+            if (!item || !item.CODE_DESC) {
+              textList.push(value[i]);
+            } else {
+              textList.push(item.CODE_DESC);
+            }
+          }
+          return textList.join();
+        }
+        if (!options || !Array.isArray(options)) return value;
+        const item = options.filter((o) => o.CODE_NO === value)[0];
+        if (!item || !item.CODE_DESC) return value;
+        return item.CODE_DESC;
+      },
+    },
+  // html
+  {{ scope.row.feeCode | comCodeDynamicText(feeCodeOptions) }}
+  ```
+
+- tooltip 
+
+  ```
+  tooltip 白底：effect="light"
+  ```
+
+  
 
