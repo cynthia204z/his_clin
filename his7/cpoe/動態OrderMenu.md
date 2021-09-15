@@ -239,7 +239,7 @@ XML_CONTENT：
 ```
 
 ```json
-{"id":"PKG","label":"套餐","usageOei":"A","menu":[{"pageType":"freqTreeBox","id":"DOC","label":"醫師套餐","usageOei":"A"},{"pageType":"freqTreeBox","id":"Dept","label":"科套餐","usageOei":"A"},{"pageType":"drg","id":"Drg","label":"臨床路徑套餐3.4","usageOei":"I"},{"pageType":"drg","id":"Drg40","label":"臨床路徑套餐4.0","usageOei":"I"}]}
+{"id":"PKG","label":"套餐","usageOei":"A","menu":[{"pageType":"pkgTreeBox","id":"DOC","label":"醫師套餐","usageOei":"A"},{"pageType":"pkgTreeBox","id":"Dept","label":"科套餐","usageOei":"A"},{"pageType":"drg","id":"Drg","label":"臨床路徑套餐3.4","usageOei":"I"},{"pageType":"drg","id":"Drg40","label":"臨床路徑套餐4.0","usageOei":"I"}]}
 ```
 
 
