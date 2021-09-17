@@ -1,10 +1,8 @@
-> vue專案中的應用
-
-
-
 # 複製Object - 深拷貝
 
 > 應用場景：使用物件儲存資料時，為了判斷數據是否被更動過，有不能更動的A(異動前資料)、和可以被更動的B
+>
+> 程式區塊範例是用在vue專案中的情況
 
 需要將 A 物件的值複製給 B 物件時不能直接 `this.B = this.A` 或 `this.B = {...this.A}`
 
@@ -13,18 +11,6 @@
 ==解決方式==：`this.B = JSON.parse(JSON.stringify(this.A))` (深拷貝)
 
 > **深拷貝**在複製物件時，會獨立出來不共用同一個記憶體位置，改動 `newObject` 時不會動到 `oldObject`。
-
-
-
-
-
-# 動態更新綁定值，view無法更新
-
-使用 `objName.newAttribute = newValue` 的方法可能導致view無法即時更新
-
-==解決方式==：`this.$set(objName, 'newAttribute', newValue)`
-
-
 
 
 
@@ -54,6 +40,8 @@ console.log(text.indexOf("something") >= 0); // true
 
 # 取代特定字串 replace
 
+取代第一個找到的字串
+
 ```js
 let text = "there's something wrong";
 
@@ -61,6 +49,8 @@ text.replace("something", "hahaha");
 
 console.log(text); //there's hahaha wrong
 ```
+
+取代全部
 
 
 
