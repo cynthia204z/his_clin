@@ -803,67 +803,113 @@ getchartNoOptions() {
 
 # 其他
 
-- 標題
+### 標題
 
-  ```html
-  <el-col :span="24">
-    <groupTitle content="維護資料"/>
-  </el-col>
-  ```
+```html
+<el-col :span="24">
+  <groupTitle content="維護資料"/>
+</el-col>
+```
 
-- 日期
+### 日期
 
-  ```html
-  <el-date-picker
-  	v-model="query.opdDate"
-  	type="date"
-  	placeholder="請選擇"
-  	value-format="timestamp"
-  	format="yyyy-MM-dd"
-  />
-  ```
+```html
+<el-date-picker
+	v-model="query.opdDate"
+	type="date"
+	placeholder="請選擇"
+	value-format="timestamp"
+	format="yyyy-MM-dd"
+/>
+```
 
-- btn group
+### btn group
 
-  ```html
-  <el-button-group style="width: 100%">
-    <el-tooltip effect="light" content="新增目錄" placement="bottom">
-      <el-button
-                 plain
-                 size="mini"
-                 icon="ym-custom el-icon-folder-add"
-                 class="emrfrequent-btn-panel"
-                 @click="addTreeItem"
-                 />
-    </el-tooltip>
-    <el-tooltip effect="light" content="編輯目錄" placement="bottom">
-      <el-button
-                 plain
-                 size="mini"
-                 icon="ym-custom el-icon-edit"
-                 class="emrfrequent-btn-panel"
-                 @click="EditTreeItem"
-                 :disabled="isTreeTop"
-                 />
-    </el-tooltip>
-  
-  </el-button-group>
-  ```
+```html
+<el-button-group style="width: 100%">
+  <el-tooltip effect="light" content="新增目錄" placement="bottom">
+    <el-button
+               plain
+               size="mini"
+               icon="ym-custom el-icon-folder-add"
+               class="emrfrequent-btn-panel"
+               @click="addTreeItem"
+               />
+  </el-tooltip>
+  <el-tooltip effect="light" content="編輯目錄" placement="bottom">
+    <el-button
+               plain
+               size="mini"
+               icon="ym-custom el-icon-edit"
+               class="emrfrequent-btn-panel"
+               @click="EditTreeItem"
+               :disabled="isTreeTop"
+               />
+  </el-tooltip>
 
-- filter
+</el-button-group>
+```
 
-  ```js
-  // 一般
-  {{ scope.row.feeCode | dynamicText(feeCodeOptions) }}
-  ```
+### filter
 
-  
+```js
+// 一般
+{{ scope.row.feeCode | dynamicText(feeCodeOptions) }}
+```
 
-  ```js
-  // DD
-  
-  // js
-  filters: {
+
+
+```js
+// DD
+
+// js
+filters: {
+    comCodeDynamicText(value, options) {
+      if (!value) return "";
+      if (Array.isArray(value)) {
+        if (!options || !Array.isArray(options)) return value.join();
+        const textList = [];
+        for (let i = 0; i < value.length; i++) {
+          const item = options.filter((o) => o.CODE_NO === value[i])[0];
+          if (!item || !item.CODE_DESC) {
+            textList.push(value[i]);
+          } else {
+            textList.push(item.CODE_DESC);
+          }
+        }
+        return textList.join();
+      }
+      if (!options || !Array.isArray(options)) return value;
+      const item = options.filter((o) => o.CODE_NO === value)[0];
+      if (!item || !item.CODE_DESC) return value;
+      return item.CODE_DESC;
+    },
+  },
+// html
+{{ scope.row.feeCode | comCodeDynamicText(feeCodeOptions) }}
+```
+
+### DD
+
+```vue
+<script>
+  import request from "@/utils/request";
+  export default {
+    data() {
+      return {
+        api: {
+          apiDropDown: "/api/his7/com/utility/ComDropDown/codedtldropdown/codetype/",
+        },
+
+        usageOeiOptions: [], //適用開立部門
+        orderTypeOptions: [], //醫囑分類
+        selfFlagOptions: [], //自費否
+      }
+    },
+    created() {
+      this.getDropdown();
+    },
+    filters: {
       comCodeDynamicText(value, options) {
         if (!value) return "";
         if (Array.isArray(value)) {
@@ -885,15 +931,125 @@ getchartNoOptions() {
         return item.CODE_DESC;
       },
     },
-  // html
-  {{ scope.row.feeCode | comCodeDynamicText(feeCodeOptions) }}
-  ```
+    methods: {
+      getDropdown() {
+        let DDlist = [
+          {
+            codeType: "entrySystem",
+            arrName: "usageOeiOptions"
+          }, //適用開立部門
+          {
+            codeType: "OrderType",
+            arrName: "orderTypeOptions"
+          }, //醫囑分類
+          {
+            codeType: "selfFlag",
+            arrName: "selfFlagOptions"
+          }, //自費否
+        ]
+        DDlist.forEach(t => {
+          request({
+            url: this.api.apiDropDown + t.codeType,
+            method: "get",
+          }).then((res) => {
+            this[t.arrName] = res.data;
+          });
+        })
+      },
+    }
+  }
+</script>
+```
 
-- tooltip 
 
-  ```
-  tooltip 白底：effect="light"
-  ```
 
-  
+### tooltip 
+
+```
+tooltip 白底：effect="light"
+```
+
+### tabs
+
+```html
+<el-tabs
+         :lazy="true"
+         v-model="activePane"
+         type="border-card"
+         class="JNPF-el_tabs oerpatbas oertabs"
+         :class="{ 'change-tabsStyle': !styleStatus.patPanelIsShow }"
+         >
+  <el-tab-pane
+               label="歷次就診記錄"
+               name="1"
+               style="width: 100%; background: #fff"
+               class="JNPF-common-layout"
+               >
+  </el-tab-pane>
+</el-tabs>
+```
+
+### form
+
+```html
+<el-form size="mini" @submit.native.prevent></el-form>
+```
+
+### 日期區間
+
+```html
+<el-date-picker
+                v-model="sDate"
+                type="daterange"
+                range-separator="至"
+                start-placeholder="開始日期"
+                end-placeholder="結束日期"
+                >
+</el-date-picker>
+```
+
+
+
+# 不顯示在菜單中的分頁
+
+0. 不要在菜單管理中註冊此頁面
+
+1. 在`jnpf-web\src\router\modules\base.js`中寫入靜態設定
+
+   ```js
+   {
+       path: '/his7/emr/ierpat/view/IerMainPage',
+       component: (resolve) => require(['@/views/his7/emr/ierpat/view/IerMainPage'], resolve),
+       name: 'IerMainPage',
+       meta: {
+         title: 'IerMainPage',
+         affix: false,
+         zhTitle: '住院醫囑',
+         icon: 'ym-custom ym-custom-seat-flat',
+       }
+     },
+   ```
+
+2. 開啟新分頁並傳參
+
+   ```js
+   // query: 參數
+   this.$router.push({ path: '/his7/emr/ierpat/view/IerMainPage', query: { data: object }});
+   ```
+
+3. 動態分頁名稱
+
+   ```js
+   this.$route.meta.zhTitle = "newName"
+   ```
+
+   > 用this.$route.meta.xxxx 讀寫==當前頁面==的route
+
+4. 取得傳給當前頁的參數
+
+   ```js
+   this.$route.query.data
+   ```
+
+   
 
