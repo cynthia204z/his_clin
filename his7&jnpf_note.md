@@ -892,6 +892,16 @@ filters: {
 ### DD
 
 ```vue
+<template>
+<el-select v-model="dataForm.x">
+  <el-option
+             v-for="(item, index) in arr"
+             :key="index"
+             :value="item.CODE_DESC"
+             :label="item.CODE_NO"
+             ></el-option>
+  </el-select>
+</template>
 <script>
   import request from "@/utils/request";
   export default {
@@ -1012,23 +1022,7 @@ tooltip 白底：effect="light"
 
 # 不顯示在菜單中的分頁
 
-0. 不要在菜單管理中註冊此頁面
-
-1. 在`jnpf-web\src\router\modules\base.js`中寫入靜態設定
-
-   ```js
-   {
-       path: '/his7/emr/ierpat/view/IerMainPage',
-       component: (resolve) => require(['@/views/his7/emr/ierpat/view/IerMainPage'], resolve),
-       name: 'IerMainPage',
-       meta: {
-         title: 'IerMainPage',
-         affix: false,
-         zhTitle: '住院醫囑',
-         icon: 'ym-custom ym-custom-seat-flat',
-       }
-     },
-   ```
+1. 在菜單管理中註冊此頁面，不顯示
 
 2. 開啟新分頁並傳參
 
