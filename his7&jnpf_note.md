@@ -820,8 +820,24 @@ getchartNoOptions() {
 	placeholder="請選擇"
 	value-format="timestamp"
 	format="yyyy-MM-dd"
+  style="width:100%"
 />
 ```
+
+### select
+
+```html
+<el-select style="width:100%" v-model="dataForm.bornByWhom" placeholder>
+  <el-option
+             v-for="(item, index) in vaccbornByWhom"
+             :key="index"
+             :label="item.fullName"
+             :value="item.id"
+             ></el-option>
+</el-select>
+```
+
+
 
 ### btn group
 
@@ -983,14 +999,12 @@ tooltip 白底：effect="light"
 
 ```html
 <el-tabs
-         :lazy="true"
          v-model="activePane"
          type="border-card"
-         class="JNPF-el_tabs oerpatbas oertabs"
-         :class="{ 'change-tabsStyle': !styleStatus.patPanelIsShow }"
          >
   <el-tab-pane
-               label="歷次就診記錄"
+               lazy
+               label="t"
                name="1"
                style="width: 100%; background: #fff"
                class="JNPF-common-layout"
@@ -1002,7 +1016,7 @@ tooltip 白底：effect="light"
 ### form
 
 ```html
-<el-form size="mini" @submit.native.prevent></el-form>
+<el-form @submit.native.prevent label-width="100px"></el-form>
 ```
 
 ### 日期區間
