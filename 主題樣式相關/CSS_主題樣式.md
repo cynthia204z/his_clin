@@ -17,6 +17,12 @@
 <div class="font-color-2">font-color-2</div>
 <div class="font-color-3">font-color-3</div>
 
+	.hover-bg-color-1:hover{ background: $color; color:#fff; }
+  .hover-bg-color-2:hover{ background: $subColor; color:#fff; }
+  .hover-bg-color-3:hover{ background: $colorA; }
+  .hover-font-color-1:hover{ color:$color; }
+  .hover-font-color-2:hover{ color:$subColor; }
+
 <groupTitle content="groupTitle標題字型大小 xs" class="xs" />
 <groupTitle content="groupTitle標題字型大小 sm" class="sm" />
 <groupTitle content="groupTitle標題字型大小 md" class="md" />
