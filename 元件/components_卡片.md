@@ -51,6 +51,7 @@ Attributes
 | hasFooter | 是否顯示卡片下方區塊     | boolean  | -          | true       |
 | No        | 序號，不帶此屬性則不顯示 | number   | -          | -          |
 | fontSize  | 字型大小                 | string   | sm/md/lg   | md         |
+| hasPhoto  | 卡片是否帶頭像框         | boolean  |            | false      |
 
 #### data欄位
 

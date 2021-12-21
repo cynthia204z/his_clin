@@ -56,3 +56,22 @@ JNPF-common-layout-left
 </div>
 ```
 
+
+
+
+
+# 11/15 table border測試保留-------
+
+```scss
+th.is-leaf {
+  border-bottom: $color 1px solid !important;
+  border-right: none !important;
+  &:not(:first-of-type){
+   border-left: $color 1px solid;
+  }
+  border-top: $color 1px solid;
+}
+```
+
+
+

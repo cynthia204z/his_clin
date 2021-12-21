@@ -8,11 +8,11 @@
 
 ```vue
 <Clin-Quill
-            v-model="data.plan"
-            placeholder="請輸入內容..."
-            @pureText="getPlanText"
-            @editorFocus="editorFocus"
-            ></Clin-Quill>
+	v-model="data.plan"
+	placeholder="請輸入內容..."
+	@pureText="getPlanText"
+	@editorFocus="editorFocus"
+></Clin-Quill>
 ```
 
 > v-model綁定的內容是包含標籤的文字

@@ -47,9 +47,7 @@ lovColumeList: [
 
 > 異動的屬性：
 >
-> `type、placeholder、apiUrl、lovQueryColume、lovColumeList、optionValue、(optionLabel)` =>` lovConfig`
->
-> 由於呈現的文字資料已由lovColumeList設定，所以捨棄optionLabel屬性
+> `type、placeholder、apiUrl、lovQueryColume、lovColumeList、optionValue、optionLabel` =>` lovConfig`
 
 ```html
 <!-- 標籤 -->
@@ -90,6 +88,7 @@ exampleLov: {
     },
   ],
   optionValue: "chartNo",
+  optionLabel: "p",
 },
 ```
 

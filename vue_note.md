@@ -16,3 +16,31 @@ EX： `<el-table-column v-if="blabla" key="1"/>` 、 `<el-table-column v-if="bla
 
 
 
+# component標籤：動態組件
+
+> 參考文章：
+>
+> https://blog.csdn.net/liangmengbk/article/details/85013547
+>
+> https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-dynamic-components?file=/index.html:924-933
+
+
+
+# 多行comfirm
+
+```js
+const h = this.$createElement
+this.$confirm('提示', {
+  title: '提示',
+  message: h('div', [
+    h('p', '第一行'),
+    h('p', '第二行'),
+  ]),
+  confirmButtonText: '確定',
+  cancelButtonText: '取消'
+}).then(() => {
+  // do something
+}).catch(() => {
+  // do something
+})
+```
