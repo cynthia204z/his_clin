@@ -1,4 +1,6 @@
-# 複製Object - 深拷貝
+# JavaScript Note
+
+## 複製Object - 深拷貝
 
 > 應用場景：使用物件儲存資料時，為了判斷資料是否被更動過，有不能更動的A(異動前資料)、和可以被更動的B
 >
@@ -8,13 +10,13 @@
 
 上述兩種方式都是**淺拷貝**，因為指向同一塊記憶體，在vue中會導致只用v-model綁定了 B、並只對 B 進行操作，但 A 的值會跟著被更動
 
-==解決方式==：`this.B = JSON.parse(JSON.stringify(this.A))` (深拷貝)
+<b style="color:orange">解決方式</b>：`this.B = JSON.parse(JSON.stringify(this.A))` (深拷貝)
 
 > **深拷貝**在複製物件時，會獨立出來不共用同一個記憶體位置，改動 `newObject` 時不會動到 `oldObject`。
 
 
 
-# 判斷大小寫
+## 判斷大小寫
 
 ```js
 let text = 'A';
@@ -28,7 +30,7 @@ console.log(this.IsUpper(text)); // ture
 
 
 
-# 判斷含有特定字串 indexOf
+## 判斷含有特定字串 indexOf
 
 ```js
 let text = "there's something wrong";
@@ -38,7 +40,7 @@ console.log(text.indexOf("something") >= 0); // true
 
 
 
-# 取代特定字串 replace
+## 取代特定字串 replace
 
 取代第一個找到的字串
 
@@ -52,9 +54,17 @@ console.log(text); //there's hahaha wrong
 
 取代全部
 
+```js
+// 取代字串
+val = val.replace(/被取代的文字/g, '新的文字')
+
+// 取代換行符號=換行標籤
+val = val.replace(/\n/g, '<br>')
+```
 
 
-# 分割字串 split
+
+## 分割字串 split
 
 ```js
 let text = "A,B,C,D";
@@ -63,6 +73,48 @@ let list = text.split(",");
 
 // list = ["A","B","C","D"]
 ```
+
+
+
+## 比較2個陣列
+
+> C 是一個陣列
+
+1. **交集**
+
+   A和B的交集，取出A資料中包含與B資料內相同的資料
+
+   ```js
+   // 1.
+   let C = list.A(x => B.includes(x))
+   
+   // 2.
+   let C = new Set([...A].filter(x ))
+   ```
+
+2. **差集**
+
+   A和B的差集，取出A資料中不包含與B資料內相同的資料
+
+   ```js
+   let C = list.A(x => !B.includes(x))
+   ```
+
+3. **聯集**
+
+   ```js
+   let C = new Set([...A, ...B])
+   ```
+
+   
+
+## 刪除陣列元素
+
+```js
+arr.splice(index, 數量, 取代ㄔ)
+```
+
+
 
 
 

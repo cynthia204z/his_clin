@@ -1,4 +1,11 @@
-# [⬅ His7_Doc/emr/羽柔/門診看診主頁面](./His7_Doc_emr_羽柔.md)
+<div style="text-align:center;padding-bottom: 20px">
+  <div style="width: 100%;">
+      <img src="../../his_clin/img/open-book.png" style="zoom:15%;" />
+  </div>
+  <b style="color: darkgray; font-size: 28px; margin-top: 10px">HIS NOTE</b>
+</div>
+
+## [⬅ His7_Doc/emr/羽柔/門診看診主頁面](./His7_Doc_emr_羽柔.md)
 
 [📄 Do上次](../../His7_Doc/emr/羽柔/門診看診主頁面/門診看診主頁面-Do上次.md)
 

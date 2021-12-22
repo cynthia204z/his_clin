@@ -1,10 +1,17 @@
-# [⬅ His7_Doc/emr](His7_Doc.md)
+<div style="text-align:center;padding-bottom: 20px">
+  <div style="width: 100%;">
+      <img src="../../his_clin/img/open-book.png" style="zoom:15%;" />
+  </div>
+  <b style="color: darkgray; font-size: 28px; margin-top: 10px">HIS NOTE</b>
+</div>
 
-[📂 智能醫囑](./His7_Doc_emr_智能醫囑.md)
+## [⬅ His7_Doc/emr](His7_Doc.md)
 
-[📂 羽柔](./His7_Doc_emr_羽柔.md)
+[<img src="../img/open-folder.png" style="zoom:3.5%;" /> 智能醫囑](./His7_Doc_emr_智能醫囑.md)
 
-[📂 靖雅](./His7_Doc_emr_靖雅.md)
+[<img src="../img/open-folder.png" style="zoom:3.5%;" /> 羽柔](./His7_Doc_emr_羽柔.md)
+
+[<img src="../img/open-folder.png" style="zoom:3.5%;" /> 靖雅](./His7_Doc_emr_靖雅.md)
 
 [📄 住院醫囑-住院病患清單](../../His7_Doc/emr/住院醫囑-住院病患清單.md)
 

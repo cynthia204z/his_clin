@@ -1,14 +1,21 @@
-# [⬅ His7_Doc/emr/羽柔](./His7_Doc_emr.md)
+<div style="text-align:center;padding-bottom: 20px">
+  <div style="width: 100%;">
+      <img src="../../his_clin/img/open-book.png" style="zoom:15%;" />
+  </div>
+  <b style="color: darkgray; font-size: 28px; margin-top: 10px">HIS NOTE</b>
+</div>
 
-[📂 comm](./His7_Doc_emr_羽柔_comm.md)
+## [⬅ His7_Doc/emr/羽柔](./His7_Doc_emr.md)
 
-[📂 cpoe](./His7_Doc_emr_羽柔_cpoe.md)
+[<img src="../img/open-folder.png" style="zoom:3.5%;" /> comm](./His7_Doc_emr_羽柔_comm.md)
 
-[📂 ierpat](./His7_Doc_emr_羽柔_ierpat.md)
+[<img src="../img/open-folder.png" style="zoom:3.5%;" /> cpoe](./His7_Doc_emr_羽柔_cpoe.md)
 
-[📂 oerpat](./His7_Doc_emr_羽柔_oerpat.md)
+[<img src="../img/open-folder.png" style="zoom:3.5%;" /> ierpat](./His7_Doc_emr_羽柔_ierpat.md)
 
-[📂 門診看診主頁面](./His7_Doc_emr_羽柔_門診看診主頁面.md)
+[<img src="../img/open-folder.png" style="zoom:3.5%;" /> oerpat](./His7_Doc_emr_羽柔_oerpat.md)
+
+[<img src="../img/open-folder.png" style="zoom:3.5%;" /> 門診看診主頁面](./His7_Doc_emr_羽柔_門診看診主頁面.md)
 
 [📄 住院-一般處方 Ier2010](../../His7_Doc/emr/羽柔/住院-一般處方.md)
 
