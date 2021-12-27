@@ -36,3 +36,17 @@
   ```
 
   
+
+- 承上(小駝峰)
+
+  ```sql
+  SELECT
+      a.COLUMN_NAME,
+      substr(replace(initcap('a'||lower(a.COLUMN_NAME)),'_',''),2),
+      (a.DATA_TYPE || '(' || a.DATA_LENGTH || ')' ) AS DATA_TYPE,
+      ( SELECT b.COMMENTS FROM user_col_comments b WHERE b.Table_Name = a.Table_Name AND b.column_name = a.column_name ) AS COMMENTS
+  FROM user_tab_columns a
+  WHERE a.Table_Name = 'MRM_EXAM_CHKLOG';
+  ```
+
+  

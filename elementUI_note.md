@@ -1,6 +1,6 @@
 # Element UI Note
 
-## 回調函數：保留預設參數並加上自定義參數
+## 回調函數：保留組件預設參數並加上自定義參數
 
 ```vue
 <el-table :data='data'
@@ -13,6 +13,16 @@ handelRowClick(row, column, event, tableName){
   // do something
 },
 ```
+
+
+
+## CheckBox: ture/false-value
+
+```vue
+<el-checkbox v-model="dataForm.phraseStatus" true-label="Y" false-label="N"></el-checkbox>
+```
+
+
 
 
 

@@ -17,7 +17,7 @@
    this.$route.meta.zhTitle = "newName"
    ```
 
-   > 用this.$route.meta.xxxx 讀寫==當前頁面==的route
+   > 用this.$route.meta.xxxx 讀寫<b style="color:orange">當前頁面</b>的route
 
 4. 取得傳給當前頁的參數
 
