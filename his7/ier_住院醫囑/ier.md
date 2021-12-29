@@ -7,4 +7,4 @@
 
 ## [⬅ his_clin/his7/ier](../his7.md)
 
-[📄 住院醫囑頁面來源](./住院醫囑頁面來源.md)
+[<img src="../../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 住院醫囑頁面來源](./住院醫囑頁面來源.md)

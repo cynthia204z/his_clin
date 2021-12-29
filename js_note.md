@@ -111,7 +111,7 @@ let list = text.split(",");
 ## 刪除陣列元素
 
 ```js
-arr.splice(index, 數量, 取代ㄔ)
+arr.splice(index, 數量, 取代成)
 ```
 
 

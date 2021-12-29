@@ -7,8 +7,8 @@
 
 ## [⬅ his_clin/his7/comm](../his7.md)
 
-[📄 化療處方](./化療處方.md)
+[<img src="../../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 化療處方](./化療處方.md)
 
-[📄 診斷書](./診斷書.md)
+[<img src="../../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 診斷書](./診斷書.md)
 
-[📄 診斷維護](./診斷維護.md)
+[<img src="../../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 診斷維護](./診斷維護.md)

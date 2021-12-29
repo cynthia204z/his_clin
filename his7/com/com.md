@@ -7,8 +7,8 @@
 
 ## [⬅ his_clin/his7/com](../his7.md)
 
-[📄 共用](./共用.md)
+[<img src="../../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 共用](./共用.md)
 
-[📄 欠款管控稽核](./欠款管控稽核.md)
+[<img src="../../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 欠款管控稽核](./欠款管控稽核.md)
 
-[📄 紀錄未做的功能](./紀錄未做的功能.md)
+[<img src="../../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 紀錄未做的功能](./紀錄未做的功能.md)

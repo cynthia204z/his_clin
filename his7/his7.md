@@ -7,16 +7,16 @@
 
 ## [⬅ his_clin/his7](../his_clin.md)
 
-[<img src="../img/open-folder.png" style="zoom:3.5%;" /> com](./com/com.md)
+[<img src="../img/open-folder.png" style="zoom:3.5%; vertical-align: middle;" /> com](./com/com.md)
 
-[<img src="../img/open-folder.png" style="zoom:3.5%;" /> comm](./comm/comm.md)
+[<img src="../img/open-folder.png" style="zoom:3.5%; vertical-align: middle;" /> comm](./comm/comm.md)
 
-[<img src="../img/open-folder.png" style="zoom:3.5%;" /> cpoe](./cpoe/cpoe.md)
+[<img src="../img/open-folder.png" style="zoom:3.5%; vertical-align: middle;" /> cpoe](./cpoe/cpoe.md)
 
-[<img src="../img/open-folder.png" style="zoom:3.5%;" /> ier](./ier_住院醫囑/ier.md)
+[<img src="../img/open-folder.png" style="zoom:3.5%; vertical-align: middle;" /> ier](./ier_住院醫囑/ier.md)
 
-[<img src="../img/open-folder.png" style="zoom:3.5%;" /> oer](./oer_門急診醫囑/oer.md)
+[<img src="../img/open-folder.png" style="zoom:3.5%;vertical-align: middle;" /> oer](./oer_門急診醫囑/oer.md)
 
-[📄 dd](./dd.md)
+[<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> dd](./dd.md)
 
-[📄 動態畫面欄位](./動態畫面欄位.md)
+[<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 動態畫面欄位](./動態畫面欄位.md)

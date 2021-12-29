@@ -7,29 +7,29 @@
 
 ## [⬅ his_clin](../Menu.md)
 
-[<img src="img/open-folder.png" style="zoom:3.5%;" /> his7](./his7/his7.md)
+[<img src="img/open-folder.png" style="zoom:3.5%; vertical-align: middle;" /> his7](./his7/his7.md)
 
-[<img src="img/open-folder.png" style="zoom:3.5%;" /> 元件](./元件/元件.md)
+[<img src="img/open-folder.png" style="zoom:3.5%; vertical-align: middle;" /> 元件](./元件/元件.md)
 
-[<img src="img/open-folder.png" style="zoom:3.5%;" /> 主題樣式相關](./主題樣式相關/主題樣式相關.md)
+[<img src="img/open-folder.png" style="zoom:3.5%; vertical-align: middle;" /> 主題樣式相關](./主題樣式相關/主題樣式相關.md)
 
-[📄 注意事項和筆記(開發初期)](./注意事項和筆記(開發初期).md)
+[<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 注意事項和筆記(開發初期)](./注意事項和筆記(開發初期).md)
 
-[📄 sql](./sql.md)
+[<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> sql](./sql.md)
 
-[📄 vue_note](./vue_note.md)
+[<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> vue_note](./vue_note.md)
 
-[📄 js_note](./js_note.md)
+[<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> js_note](./js_note.md)
 
-[📄 jnpf_note](./jnpf_note.md)
+[<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> jnpf_note](./jnpf_note.md)
 
-[📄 elementUI_note](./elementUI_note.md)
+[<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> elementUI_note](./elementUI_note.md)
 
-[📄 his7_note](./his7_note.md)
+[<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> his7_note](./his7_note.md)
 
-[📄 備忘錄](./備忘錄.md)
+[<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 備忘錄](./備忘錄.md)
 
-[📄 帳號&測試病患](./帳號&測試病患.md)
+[<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 帳號&測試病患](./帳號&測試病患.md)
 
-[📄 快捷鍵](./快捷鍵.md)
+[<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 快捷鍵](./快捷鍵.md)
 

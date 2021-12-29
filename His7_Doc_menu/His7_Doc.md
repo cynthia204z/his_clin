@@ -7,4 +7,4 @@
 
 ## [⬅ His7_Doc](../../Menu.md)
 
-[<img src="../img/open-folder.png" style="zoom:3.5%;" /> emr](His7_Doc_emr.md)
+[<img src="../img/open-folder.png" style="zoom:3.5%; vertical-align: middle;" /> emr](His7_Doc_emr.md)
