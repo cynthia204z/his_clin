@@ -102,7 +102,51 @@ XML_CONTENT：
 ```
 
 ```json
-{"id":"PHM","label":"藥囑","usageOei":"A","menu":[{"pageType":"freqTreeBox","id":"DOC","label":"醫師常用","usageOei":"A"},{"pageType":"freqTreeBox","id":"Dept","label":"科常用","usageOei":"A"},{"pageType":"treeSearchBox","id":"PHM","label":"藥品","usageOei":"A"},{"pageType":"searchBox","id":"Search","label":"搜尋(全部)","usageOei":"A"},{"pageType":"searchBox","id":"phmSearchOften","label":"搜尋(常備)","usageOei":"A","criterion":"='1'"},{"pageType":"searchBox","id":"phmSearchNoOften","label":"搜尋(非常備)","usageOei":"A","criterion":"!='1'"}]}
+{
+  "id": "PHM",
+  "label": "藥囑",
+  "usageOei": "A",
+  "menu": [
+    {
+      "pageType": "freqTreeBox",
+      "id": "DOC",
+      "label": "醫師常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "freqTreeBox",
+      "id": "Dept",
+      "label": "科常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "PHM",
+      "label": "藥品",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "searchBox",
+      "id": "Search",
+      "label": "搜尋(全部)",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "searchBox",
+      "id": "phmSearchOften",
+      "label": "搜尋(常備)",
+      "usageOei": "A",
+      "criterion": "='1'"
+    },
+    {
+      "pageType": "searchBox",
+      "id": "phmSearchNoOften",
+      "label": "搜尋(非常備)",
+      "usageOei": "A",
+      "criterion": "!='1'"
+    }
+  ]
+}
 ```
 
 
@@ -131,7 +175,61 @@ XML_CONTENT：
 ```
 
 ```json
-{"id":"TREDEN","label":"處置","usageOei":"A","menu":[{"pageType":"freqTreeBox","id":"DOC","label":"醫師常用","usageOei":"A"},{"pageType":"freqTreeBox","id":"Dept","label":"科常用","usageOei":"A"},{"pageType":"treeSearchBox","id":"TRE","label":"治療處置","usageOei":"A"},{"pageType":"treeSearchBox","id":"REH","label":"復健治療","usageOei":"A"},{"pageType":"treeSearchBox","id":"CANC","label":"癌症治療","usageOei":"A"},{"pageType":"treeSearchBox","id":"PSY","label":"精神治療","usageOei":"A"},{"pageType":"treeSearchBox","id":"RT","label":"呼吸治療","usageOei":"A"},{"pageType":"searchBox","id":"Search","label":"搜尋","usageOei":"A"}]}
+{
+  "id": "TREDEN",
+  "label": "處置",
+  "usageOei": "A",
+  "menu": [
+    {
+      "pageType": "freqTreeBox",
+      "id": "DOC",
+      "label": "醫師常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "freqTreeBox",
+      "id": "Dept",
+      "label": "科常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "TRE",
+      "label": "治療處置",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "REH",
+      "label": "復健治療",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "CANC",
+      "label": "癌症治療",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "PSY",
+      "label": "精神治療",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "RT",
+      "label": "呼吸治療",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "searchBox",
+      "id": "Search",
+      "label": "搜尋",
+      "usageOei": "A"
+    }
+  ]
+}
 ```
 
 
@@ -162,7 +260,73 @@ XML_CONTENT：
 ```
 
 ```json
-{"id":"EXAM","label":"檢驗檢查","usageOei":"A","menu":[{"pageType":"freqTreeBox","id":"DOC","label":"醫師常用","usageOei":"A"},{"pageType":"freqTreeBox","id":"Dept","label":"科常用","usageOei":"A"},{"pageType":"treeSearchBox","id":"16F","label":"16樓檢查","usageOei":"A"},{"pageType":"treeSearchBox","id":"EXAM","label":"檢查","usageOei":"A"},{"pageType":"treeSearchBox","id":"LAB","label":"檢驗","usageOei":"A"},{"pageType":"treeSearchBox","id":"PAHO","label":"病理","usageOei":"A"},{"pageType":"treeSearchBox","id":"XRAY","label":"放射","usageOei":"A"},{"pageType":"treeSearchBox","id":"NME","label":"核醫(PET)","usageOei":"A"},{"pageType":"treeSearchBox","id":"DNATest","label":"基因檢測","usageOei":"A"},{"pageType":"searchBox","id":"Search","label":"搜尋","usageOei":"A"}]}
+{
+  "id": "EXAM",
+  "label": "檢驗檢查",
+  "usageOei": "A",
+  "menu": [
+    {
+      "pageType": "freqTreeBox",
+      "id": "DOC",
+      "label": "醫師常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "freqTreeBox",
+      "id": "Dept",
+      "label": "科常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "16F",
+      "label": "16樓檢查",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "EXAM",
+      "label": "檢查",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "LAB",
+      "label": "檢驗",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "PAHO",
+      "label": "病理",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "XRAY",
+      "label": "放射",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "NME",
+      "label": "核醫(PET)",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "DNATest",
+      "label": "基因檢測",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "searchBox",
+      "id": "Search",
+      "label": "搜尋",
+      "usageOei": "A"
+    }
+  ]
+}
 ```
 
 
@@ -190,7 +354,55 @@ XML_CONTENT：
 ```
 
 ```json
-{"id":"ORAN","label":"手術麻醉","usageOei":"A","menu":[{"pageType":"freqTreeBox","id":"DOC","label":"醫師常用","usageOei":"A"},{"pageType":"freqTreeBox","id":"Dept","label":"科常用","usageOei":"A"},{"pageType":"treeSearchBox","id":"OR","label":"全院手術","usageOei":"A"},{"pageType":"treeSearchBox","id":"OPA","label":"手術設備","usageOei":"A"},{"pageType":"treeSearchBox","id":"OPM","label":"手術衛材","usageOei":"A"},{"pageType":"treeSearchBox","id":"AN","label":"麻醉","usageOei":"A"},{"pageType":"searchBox","id":"Search","label":"搜尋","usageOei":"A"}]}
+{
+  "id": "ORAN",
+  "label": "手術麻醉",
+  "usageOei": "A",
+  "menu": [
+    {
+      "pageType": "freqTreeBox",
+      "id": "DOC",
+      "label": "醫師常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "freqTreeBox",
+      "id": "Dept",
+      "label": "科常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "OR",
+      "label": "全院手術",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "OPA",
+      "label": "手術設備",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "OPM",
+      "label": "手術衛材",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "AN",
+      "label": "麻醉",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "searchBox",
+      "id": "Search",
+      "label": "搜尋",
+      "usageOei": "A"
+    }
+  ]
+}
 ```
 
 
@@ -214,7 +426,31 @@ XML_CONTENT：
 ```
 
 ```json
-{"id":"MTRL","label":"衛材","usageOei":"A","menu":[{"pageType":"freqTreeBox","id":"DOC","label":"醫師常用","usageOei":"A"},{"pageType":"freqTreeBox","id":"Dept","label":"科常用","usageOei":"A"},{"pageType":"searchBox","id":"Search","label":"搜尋","usageOei":"A"}]}
+{
+  "id": "MTRL",
+  "label": "衛材",
+  "usageOei": "A",
+  "menu": [
+    {
+      "pageType": "freqTreeBox",
+      "id": "DOC",
+      "label": "醫師常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "freqTreeBox",
+      "id": "Dept",
+      "label": "科常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "searchBox",
+      "id": "Search",
+      "label": "搜尋",
+      "usageOei": "A"
+    }
+  ]
+}
 ```
 
 
@@ -239,7 +475,37 @@ XML_CONTENT：
 ```
 
 ```json
-{"id":"PKG","label":"套餐","usageOei":"A","menu":[{"pageType":"pkgTreeBox","id":"DOC","label":"醫師套餐","usageOei":"A"},{"pageType":"pkgTreeBox","id":"Dept","label":"科套餐","usageOei":"A"},{"pageType":"drg","id":"Drg","label":"臨床路徑套餐3.4","usageOei":"I"},{"pageType":"drg","id":"Drg40","label":"臨床路徑套餐4.0","usageOei":"I"}]}
+{
+  "id": "PKG",
+  "label": "套餐",
+  "usageOei": "A",
+  "menu": [
+    {
+      "pageType": "pkgTreeBox",
+      "id": "DOC",
+      "label": "醫師套餐",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "pkgTreeBox",
+      "id": "Dept",
+      "label": "科套餐",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "drg",
+      "id": "Drg",
+      "label": "臨床路徑套餐3.4",
+      "usageOei": "I"
+    },
+    {
+      "pageType": "drg",
+      "id": "Drg40",
+      "label": "臨床路徑套餐4.0",
+      "usageOei": "I"
+    }
+  ]
+}
 ```
 
 
@@ -274,7 +540,97 @@ XML_CONTENT：
 ```
 
 ```json
-{"id":"OTH","label":"其它","usageOei":"A","menu":[{"pageType":"freqTreeBox","id":"DOC","label":"醫師常用","usageOei":"A"},{"pageType":"freqTreeBox","id":"Dept","label":"科常用","usageOei":"A"},{"pageType":"treeSearchBox","id":"RT","label":"呼吸治療","usageOei":"A"},{"pageType":"treeSearchBox","id":"HMO","label":"洗腎","usageOei":"A"},{"pageType":"treeSearchBox","id":"BLD","label":"血庫","usageOei":"A"},{"pageType":"treeSearchBox","id":"AH","label":"預防保健","usageOei":"O"},{"pageType":"treeSearchBox","id":"VIT","label":"Vital Sign","usageOei":"IE"},{"pageType":"treeSearchBox","id":"DIE","label":"營養品","usageOei":"IO"},{"pageType":"treeSearchBox","id":"AGR","label":"同意書","usageOei":"A"},{"pageType":"treeSearchBox","id":"GMS","label":"庶務費","usageOei":"A"},{"pageType":"treeSearchBox","id":"MCC","label":"醫美","usageOei":"O"},{"pageType":"treeSearchBox","id":"HC","label":"居家","usageOei":"O"},{"pageType":"treeSearchBox","id":"INJ","label":"注射技術費","usageOei":"O"},{"pageType":"searchBox","id":"Search","label":"搜尋","usageOei":"A"}]}
+{
+  "id": "OTH",
+  "label": "其它",
+  "usageOei": "A",
+  "menu": [
+    {
+      "pageType": "freqTreeBox",
+      "id": "DOC",
+      "label": "醫師常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "freqTreeBox",
+      "id": "Dept",
+      "label": "科常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "RT",
+      "label": "呼吸治療",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "HMO",
+      "label": "洗腎",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "BLD",
+      "label": "血庫",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "AH",
+      "label": "預防保健",
+      "usageOei": "O"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "VIT",
+      "label": "Vital Sign",
+      "usageOei": "IE"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "DIE",
+      "label": "營養品",
+      "usageOei": "IO"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "AGR",
+      "label": "同意書",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "GMS",
+      "label": "庶務費",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "MCC",
+      "label": "醫美",
+      "usageOei": "O"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "HC",
+      "label": "居家",
+      "usageOei": "O"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "INJ",
+      "label": "注射技術費",
+      "usageOei": "O"
+    },
+    {
+      "pageType": "searchBox",
+      "id": "Search",
+      "label": "搜尋",
+      "usageOei": "A"
+    }
+  ]
+}
 ```
 
 
@@ -298,7 +654,31 @@ XML_CONTENT：
 ```
 
 ```json
-{"id":"NOTE","label":"Note","usageOei":"EI","menu":[{"pageType":"freqTreeBox","id":"DOC","label":"醫師常用","usageOei":"A"},{"pageType":"freqTreeBox","id":"Dept","label":"科常用","usageOei":"A"},{"pageType":"hosp","id":"HOSP","label":"全院常用","usageOei":"A"}]}
+{
+  "id": "NOTE",
+  "label": "Note",
+  "usageOei": "EI",
+  "menu": [
+    {
+      "pageType": "freqTreeBox",
+      "id": "DOC",
+      "label": "醫師常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "freqTreeBox",
+      "id": "Dept",
+      "label": "科常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "hosp",
+      "id": "HOSP",
+      "label": "全院常用",
+      "usageOei": "A"
+    }
+  ]
+}
 ```
 
 
@@ -322,7 +702,31 @@ XML_CONTENT：
 ```
 
 ```json
-{"id":"DITTO","label":"DITTO","usageOei":"EI","menu":[{"pageType":"ditto","id":"O","label":"門診","usageOei":"A"},{"pageType":"ditto","id":"E","label":"急診","usageOei":"A"},{"pageType":"ditto","id":"I","label":"住院","usageOei":"A"}]}
+{
+  "id": "DITTO",
+  "label": "DITTO",
+  "usageOei": "EI",
+  "menu": [
+    {
+      "pageType": "ditto",
+      "id": "O",
+      "label": "門診",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "ditto",
+      "id": "E",
+      "label": "急診",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "ditto",
+      "id": "I",
+      "label": "住院",
+      "usageOei": "A"
+    }
+  ]
+}
 ```
 
 
@@ -348,7 +752,43 @@ XML_CONTENT：
 ```
 
 ```json
-{"id":"ICD9","label":"ICD9","usageOei":"A","menu":[{"pageType":"freqTreeBox","id":"DOC","label":"醫師常用","usageOei":"A"},{"pageType":"icdDoc","id":"icdDoc","label":"住院ICD9","usageOei":"I"},{"pageType":"freqTreeBox","id":"Dept","label":"科常用","usageOei":"A"},{"pageType":"treeSearchBox","id":"ICD","label":"ICD9","usageOei":"A"},{"pageType":"searchBox","id":"Search","label":"搜尋","usageOei":"A"}]}
+{
+  "id": "ICD9",
+  "label": "ICD9",
+  "usageOei": "A",
+  "menu": [
+    {
+      "pageType": "freqTreeBox",
+      "id": "DOC",
+      "label": "醫師常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "icdDoc",
+      "id": "icdDoc",
+      "label": "住院ICD9",
+      "usageOei": "I"
+    },
+    {
+      "pageType": "freqTreeBox",
+      "id": "Dept",
+      "label": "科常用",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "treeSearchBox",
+      "id": "ICD",
+      "label": "ICD9",
+      "usageOei": "A"
+    },
+    {
+      "pageType": "searchBox",
+      "id": "Search",
+      "label": "搜尋",
+      "usageOei": "A"
+    }
+  ]
+}
 ```
 
 
@@ -370,7 +810,19 @@ XML_CONTENT：
 ```
 
 ```json
-{"id":"NIS_ORDER","label":"補開立緊急醫囑","usageOei":"I","menu":[{"pageType":"nisOrder","id":"NIS_ORDER","label":"緊急醫囑","usageOei":"A"}]}
+{
+  "id": "NIS_ORDER",
+  "label": "補開立緊急醫囑",
+  "usageOei": "I",
+  "menu": [
+    {
+      "pageType": "nisOrder",
+      "id": "NIS_ORDER",
+      "label": "緊急醫囑",
+      "usageOei": "A"
+    }
+  ]
+}
 ```
 
 

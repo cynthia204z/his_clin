@@ -27,6 +27,8 @@
 
 [<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> his7_note](./his7_note.md)
 
+[<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> scss_note](./scss_note.md)
+
 [<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 備忘錄](./備忘錄.md)
 
 [<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 帳號&測試病患](./帳號&測試病患.md)
