@@ -1,6 +1,8 @@
 # Element UI Note
 
-## 回調函數：保留組件預設參數並加上自定義參數
+## 共通
+
+### 回調函數：保留組件預設參數並加上自定義參數
 
 ```vue
 <el-table :data='data'
@@ -16,10 +18,42 @@ handelRowClick(row, column, event, tableName){
 
 
 
-## CheckBox: ture/false-value
+## CheckBox
+
+### ture/false-value
 
 ```vue
 <el-checkbox v-model="dataForm.phraseStatus" true-label="Y" false-label="N"></el-checkbox>
+```
+
+
+
+## DatePicker
+
+### 可選範圍: picker-options
+
+```vue
+<el-date-picker v-model="dataForm.orderStartDate"
+                value-format="yyyy-MM-dd"
+                :picker-options="datePickerOptions"
+                ></el-date-picker>
+```
+
+```js
+export default{
+  data(){
+    return{
+      // 包含今天的未來一週
+      datePickerOptions: {
+        disabledDate(time) {
+          const date = new Date()
+          date.setTime(date.getTime() + 3600 * 1000 * 24 * 6)
+          return time.getTime() < Date.now() - 8.64e7 || time.getTime() > date
+        }
+      }
+    }
+  } 
+}
 ```
 
 

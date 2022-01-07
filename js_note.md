@@ -118,3 +118,42 @@ arr.splice(index, 數量, 取代成)
 
 
 
+# Moment.js Note
+
+## 半年前
+
+```js
+let halfAYear = moment(new Date()).subtract(6, 'months').format('YYYY-MM-DD')
+```
+
+
+
+## 上/下個月
+
+```js
+let currentDate = moment().format('YYYY-MM-DD') //當天
+
+let aMonthLater = moment(currentDate).month(1).format('YYYY-MM-DD') //下個月同日
+let aMonthAgo = moment(currentDate).month(-1).format('YYYY-MM-DD') //上個月同日
+```
+
+
+
+## 月初、月底
+
+```js
+let currentMonth = moment().format('YYYY-MM') //當月
+
+let startDate = moment(currentMonth).startOf('month').format('YYYY-MM-DD') //當月月初
+let endDate = moment(currentMonth).endOf('month').format('YYYY-MM-DD') //當月月底
+```
+
+
+
+## 相減計算單位
+
+```js
+//單位：'years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds'
+
+let monthCount = moment(後面的時間).diff(moment(前面的時間), 單位)
+```
