@@ -77,3 +77,123 @@ export default {
 
 
 
+# 企業組件
+
+## List EditPage
+
+### ReadOnly
+
+```vue
+		<el-table-column prop="oeiType" label="來源" align="left" show-overflow-tooltip
+                     v-if="showColumns.find(item=>item.prop === 'oeiType')"
+    ></el-table-column>
+```
+
+### Input
+
+```vue
+		<el-table-column prop="unusedReason" label="EKG超時不給PCI原因"
+                     align="left"
+                     show-overflow-tooltip
+                     v-if="showColumns.find(item=>item.prop === 'unusedReason')"
+                     width="180"
+    >
+      <template slot-scope="scope">
+        <span v-show="scope.row.index === cellClickIndex">
+          <el-input v-model="scope.row.unusedReason"
+                    clearable
+                    :style='{"width":"100%"}'
+                    @focus="cellFocusEvent(scope.row)"
+                    @blur="cellBlurEvent(scope.row)"
+                    v-focus
+                    maxlength="100"
+          >
+          </el-input>
+        </span>
+        <span v-show="scope.row.index !== cellClickIndex">{{ scope.row.unusedReason }}</span>
+      </template>
+    </el-table-column>
+```
+
+### CheckBox
+
+```vue
+		<el-table-column prop="holidayFlag" label="假日" align="left" show-overflow-tooltip
+                     v-if="showColumns.find(item=>item.prop === 'holidayFlag')">
+      <template slot-scope="scope">
+        <el-checkbox v-model="scope.row.holidayFlag" true-label="Y" false-label="N"
+                     @change="cellBlurEvent(scope.row)">
+          {{ scope.row.holidayFlag === 'Y' ? '是' : '否' }}
+        </el-checkbox>
+      </template>
+    </el-table-column>
+```
+
+### DatePicker
+
+```vue
+		<el-table-column prop="tropiDate" label="開Trop時間"
+                     align="left"
+                     show-overflow-tooltip
+                     v-if="showColumns.find(item=>item.prop === 'tropiDate')"
+                     width="130"
+    >
+      <template slot-scope="scope">
+        <span v-show="scope.row.index === cellClickIndex">
+          <el-date-picker v-model="scope.row.tropiDate"
+                          clearable
+                          :style='{"width":"100%"}'
+                          type="datetime"
+                          format="yyyy-MM-dd HH:mm"
+                          value-format="yyyy-MM-dd HH:mm"
+                          @focus="cellFocusEvent(scope.row)"
+                          @blur="cellBlurEvent(scope.row)"
+                          maxlength="100"
+          >
+          </el-date-picker>
+        </span>
+        <span v-show="scope.row.index !== cellClickIndex">{{ scope.row.tropiDate }}</span>
+      </template>
+    </el-table-column>
+```
+
+### Button
+
+```vue
+		<el-table-column label="預覽" align="left" fixed width="65">
+      <template slot-scope="scope">
+        <el-button type="text">病歷</el-button>
+      </template>
+    </el-table-column>
+```
+
+### Select
+
+```vue
+	<el-table-column prop="confirmFlag" label="確認註記"
+                     align="left"
+                     show-overflow-tooltip
+                     v-if="showColumns.find(item=>item.prop === 'confirmFlag')"
+                     fixed
+                     width="100"
+    >
+      <template slot-scope="scope">
+        <span v-show="scope.row.index === cellClickIndex">
+          <el-select v-model="scope.row.confirmFlag"
+                     :style='{"width":"100%"}'
+                     @focus="cellFocusEvent(scope.row)"
+                     @blur="cellBlurEvent(scope.row, 'confirmFlag')"
+          >
+            <el-option v-for="(item, index) in confirmFlagOptions"
+                       :key="index"
+                       :label="item.fullName"
+                       :value="item.id"
+            ></el-option>
+          </el-select>
+        </span>
+        <span v-show="scope.row.index !== cellClickIndex"
+        >{{ valueFilter(scope.row.confirmFlag, confirmFlagOptions, 'id', 'fullName') }}</span>
+      </template>
+    </el-table-column>
+```
+

@@ -34,3 +34,5 @@
 [<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 共用-醫療目標點數設定 Comm1030](../../His7_Doc/emr/靖雅/共用-醫療目標點數設定.md)
 
 [<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 共用-會診醫師排班 Comm5090](../../His7_Doc/emr/靖雅/共用-會診醫師排班.md)
+
+[<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 急診-急診照護查詢](../../His7_Doc/emr/靖雅/急診-急診照護查詢.md)
