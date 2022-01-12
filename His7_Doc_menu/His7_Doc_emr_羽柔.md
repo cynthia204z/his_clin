@@ -54,3 +54,5 @@
 [<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 醫囑-門急診片語](../../His7_Doc/emr/羽柔/醫囑-門急診片語.md)
 
 [<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 門診-化療處方](../../His7_Doc/emr/羽柔/門診-化療處方.md)
+
+[<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 急診-病患動向](../../His7_Doc/emr/羽柔/急診-病患動向.md)

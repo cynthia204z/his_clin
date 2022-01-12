@@ -19,13 +19,13 @@
 
 [<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 住院-會診單填寫 Comm6040](../../His7_Doc/emr/靖雅/住院-會診單填寫.md)
 
+[<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 住院-主治醫師授權](../../His7_Doc/emr/靖雅/住院-主治醫師授權.md)
+
 [<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 門急-SOP範本](../../His7_Doc/emr/靖雅/門急-SOP範本.md)
 
 [<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 門急-門急診片語](../../His7_Doc/emr/靖雅/門急-門急診片語.md)
 
 [<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 門急-化療處方 Comm5050](../../His7_Doc/emr/靖雅/門急-化療處方.md)
-
-[<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 共用-化療套餐](../../His7_Doc/emr/靖雅/共用-化療套餐.md)
 
 [<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 共用-化療套餐](../../His7_Doc/emr/靖雅/共用-化療套餐.md)
 
@@ -36,3 +36,7 @@
 [<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 共用-會診醫師排班 Comm5090](../../His7_Doc/emr/靖雅/共用-會診醫師排班.md)
 
 [<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 急診-急診照護查詢](../../His7_Doc/emr/靖雅/急診-急診照護查詢.md)
+
+[<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 急診-病患動向](../../His7_Doc/emr/靖雅/急診-病患動向.md)
+
+[<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 出院交班歷程](../../His7_Doc/emr/靖雅/出院交班歷程.md)
