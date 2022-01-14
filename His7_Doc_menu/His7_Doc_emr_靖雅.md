@@ -40,3 +40,5 @@
 [<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 急診-病患動向](../../His7_Doc/emr/靖雅/急診-病患動向.md)
 
 [<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 出院交班歷程](../../His7_Doc/emr/靖雅/出院交班歷程.md)
+
+[<img src="../img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 常用圖檔](../../His7_Doc/emr/靖雅/常用圖檔.md)

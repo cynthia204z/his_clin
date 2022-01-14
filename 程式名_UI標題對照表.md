@@ -4,6 +4,12 @@
       background: #333;
       color: #eee;
     }
+    h2{
+      font-weight: 900;
+      font-size: 72px;
+      margin: 50px 0 10px 0 ;
+      font-family: sans-serif;
+    }
     .codeName {
       font-weight: bold;
       padding: 0 15px 5px 0;
@@ -43,7 +49,10 @@
       font-weight: 300;
     }
   </style>
-  <h2 class="comm" id="COMM">COMM</h2>
+  <br>
+  <br>
+  <div id="COMM"></div>
+  <h2 class="comm">COMM</h2>
   <div class="title comm">dialog</div><br>
   <div class="codeName comm">allergyRecordDialog</div> 過敏記錄 <br>
   <br>
@@ -76,7 +85,8 @@
   <div class="codeName comm">EmrChemoPackage</div> 化療套餐 <br>  
   <br>
   <br>
-  <h2 class="cpoe" id="CPOE">CPOE</h2>
+  <div id="CPOE"></div>
+  <h2 class="cpoe">CPOE</h2>
   <div class="title cpoe">dialog</div><br>
   <div class="codeName cpoe">InsCodeToPcsDialog</div> ICD10PCS Search Dialog <br>
   <div class="codeName cpoe">OrderCircleDialog</div> 可用頻次(用法) <br>
@@ -84,17 +94,20 @@
   <div class="codeName cpoe">searchDialog</div> 醫令選項(最外層orderType) <br>
   <div class="codeName cpoe">searchOrderDialog</div> 醫令選項(最外層orderSys) <br>
   <br>
-  <div class="title cpoe">(view)</div><br>
-  <div class="codeName cpoe">emrfrequent</div> 常用項設定 <br>
+  <div class="title cpoe">view</div><br>
+  <div class="codeName cpoe">CpoeFrequentPage</div> 常用項設定 <br>
   <div class="codeName cpoe thin">﹍﹍﹍ deptEmrfrequent.vue</div> ﹍﹍﹍ 科常用 <br>
   <div class="codeName cpoe thin">﹍﹍﹍ docEmrfrequent.vue</div> ﹍﹍﹍ 醫師常用 <br>
-  <div class="codeName cpoe">emrpkgmst</div> 套餐設定 <br>
+  <div class="codeName cpoe">CpoePkgPage</div> 套餐設定 <br>
   <div class="codeName cpoe thin">﹍﹍﹍ deptEmrpkg.vue</div> ﹍﹍﹍ 科套餐 <br>
   <div class="codeName cpoe thin">﹍﹍﹍ docEmrpkg.vue</div> ﹍﹍﹍ 醫師套餐 <br>
-  <div class="codeName cpoe">EmrFrerquentImageForm</div> 常用圖檔 <br>
+  <div class="codeName cpoe">CpoeFrerquentImagePage</div> 常用圖檔 <br>
+  <div class="codeName cpoe thin">﹍﹍﹍ deptimg.vue</div> ﹍﹍﹍ 科圖檔 <br>
+  <div class="codeName cpoe thin">﹍﹍﹍ docimg.vue</div> ﹍﹍﹍ 醫師圖檔 <br>
   <br>
   <br>
-  <h2 class="ierpat" id="IERPAT">IERPAT</h2>
+  <div id="IERPAT"></div>
+  <h2 class="ierpat">IERPAT</h2>
   <div class="title ierpat">dialog</div><br>
   <div class="codeName ierpat">comm5080Dialog</div> 預約入院作業 <br>
   <div class="codeName ierpat">Ier1080_DittoDialog</div> 病患問題 Ditto Dialog <br>
@@ -128,7 +141,8 @@
   <div class="codeName ierpat">PatitentListPage</div> 住院病患清單 <br>
   <br>
   <br>
-  <h2 class="oerpat" id="OERPAT">OERPAT</h2><br>
+  <div id="OERPAT"></div>
+  <h2 class="oerpat">OERPAT</h2>
   <div class="title oerpat">dialog</div><br>
   <div class="codeName oerpat">allergyRecordDialog</div> 過敏記錄 <br>
   <div class="codeName oerpat">capHcLogDialog</div> 檳菸史 <br>
@@ -196,6 +210,8 @@
 
 
 
+
+
 <div style="position: fixed; top: 10px; left: 0; padding:10px 20px 10px 0; border-radius: 0 15px 15px 0;
     justify-content: space-between;display: flex; flex-direction: column;">
   <style type="text/css" scoped>
@@ -241,7 +257,6 @@
   <a class="item ierpat-menu" href="#IERPAT">IERPAT</a>
   <a class="item oerpat-menu" href="#OERPAT">OERPAT</a>
 </div>
-
 
 
 
