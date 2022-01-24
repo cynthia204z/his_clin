@@ -197,3 +197,81 @@ export default {
     </el-table-column>
 ```
 
+
+
+## Search
+
+### Date
+
+```vue
+<el-col :span="6">
+  <el-form-item label="健檢日期">
+    <el-date-picker v-model="query.healthDate"
+                    type="date"
+                    format="yyyy-MM-dd"
+                    value-format="yyyy-MM-dd"
+                    ></el-date-picker>
+  </el-form-item>
+</el-col>
+```
+
+### Select
+
+```vue
+<el-select v-model="query.confirmFlag">
+  <el-option v-for="(item, index) in hmspackageType"
+             :key="index"
+             :label="item.CODE_DESC"
+             :value="item.CODE_NO"
+             ></el-option>
+</el-select>
+```
+
+### Input
+
+```vue
+<el-col :span="6">
+  <el-form-item label="套餐簡碼">
+    <el-input v-model="query.packCode" clearable></el-input>
+  </el-form-item>
+</el-col>
+```
+
+### PopupLov
+
+```vue
+<el-col :span="6">
+        <el-form-item label="勞職/簽帳公司">
+          <el-input v-model="query.customerCode" placeholder="勞職/簽帳公司" clearable>
+            <template slot="append">
+              <el-button slot="append"
+                         icon="el-icon-search"
+                         @click="choice('HmsCustomermstLov')"/>
+            </template>
+          </el-input>
+        </el-form-item>
+      </el-col>
+```
+
+```vue
+ <PopupLov ref="HmsReportItemmstLov2"
+              :lov-config="popupLovConfig.HmsReportItemmstLov2"
+              @lovEvent="(data) => handlePopupLovData(data, 'itemCatalog', '')"
+    />
+```
+
+```js
+choice(aLovName) {
+  this.$nextTick(() => {
+    this.$refs[aLovName].init();
+  })
+}
+
+    handlePopupLovData(data, columnName, dataColumnName) {
+      if (data.length > 0) {
+        this.$set(this.query, columnName, data[0][dataColumnName])
+        console.log(this.query[columnName])
+      }
+    }
+```
+

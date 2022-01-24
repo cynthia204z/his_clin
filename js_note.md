@@ -66,12 +66,43 @@ val = val.replace(/\n/g, '<br>')
 
 ## 分割字串 split
 
+String to Array
+
 ```js
 let text = "A,B,C,D";
 
-let list = text.split(",");
+let list1 = text.split(",");
+// list1 = ["A","B","C","D"]
 
-// list = ["A","B","C","D"]
+let list2 = text.split("");
+// list2 = ["A", ",", "B", ",", "C", ",", "D"]
+```
+
+
+
+## 合併字串 join
+
+Array to String
+
+```js
+let arr = ["A","B","C","D"];
+
+let str1 = arr.join("、");
+// str1 = "A、B、C、D"
+
+let str2 = arr.join("");
+// str2 = "ABCD"
+```
+
+
+
+## 擷取字串/陣列 slice
+
+```js
+let fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
+
+let citrus1 = fruits.slice(1, 3);
+// citrus1 = ['Orange','Lemon']
 ```
 
 
@@ -86,7 +117,7 @@ let list = text.split(",");
 
    ```js
    // 1.
-   let C = list.A(x => B.includes(x))
+   let C = A.filter(x => B.includes(x))
    
    // 2.
    let C = new Set([...A].filter(x ))
@@ -96,8 +127,8 @@ let list = text.split(",");
 
    A和B的差集，取出A資料中不包含與B資料內相同的資料
 
-   ```js
-   let C = list.A(x => !B.includes(x))
+   ```
+   let C = A.filter(x => !B.includes(x))
    ```
 
 3. **聯集**
@@ -108,13 +139,58 @@ let list = text.split(",");
 
    
 
-## 刪除陣列元素
+## 刪除/取代陣列元素 splice
+
+`arr.splice(index, 刪除的數量, 取代成)`
 
 ```js
-arr.splice(index, 數量, 取代成)
+let arr = ["A", "B", "C"]
+
+arr.splice(1, 1, "❤")
+// arr = ["A", "❤", "C"]
+
+arr.splice(1, 0, "◼", "✔")
+// arr = ["A", "◼", "✔", "❤", "C"]
+
+arr.aplice(2, 2, "♠♣♦♥")
+// arr = ["A", "◼", "♠♣♦♥", "C"]
 ```
 
 
+
+## 排序
+
+一般
+
+```js
+list.sort(function(a, b) {
+  return a[columnName] - b[columnName]
+})
+```
+
+依照別的陣列順序排序
+
+```js
+referenceList.forEach((i, index) => {
+  arr.forEach((a, aIndex) => {
+    if (i === a) {
+      arr.splice(aIndex, 1)
+      arr.splice(index, 0, a)
+    }
+  })
+})
+```
+
+
+
+## 陣列元素交換順序
+
+```js
+let arr = ["A", "B", "C"];
+
+[arr[1], arr[0]] = [arr[0], arr[1]];
+// arr = ["B", "A", "C"]
+```
 
 
 
