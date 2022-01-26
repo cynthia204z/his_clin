@@ -181,6 +181,14 @@ referenceList.forEach((i, index) => {
 })
 ```
 
+中文排序
+
+```js
+list.sort(function(a, b) {
+	return a[columnName].localeCompare(b[columnName], 'zh-TW')
+})
+```
+
 
 
 ## 陣列元素交換順序
