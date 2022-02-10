@@ -1,6 +1,8 @@
 # JavaScript Note
 
-## 複製Object - 深拷貝
+## 基本用法
+
+### 複製Object - 深拷貝
 
 > 應用場景：使用物件儲存資料時，為了判斷資料是否被更動過，有不能更動的A(異動前資料)、和可以被更動的B
 >
@@ -16,7 +18,7 @@
 
 
 
-## 判斷大小寫
+### 判斷大小寫
 
 ```js
 let text = 'A';
@@ -30,7 +32,7 @@ console.log(this.IsUpper(text)); // ture
 
 
 
-## 判斷含有特定字串 indexOf
+### 判斷含有特定字串 indexOf
 
 ```js
 let text = "there's something wrong";
@@ -40,7 +42,7 @@ console.log(text.indexOf("something") >= 0); // true
 
 
 
-## 取代特定字串 replace
+### 取代特定字串 replace
 
 取代第一個找到的字串
 
@@ -64,7 +66,7 @@ val = val.replace(/\n/g, '<br>')
 
 
 
-## 分割字串 split
+### 分割字串 split
 
 String to Array
 
@@ -80,7 +82,7 @@ let list2 = text.split("");
 
 
 
-## 合併字串 join
+### 合併字串 join
 
 Array to String
 
@@ -96,7 +98,7 @@ let str2 = arr.join("");
 
 
 
-## 擷取字串/陣列 slice
+### 擷取字串/陣列 slice
 
 ```js
 let fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
@@ -107,7 +109,7 @@ let citrus1 = fruits.slice(1, 3);
 
 
 
-## 比較2個陣列
+### 比較2個陣列
 
 > C 是一個陣列
 
@@ -127,7 +129,7 @@ let citrus1 = fruits.slice(1, 3);
 
    A和B的差集，取出A資料中不包含與B資料內相同的資料
 
-   ```
+   ```js
    let C = A.filter(x => !B.includes(x))
    ```
 
@@ -139,7 +141,7 @@ let citrus1 = fruits.slice(1, 3);
 
    
 
-## 刪除/取代陣列元素 splice
+### 刪除/取代陣列元素 splice
 
 `arr.splice(index, 刪除的數量, 取代成)`
 
@@ -148,17 +150,20 @@ let arr = ["A", "B", "C"]
 
 arr.splice(1, 1, "❤")
 // arr = ["A", "❤", "C"]
+// 第1個索引位置刪除1個元素，並插入❤
 
-arr.splice(1, 0, "◼", "✔")
-// arr = ["A", "◼", "✔", "❤", "C"]
+arr.splice(1, 0, "ㄅ", "ㄆ")
+// arr = ["A", "ㄅ", "ㄆ", "❤", "C"]
+// 第1個索引位置刪除0個元素，並插入ㄅ、ㄆ
 
 arr.aplice(2, 2, "♠♣♦♥")
-// arr = ["A", "◼", "♠♣♦♥", "C"]
+// arr = ["A", "ㄅ", "♠♣♦♥", "C"]
+// 第2個索引位置刪除2個元素，並插入♠♣♦♥
 ```
 
 
 
-## 排序
+### 排序
 
 一般
 
@@ -191,13 +196,166 @@ list.sort(function(a, b) {
 
 
 
-## 陣列元素交換順序
+### 陣列元素交換順序
 
 ```js
 let arr = ["A", "B", "C"];
 
 [arr[1], arr[0]] = [arr[0], arr[1]];
 // arr = ["B", "A", "C"]
+```
+
+
+
+### 鍵盤事件
+
+> keyCode，例： `keyCode === 46` 這種用法已經被棄用了，要避免使用。
+
+```js
+textarea.addEventListener('keydown', (e) => {
+  if(e.key === 'Delete'){
+    //do something when 'Delete'
+  }
+  if(e.key === 'z' && e.ctrlKey){
+    //do something when 'ctrl+Z'
+  }
+});
+```
+
+```js
+document.onkeydown = (e) => {
+  // e.key
+}
+```
+
+
+
+## 程式碼優化
+
+### if else替代方法
+
+> 參考文章：
+>
+> [徹底消除if else， 讓你的代碼看起來更優雅](https://juejin.cn/post/6882390231715151879)
+
+1. **map**: function
+
+   > 在Map集合中，get一個不存在的值，不會拋出異常，獲得的返回值為null。
+
+   原本使用if else時
+
+   ```js
+   if(type === '1'){
+     arr.push(item)
+   }else if(type === '2'){
+      FuncA(item)
+   }else if(type === '3'){
+     if(item === 'A'){ 
+       FuncB()
+     }
+   }else if(type === '4'){
+     FuncC()
+   }else{
+     /*do something*/
+   }
+   ```
+
+   改成
+
+   ```js
+   let actions = new Map([
+     ['type1', (item)=>{ arr.push(item) }],
+     ['type2', (item)=>{ FuncA(item) }],
+     ['type3', (item)=>{ if(item === 'A'){ FuncB() } }],
+     ['type4', ()=>{ FuncC() }]
+     ['default', ()=>{/*do something*/}],
+   ])
+   let action = actions.get(`type${type}`) || actions.get('default')
+   action(item)
+   ```
+
+   **map**: string
+
+   原本使用if else時
+
+   ```js
+   if(pathType === 'C'){
+     return 'yellow'
+   }else if(pathType === 'K'){
+     return 'pink'
+   }else if(pathType === 'W'){
+     return 'blue'
+   }
+   ```
+
+   改成
+
+   ```js
+   let colorMap = new Map([
+     ['C', 'yellow'],
+     ['K', 'pink'],
+     ['W', 'blue'],
+   ])
+   return colorMap.get(pathType)
+   ```
+
+   
+
+2. **Object**
+
+   原本使用if else時
+
+   ```js
+   if(actionType === 'goto'){
+     if(status === '1'){
+       FuncA()
+     }else if(status === '2'){
+       FuncB()
+     }
+   }else if(actionType === 'backto'){
+     if(status === '2'){
+       FuncC()
+     }else if(status === '3'){
+       FuncD()
+     }
+   }else{
+     /*do something*/
+   }
+   ```
+
+   改成
+
+   ```js
+   let actions = {
+     'goto1': ()=>{ FuncA() },
+     'goto2': ()=>{ FuncB() },
+     'backto2': ()=> { FuncC() },
+     'backto3': ()=> { FuncD() },
+     'default':()=>{/*do something*/}
+   }
+   let action = actions[`${actionType}${status}`] || actions['default']
+   action()
+   ```
+
+   
+
+
+### for迴圈: i of arr替代arr.length
+
+原
+
+```js
+for (let i = 0; i < arr.length; i++){
+  console.log(arr[i])
+}
+```
+
+改
+
+```js
+for (let i of arr){
+  console.log(i)
+}
 ```
 
 
