@@ -230,6 +230,7 @@ document.onkeydown = (e) => {
 
 
 
+<<<<<<< HEAD
 ### 迴圈等非同步結束
 
 ```js
@@ -286,6 +287,8 @@ fetchData(1);
 
 
 
+=======
+>>>>>>> cc0ab948af083fd1ef2fd5f6c9e2608a820fdf69
 ## 程式碼優化
 
 ### if else替代方法
@@ -416,6 +419,7 @@ for (let i of arr){
 
 
 
+<<<<<<< HEAD
 ## 其他
 
 ### 隨機HEX色碼
@@ -433,6 +437,8 @@ function getRandomColor() {
 
 
 
+=======
+>>>>>>> cc0ab948af083fd1ef2fd5f6c9e2608a820fdf69
 # Moment.js Note
 
 ## 半年前
