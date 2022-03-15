@@ -89,7 +89,6 @@ body{
   color: #eee4ec;
   padding: 30px;
   padding-bottom: 100px;
-  line-height: 1.6;
   word-spacing: 0px;
   letter-spacing: 0px;
   word-break: break-word;
@@ -117,6 +116,51 @@ body{
   background: rgb(85, 87, 211); 
 }
 
+
+/*勾選框*/
+.md-task-list-item > input{
+  appearance: none;
+  background-color: transparent;
+  color: #fff;
+  width: 1.3em !important;
+  height: 1.3em !important;
+  border: 1.25px solid #fff;
+  border-radius: 0.5em;
+  transform: translateY(0.4em);
+  margin-bottom: 1em;
+  display: grid;
+  place-content: center;
+  pointer-events:all;
+  cursor: pointer;
+}
+.md-task-list-item > input:checked{
+  background-color: #706cad;
+}
+
+.md-task-list-item > input::before{
+  content: ' ';
+  width: 0.8em;
+  height: 0.8em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #fff;
+  background-color: #fff;
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  margin-top: 0;
+}
+.md-task-list-item > input:focus{
+  /* outline: max(2px, 0.15em) solid #9488da; */
+  /* outline-offset: max(2px, 0.15em); */
+}
+
+.md-task-list-item > input:checked::before{
+  transform: scale(1);
+}
+
+.md-task-list-item > input + p {
+  padding-left: 0.6em;
+}
 
 @media only screen and (min-width: 1400px) {
   #write {
@@ -465,7 +509,7 @@ table td:last-child {
 }
 .cm-s-inner .CodeMirror-matchingbracket {
   text-decoration: underline;
-  color: #dab9c3 !important; /**/
+  color: #dab9c3 !important; /*大括號匹配*/
 }
 .CodeMirror div.CodeMirror-cursor {
   border-left: 1px solid rgb(239, 112, 96);

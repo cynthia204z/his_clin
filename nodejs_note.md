@@ -276,7 +276,7 @@ module.exports = {
 
 #### 指令
 
-```shell
+```bash
 npm install --save mysql2
 
 npm install sequelize
@@ -284,10 +284,10 @@ npm install sequelize
 sequelize init
 
 sequelize model:generate --name Post --attributes title:string,content:text,imageUrl:string,categoryId:integer,userId:integar
->會在migrations資料夾裡生出長得像"20220309061819-create-post.js"的檔案
+>'會在migrations資料夾裡生出長得像"20220309061819-create-post.js"的檔案
 
 sequelize db:migrate
->建立Table, 會建立在config.json中"development"中設定的資料庫
+> '建立Table, 會建立在config.json中"development"中設定的資料庫'
 ```
 
 #### 實際範例(ChartEditor)

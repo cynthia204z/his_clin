@@ -49,4 +49,16 @@
   WHERE a.Table_Name = 'MRM_EXAM_CHKLOG';
   ```
 
+
+
+
+* inner join ... on ...
+
+  ```sql
+  select t.*,t1.SHEET_TYPE
+  from CHRED_TRANS_MST t
+  inner join chred_sheet_def t1 on t1.SHEET_ID = t.ShEET_ID
+  where t1.SHEET_TYPE like '%text%';
+  ```
+
   

@@ -1,41 +1,41 @@
 ## index.vue
 
-```vue
+```html
 <template>
   <div class="JNPF-common-layout-center" style="background: #fff; border: 1px solid #fff">
     <el-menu
-      :default-active="activeIndex"
-      class="el-menu-demo bg-color-3 selector"
-      mode="horizontal"
-      @select="menuSelect"
-      style="display:flex"
-    >
+             :default-active="activeIndex"
+             class="el-menu-demo bg-color-3 selector"
+             mode="horizontal"
+             @select="menuSelect"
+             style="display:flex"
+             >
       <div v-for="(item, index) in menuOptions" :key="index">
         <el-submenu v-if="item.children" class="submenu" :index="item.name">
           <template slot="title">{{ item.title }}</template>
           <el-menu-item
-            v-for="(subitem, index) in item.children"
-            :key="index"
-            :index="subitem.name"
-          >{{ subitem.title }}</el-menu-item>
+                        v-for="(subitem, index) in item.children"
+                        :key="index"
+                        :index="subitem.name"
+                        >{{ subitem.title }}</el-menu-item>
         </el-submenu>
         <el-menu-item v-if="!item.children" :index="item.name">{{ item.title }}</el-menu-item>
       </div>
     </el-menu>
     <div class="JNPF-common-layout" style="background: #fff; height: calc(100% - 30px)">
       <div
-        class="JNPF-common-layout-left _panel"
-        :class="{ 'leftpanel-change': !styleStatus.leftPanelIsShow }"
-      >
+           class="JNPF-common-layout-left _panel"
+           :class="{ 'leftpanel-change': !styleStatus.leftPanelIsShow }"
+           >
         <el-form @submit.native.prevent>
           <groupTitle class="xs" content="病患資訊" />
           <el-form-item
-            v-for="(item, index) in patinfoData"
-            :key="index"
-            :label="item.label"
-            label-width="70px"
-            class="_patinfo"
-          >
+                        v-for="(item, index) in patinfoData"
+                        :key="index"
+                        :label="item.label"
+                        label-width="70px"
+                        class="_patinfo"
+                        >
             <span v-if="item.label != '病歷號'">{{ item.value }}</span>
             <el-button v-if="item.label === '病歷號'" type="text">
               {{
@@ -51,11 +51,11 @@
       </div>
       <div class="panelshowctrlbtn border-color-2">
         <el-button
-          :title="styleStatus.leftPanelIsShow ? '收合' : '展開'"
-          style="margin-right: 10px"
-          @click="styleStatus.leftPanelIsShow = !styleStatus.leftPanelIsShow"
-          type="text"
-        >
+                   :title="styleStatus.leftPanelIsShow ? '收合' : '展開'"
+                   style="margin-right: 10px"
+                   @click="styleStatus.leftPanelIsShow = !styleStatus.leftPanelIsShow"
+                   type="text"
+                   >
           <i class="icon-ym icon-ym-nav-next" v-if="!styleStatus.leftPanelIsShow"></i>
           <i class="icon-ym icon-ym-nav-prev" v-if="styleStatus.leftPanelIsShow"></i>
         </el-button>
@@ -64,44 +64,44 @@
 
       <div class="JNPF-common-layout-center tabsborder">
         <el-tabs
-          v-model="editableTabsValue"
-          type="border-card"
-          class="JNPF-el_tabs _tabs"
-          closable
-          @tab-remove="removeTab"
-          @tab-click="clickTab"
-        >
+                 v-model="editableTabsValue"
+                 type="border-card"
+                 class="JNPF-el_tabs _tabs"
+                 closable
+                 @tab-remove="removeTab"
+                 @tab-click="clickTab"
+                 >
           <el-tab-pane
-            lazy
-            class="JNPF-common-layout"
-            style="width: 100%; background: #fff"
-            v-for="(item, index) in editableTabs"
-            :key="item.name"
-            :index="index"
-            :label="item.title"
-            :name="item.name"
-          >
+                       lazy
+                       class="JNPF-common-layout"
+                       style="width: 100%; background: #fff"
+                       v-for="(item, index) in editableTabs"
+                       :key="item.name"
+                       :index="index"
+                       :label="item.title"
+                       :name="item.name"
+                       >
             <!--            &lt;!&ndash; 彙總病歷資訊、查詢檢驗報告、查詢檢查報告、查詢病歷類別 &ndash;&gt;-->
             <EmrQueryMain
-              v-if="item.name.indexOf('EmrQueryMain') != -1"
-              :fromExtraSystemPatientData="data"
-              :fromExtraSystem="true"
-              :activePanel="EmrQueryMainActivePanel"
-            ></EmrQueryMain>
+                          v-if="item.name.indexOf('EmrQueryMain') != -1"
+                          :fromExtraSystemPatientData="data"
+                          :fromExtraSystem="true"
+                          :activePanel="EmrQueryMainActivePanel"
+                          ></EmrQueryMain>
             <component
-              v-else
-              :is="item.name"
-              :patData="data"
-              :patInfo="data"
-              :docInfo="docInfo"
-              :childDialogModal="true"
-              @openIer2011="menuSelect('Ier2011')"
-              @openIer2012="menuSelect('Ier2012')"
-              @openComm2010="menuSelect('Comm2010')"
-              @openAllergyRecord="menuSelect('Comm3020')"
-              @openComm5060="menuSelect('Comm5060')"
-              @openComm6010="menuSelect('Comm6010')"
-            ></component>
+                       v-else
+                       :is="item.name"
+                       :patData="data"
+                       :patInfo="data"
+                       :docInfo="docInfo"
+                       :childDialogModal="true"
+                       @openIer2011="menuSelect('Ier2011')"
+                       @openIer2012="menuSelect('Ier2012')"
+                       @openComm2010="menuSelect('Comm2010')"
+                       @openAllergyRecord="menuSelect('Comm3020')"
+                       @openComm5060="menuSelect('Comm5060')"
+                       @openComm6010="menuSelect('Comm6010')"
+                       ></component>
             <!-- TPR資訊 -->
             <!--            <EmrQueryTprInfo v-if="item.name === 'EmrQueryTprInfo'"></EmrQueryTprInfo>-->
             <!--            &lt;!&ndash; 病患就醫紀錄 &ndash;&gt;-->
@@ -156,11 +156,17 @@
 </template>
 
 <script>
-import index from "./js/index.js";
-export default index;
+  import index from "./js/index.js";
+  export default index;
 </script>
 
 <style lang="scss" scoped>
+  /*下面scss區塊*/
+</style>
+
+```
+
+```scss
 .center-content {
   height: 50%;
   overflow: auto;
@@ -244,9 +250,9 @@ export default index;
 .el-menu-demo >>> .el-submenu__icon-arrow:before {
   content: "";
 }
-</style>
-
 ```
+
+
 
 ## index.js
 
