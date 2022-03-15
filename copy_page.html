@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CopyPage</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <style>
+    body, html{
+      font-family: monospace;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+    #app{
+      padding: 20px;
+    }
+    .div{
+      align-items: center; 
+      padding:0 10px;
+    }
+    .btn-box{
+      align-items: flex-start;
+    }
+    .flex{
+      display: flex;
+    }
+    .column{
+      flex-direction: column;
+    }
+    .wrap{
+      flex-wrap: wrap;
+    }
+    .m-left10{
+      margin-left: 10px;
+    }
+    .m-right10{
+      margin-right: 10px;
+    }
+    .console-title-view{
+      border: #eee 1px solid;
+      font-weight:bold;
+      padding:5px 10px;
+      border-radius: 20px;
+      transition: all .3s ease;
+    }
+    .title{
+      font-weight: 900;
+      color:#666;
+    }
+    .big.title{
+      border-bottom: #ddd 1px solid;
+    }
+    .big-title-group{
+      padding: 10px;
+      min-width: 300px;
+    }
+    .btn-val-color{
+      color: rgb(115, 159, 216);
+    }
+    .el-button{
+      font-family: monospace;
+      margin-left: 10px;
+    }
+    div.flex.wrap .el-button {
+      margin-top: 10px;
+    }
+    .el-button:hover .btn-val-color{
+      color: #dbf7ff;
+    }
+    .input .el-input__inner{
+      border-radius: 20px;
+    }
+    .input.has-append .el-input__inner{
+      border-radius: 20px 0 0 20px;
+    }
+    .input.has-append .el-input-group__append{
+      border-radius: 0 20px 20px 0;
+    }
+    .btn-append{
+      border-radius: 0 20px 20px 0 !important;
+    }
+    .input.has-prepend .el-input__inner{
+      border-radius: 0 20px 20px 0;
+    }
+    .input.has-prepend .el-input-group__prepend{
+      border-radius: 20px 0 0 20px;
+    }
+    .btn-prepend{
+      border-radius: 20px 0 0 20px !important;
+    }
+    .btn-front-desc{
+      color: #909399;
+      margin-bottom: 10px;
+    }
+    .btn-front-desc button{
+      margin-top: 0 !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="big-title-group">
+      <h2 class="big title">TOOL</h2>
+      <div class="div flex">
+        <span v-bind:style="{ color: consoleFontColor, background: consoleHasBG ? consoleBackgroundColor : 'none' }" class="console-title-view">console.log</span>
+        <el-input class="input has-prepend m-left10" size="mini" v-model="consoleInput" style="width:300px;min-width: 150px;" clearable>
+          <el-button slot="prepend" class="btn-prepend m-left10" size="mini" @click="randomColor">Random</el-button>
+        </el-input>
+        <span class="m-left10" style="color:#409EFF">Text</span>
+        <el-color-picker class="m-left10 m-right10" size="mini" v-model="consoleFontColor"></el-color-picker>
+        <el-checkbox class="m-left10" label="background" v-model="consoleHasBG">Background</el-checkbox>
+        <el-color-picker class="m-left10" size="mini" v-model="consoleBackgroundColor" v-if="consoleHasBG"></el-color-picker>
+        <el-button class="m-left10" size="mini" round plain type="info" @click="setConsoleText" v-clipboard:copy="consoleText" v-clipboard:success="onCopy" v-clipboard:error="onError">COPY</el-button>
+      </div>
+    </div>
+    <el-row>
+      <el-col :span="12" class="big-title-group">
+        <h2 class="big title">HIS3</h2>
+        <div class="div">
+          <h4 class="title">帳號</h4>
+          <div class="flex wrap column btn-box">
+            <span class="btn-front-desc" v-for="(item, index) in his3AccountBtnGroup" :key="index">
+              {{item.label}}: 
+              <el-button-group class="btn-group" v-if="item.group">
+                <el-button v-for="btnVal in item.list" size="mini" round plain type="info"
+                v-clipboard:copy="btnVal"
+                v-clipboard:success="onCopy"
+                v-clipboard:error="onError">
+                <span class="btn-val-color">{{btnVal}}</span>
+              </el-button>
+              </el-button-group>
+            <el-button 
+              v-else
+              size="mini" round plain type="info" 
+              v-clipboard:copy="item.value"
+              v-clipboard:success="onCopy"
+              v-clipboard:error="onError">
+              <span class="btn-val-color">{{item.value}}</span>
+            </el-button>
+          </span>
+          </div>
+          <h4 class="title">測試病患/查詢</h4>
+          <div class="flex wrap column btn-box">
+            <span class="btn-front-desc" v-for="(item, index) in his3SearchBtnGroup" :key="index">
+              【{{item.sysCode}}】 {{item.label}}:
+              <el-button-group class="btn-group" v-if="item.group">
+                <el-button v-for="btnVal in item.list" size="mini" round plain type="info"
+                v-clipboard:copy="btnVal"
+                v-clipboard:success="onCopy"
+                v-clipboard:error="onError">
+                <span class="btn-val-color">{{btnVal}}</span>
+              </el-button>
+            </el-button-group>
+            <el-button 
+              v-else
+              size="mini" round plain type="info" 
+              v-clipboard:copy="item.value"
+              v-clipboard:success="onCopy"
+              v-clipboard:error="onError">
+               <span class="btn-val-color">{{item.value}}</span>
+            </el-button>
+          </span>
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="12" class="big-title-group">
+        <h2 class="big title">HIS7</h2>
+        <div class="div">
+          <h4 class="title">測試病患/查詢</h4>
+          <div class="flex wrap column btn-box">
+            <span class="btn-front-desc" v-for="(item, index) in his7SearchBtnGroup" :key="index">
+              【{{item.sysCode}}】 {{item.label}}: 
+              <el-button-group class="btn-group" v-if="item.group">
+                <el-button v-for="btnVal in item.list" size="mini" round plain type="info"
+                v-clipboard:copy="btnVal"
+                v-clipboard:success="onCopy"
+                v-clipboard:error="onError">
+                <span class="btn-val-color">{{btnVal}}</span>
+              </el-button>
+            </el-button-group>
+            <el-button 
+              v-else
+              size="mini" round plain type="info" 
+              v-clipboard:copy="item.value"
+              v-clipboard:success="onCopy"
+              v-clipboard:error="onError">
+              <span class="btn-val-color">{{item.value}}</span>
+            </el-button>
+          </span>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
+  <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-clipboard2/0.3.3/vue-clipboard.min.js"></script>
+  <script src="https://unpkg.com/element-ui@2.13.0/lib/index.js"></script>
+  <script type="text/javascript">
+    var Main = {
+      data() {
+        return {
+          consoleInput: '',
+          consoleText: '',
+          consoleFontColor: this.getRandomColor(),
+          consoleHasBG: true,
+          consoleBackgroundColor: this.getRandomColor(),
+          his7SearchBtnGroup: [
+            {group: true, sysCode: 'NIS', label: '住院護囑住院號', list: [
+              'I2021071201', 'I12090392', 'O12010100005', 'E12032000001'
+            ]},
+            // {sysCode: 'NIS', label: '住院護囑住院號', value: 'I2021071201'},
+            // {sysCode: 'NIS', label: '住院護囑住院號', value: 'I12090392'},
+            // {sysCode: 'NIS', label: '住院護囑住院號', value: 'O12010100005'},
+            // {sysCode: 'NIS', label: '住院護囑住院號', value: 'E12032000001'},
+          ],
+          his3AccountBtnGroup: [
+            {group: true, label: 'oer帳號', list: ['oer', '1qaz@WSX']},
+            // {label: 'oer密碼', value: '1qaz@WSX'},
+            {group: true, label: '共用帳號', list: ['891003', '10031003']},
+            // {label: '共用帳號', value: '891003'},
+            // {label: '共用(891003)密碼', value: '10031003'},
+            {group: true, label: 'community帳號', list: ['community', '977016']},
+            // {label: 'community帳號', value: 'community'},
+            // {label: 'community密碼', value: '977016'},
+            {group: true, label: 'reg掛號帳號1', list: ['141006', '123456']},
+            {group: true, label: 'reg掛號帳號2', list: ['N201', '123456']},
+            // {label: 'reg掛號帳號1', value: '141006'},
+            // {label: 'reg掛號帳號2', value: 'N201'},
+          ],
+          his3SearchBtnGroup: [
+            {group: true, sysCode: 'NIS', label: '住院護囑住院號', list: ['I22020002', 'I22020001']},
+            // {sysCode: 'NIS', label: '住院護囑住院號', value: 'I22020002'},
+            // {sysCode: 'NIS', label: '住院護囑住院號', value: 'I22020001'},
+            {sysCode: 'EMR-OER', label: '門診就醫序號', value: 'O21070900002'},
+            {group: true, sysCode: 'EMR-ER', label: '急診就醫序號', list: ['E21082000002', 'E19112000059', 'E20071700094']},
+            // {sysCode: 'EMR-ER', label: '急診就醫序號', value: 'E21082000002'},
+            // {sysCode: 'EMR-ER', label: '急診就醫序號', value: 'E19112000059'},
+            // {sysCode: 'EMR-ER', label: '急診就醫序號', value: 'E20071700094'},
+            {sysCode: 'EMR-IER', label: '住院醫師代碼查詢', value: '4066'},
+          ]
+        }
+      },
+      methods: {
+        setConsoleText(){
+          let bg = this.consoleHasBG ? `background:${this.consoleBackgroundColor};padding:5px;` : ''
+          this.consoleText = `console.log(\`%c${this.consoleInput}\`, 'color:${this.consoleFontColor};font-weight:bold;${bg}')`
+        },
+        onCopy(e){
+          let text = `Copy finished!  Text:${e.text}`
+          this.$message({
+            message: text,
+            type: 'success'
+          })
+        },
+        onError(e){
+          this.$message({
+            message: e,
+            type: 'danger'
+          })
+        },
+        randomColor(){
+          this.consoleBackgroundColor = this.getRandomColor()
+          this.consoleFontColor = this.getRandomColor()
+        },
+        getRandomColor() {
+          let letters = '0123456789ABCDEF'.split('');
+          let color = '#';
+          for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.floor(Math.random() * 16)];
+          }
+          return color;
+        }
+      }
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app')
+  </script>
+</body>
+</html>
