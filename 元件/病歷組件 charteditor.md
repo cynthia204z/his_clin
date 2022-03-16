@@ -376,11 +376,11 @@ API: `/api/transmst/transmstInfo`
 TABLE: chred_trans_mst
 
 - [x] SHEET_ID (原本就有)
-- [x] TRANS_ID
-- [x] CHART_NO
-- [x] ENCOUNTER_NO
-- [x] SHEET_ID + CHART_NO
-- [x] SHEET_ID + ENCOUNTER_NO
+- [x] TRANS_ID (新增)
+- [x] CHART_NO (新增)
+- [x] ENCOUNTER_NO (新增)
+- [x] SHEET_ID + CHART_NO (新增)
+- [x] SHEET_ID + ENCOUNTER_NO (新增)
 
 API: `/api/transmst/transmstInfo/getTransmstBySheetType`  (新增)
 
