@@ -13,9 +13,13 @@
 
 [<img src="img/open-folder.png" style="zoom:3.5%; vertical-align: middle;" /> 主題樣式相關](./主題樣式相關/主題樣式相關.md)
 
+[<img src="img/open-folder.png" style="zoom:3.5%; vertical-align: middle;" /> 已寫範例用法](./已寫範例用法/已寫範例用法.md)
+
 [<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 注意事項和筆記(開發初期)](./注意事項和筆記(開發初期).md)
 
 [<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> sql](./sql.md)
+
+[<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> git_note](./git_note.md)
 
 [<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> vue_note](./vue_note.md)
 
@@ -23,11 +27,15 @@
 
 [<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> jnpf_note](./jnpf_note.md)
 
+[<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> nodejs_note](./nodejs_note.md)
+
 [<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> elementUI_note](./elementUI_note.md)
 
 [<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> his7_note](./his7_note.md)
 
 [<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> scss_note](./scss_note.md)
+
+[<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> other_note](./other_note.md)
 
 [<img src="img/document2.png" style="zoom:3.2%; opacity:40%; vertical-align: middle;" /> 備忘錄](./備忘錄.md)
 
