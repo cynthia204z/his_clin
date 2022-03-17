@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>color theme test</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <style lang="scss">
+    html,
+    body {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    #app {
+      height: 100%;
+      width: 100%;
+    }
+
+    .m10 {
+      margin: 10px;
+    }
+
+    .box1 {
+      height: 100px;
+      line-height: 100px;
+      align-items: center;
+      text-align: center;
+      vertical-align: middle;
+      width: 300px;
+      font-size: 20px;
+    }
+
+    .box2 {
+      height: 20px;
+      line-height: 20px;
+      padding: 0px 20px;
+    }
+
+    .imgStyle {
+      max-width: 200px;
+      max-height: 200px;
+      width: auto;
+      height: auto;
+      /* display: none; */
+    }
+
+    img {
+      width: calc(100% - 200px);
+      float: left;
+    }
+
+    .colorbox {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      box-shadow: none;
+      border: 3px solid transparent;
+      border-radius: 5px;
+      transition: all 0.1s linear;
+    }
+    .colorbox-collection {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 250px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <label class="m10" for="secondFontSize">secondFontSize</label>
+    <input class="m10" v-model="secondFontSize" id="secondFontSize"></input>
+    <label class="m10" for="secondColor">secondColor</label>
+    <input class="m10" v-model="secondColor" id="secondColor"></input>
+    <div :style="majorStyle" class="box1 m10">123</div>
+    <div :style="secondStyle" class="box2 m10">toriaetsu write something, atarashino password</div>
+
+    <input type="file" class="m10"/><br>
+    <div class="m10 colorbox-collection">
+      <div v-for="(item, index) in imgThemeColorList" :key="index" class="colorbox" :style="getImgThemeColor(index, item)" 
+           @click="setMajorThemeBG(item)"></div>
+    </div>
+    <img ref="myImg" class="preview imgStyle m10" />
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.0.1/color-thief.min.js"></script>
+  <script type="text/javascript">
+    const colorThief = new ColorThief();
+    new Vue({
+      el: '#app',
+      data: {
+        majorTheme: {
+          color: '#fff',
+          background: 'orange',
+          'font-weight': 'bold',
+          border: '1px solid #2e2e2e',
+        },
+        secondColor: 'orange',
+        secondBorder: 'gold',
+        secondFontSize: '16',
+        swatches: 3,
+        image: undefined,
+        input: undefined,
+        imgThemeColorList: [],
+        currentColorBox: undefined,
+      },
+      created() {
+        this.$nextTick(() => {
+          this.image = document.querySelector('.preview');
+          this.input = document.querySelector('[type="file"]');
+
+          this.input.onchange = e => {
+            this.image.src = URL.createObjectURL(this.input.files[0])
+          }
+
+          this.image.onload = () => {
+            this.imgThemeColorList = []
+            URL.revokeObjectURL(this.image.src);
+            let colors = colorThief.getPalette(this.$refs.myImg, this.swatches)
+            function getRGBString(rgb) {
+              return `${rgb[0]}, ${rgb[1]}, ${rgb[2]}`
+            }
+            function grayLevel(rgbArr) {
+              var r = rgbArr[0],
+                g = rgbArr[1],
+                b = rgbArr[2];
+              return r * 0.299 + g * 0.587 + b * 0.114;
+            }
+            colors.sort((a, b) => {
+              return grayLevel(a) - grayLevel(b)
+            })
+            colors.forEach((c, index) => {
+              let rgb = getRGBString(colors[index])
+              this.imgThemeColorList.push(rgb)
+            })
+
+          }
+        })
+      },
+      computed: {
+        secondStyle() {
+          return {
+            color: this.secondColor,
+            border: '2px solid ' + this.secondBorder,
+            'font-size': this.secondFontSize + 'px',
+          }
+        },
+        majorStyle() {
+          return this.majorTheme
+        },
+        'current-colorbox'(){
+          return {
+            border: '2px solid ' + this.majorTheme.background
+          }
+        }
+      },
+      methods: {
+        getImgThemeColor(num, item) {
+          let rgb = this.imgThemeColorList[num]
+          return {
+            background: `rgb(${rgb})`,
+            border: this.currentColorBox === item ? `solid 3px rgb${rgb}`: 'solid 3px transparent',
+            'box-shadow': this.currentColorBox === item ? `inset 0 0 0 2px #fff` : 'none'
+          }
+        },
+        setMajorThemeBG(rgb) {
+          this.currentColorBox = rgb
+          this.majorTheme.background = `rgb(${rgb})`
+        }
+      }
+    })
+
+
+  </script>
+</body>
+
+</html>

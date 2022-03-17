@@ -230,7 +230,6 @@ document.onkeydown = (e) => {
 
 
 
-<<<<<<< HEAD
 ### 迴圈等非同步結束
 
 ```js
@@ -285,10 +284,6 @@ fetchData(1);
 
 
 
-
-
-=======
->>>>>>> cc0ab948af083fd1ef2fd5f6c9e2608a820fdf69
 ## 程式碼優化
 
 ### if else替代方法
@@ -419,7 +414,31 @@ for (let i of arr){
 
 
 
-<<<<<<< HEAD
+## 型態
+
+### 空陣列布林值
+
+[空陣列是true還是false](https://www.itread01.com/content/1548738549.html)
+
+```js
+let arr = [];
+
+arr; // true (因為是陣列是一個Object)
+Boolean(arr); // true (因為是陣列是一個Object)
+arr == false; // true
+Number(arr); // false
+arr === []; // false
+arr == []; // false
+[1]; // true
+[undefined]; // true
+new Array(1) == false; // true
+[undefined] == false; // true
+```
+
+
+
+
+
 ## 其他
 
 ### 隨機HEX色碼
@@ -437,8 +456,21 @@ function getRandomColor() {
 
 
 
-=======
->>>>>>> cc0ab948af083fd1ef2fd5f6c9e2608a820fdf69
+### RGB明度排序
+
+```js
+function grayLevel(rgbArr) {
+  var r = rgbArr[0],
+      g = rgbArr[1],
+      b = rgbArr[2];
+  return r * 0.299 + g * 0.587 + b * 0.114;
+}
+```
+
+
+
+
+
 # Moment.js Note
 
 ## 半年前

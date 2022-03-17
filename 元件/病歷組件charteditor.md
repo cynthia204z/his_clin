@@ -34,7 +34,7 @@ vueemreditor(前台前端)：用終端機打開package-lock.json，執行 `npm r
 
 3. vue.config.js-proxy-/chartEdittorServer
 
--------
+
 
 ### 2. 組件
 
@@ -42,7 +42,7 @@ his7-demo-strong-chartEditor-index.vue = 外部單獨的App.vue
 
 資料流程：(可閱Readme.md的前後端串接)
 
------
+
 
 ### 3. call api
 
@@ -54,7 +54,15 @@ app/controllers/sheetdef.controller(有接收的參數設定，但目前前端�
 
 左邊的tree call `sheetInfo` 和 `order`
 
-------
+
+
+### 4. gitlab project
+
+http://192.168.1.159/charles_his7_grp/chred
+
+master和develop是給Freelancer用的(master目前版，develop上一版)
+
+內部更動的部分放smhc，其他兩個分支不要動
 
 
 
@@ -96,6 +104,8 @@ routes=>controller: `router.get("/sheetInfo", sheetdefs.sheetInfo)`
 ## 表單類別設定 forder 
 
 > 樹型資料夾關係(分類)
+>
+> 覺得打錯字，應該是folder吧…
 
 DB Table: chred_forder
 
@@ -149,7 +159,22 @@ routes=>controller:  `router.get("/transmstInfo", transmsts.transmstInfo)`
 | -------- | ---------- | ------------ | --------- | -------- | ---------- | -------------------- | -------------------- |
 | *(主鍵)* | *(病歷號)* | *(就醫序號)* | EMR       | N005     | 護理紀錄單 | *(含填寫資料的html)* | *(填寫資料的純文字)* |
 
----
+
+
+## 交易明細 transDtl
+
+> 表單內的可編輯欄位，對應 transmst 的 transId
+
+單獨存所有控件的值，方便外部調用特定欄位
+
+api: `/api/transdtl/transdtlInfo`
+
+| TRANS_ID       | SHEET_ID | ITEM_ID | ITEM_NAME | ITEM_EDIT_TYPE | ITEM_VALUE |
+| -------------- | -------- | ------- | --------- | -------------- | ---------- |
+| *(交易主檔ID)* | N005     | field08 | 姓名      | input          | 王曉明     |
+| *(交易主檔ID)* | N005     | field09 | 性別      | radio          | 男         |
+
+
 
 ## <span style="font-size:50px">QUERY</span>
 
@@ -167,7 +192,7 @@ query沒有傳chartNo和encounterNo，response如果有兩筆資料則取第一�
 
 <b style="border:1px solid darkkhaki;color:darkkhaki;padding:3px 5px;">應該要改成</b>
 
-<span style="color:royalblue">**（狀況一）顯示所有種類的表單**：</span>
+不採用❌<span style="color:royalblue">**（狀況一）顯示所有種類的表單**：</span>
 
 問題：點進樹型項目才知道有沒有已經編輯過的表單(不確定能不能靠highlight增加辨識度)
 
@@ -359,6 +384,10 @@ export default{
 }
 ```
 
+
+
+
+
 ### nodejs 後端
 
 表: sheetdef + transmst
@@ -382,6 +411,8 @@ TABLE: chred_trans_mst
 - [x] SHEET_ID + CHART_NO (新增)
 - [x] SHEET_ID + ENCOUNTER_NO (新增)
 
+
+
 API: `/api/transmst/transmstInfo/getTransmstBySheetType`  (新增)
 
 TABLE: chred_sheet_def + chred_trans_mst
@@ -390,18 +421,54 @@ TABLE: chred_sheet_def + chred_trans_mst
 - [x] SHEET_TYPE (chred_sheet_def) + ENCOUNTER_NO (chred_trans_mst)
 - [x] SHEET_TYPE (chred_sheet_def)  + CHART_NO (chred_trans_mst)
 
+```js
+// 關聯查詢應該要用但還沒試出來，先記錄(API/charteditor-nodejs-express/app/models/index.js)
+db.sheetdef.hasMany(db.transmst, {foreignKey: 'SHEET_ID'})
+db.transmst.belongsTo(db.sheetdef, {as: 'sheetInfo', foreignKey:'SHEET_ID', constraints: false,});
+```
 
 
 
+API: `/api/transdtl/transdtlinfo/:sheet_id`  => `/api/transdtl/transdtlinfo/:trans_id ` (修改)
+
+Table: chred_trans_dtl
+
+- [ ] SHEET_ID (刪除)
+- [x] TRANS_ID (新增)
 
 
 
-## <span style="font-size:50px">SAVE</span>
+## 應用模式三
 
+初步構想
 
+> 還不清楚 UEditor 的`execCommand()`方法具體有哪些參數可以用
 
-## 交易明細 transDtl
+```js
+// 取得所有控件
+let allComponentsData = this.editor.execCommand("allwidgets");
 
-> 表單內的可編輯欄位，對應 transmst 的 transId
+// 篩選有值的資料
+let hasValueList = allComponentsData.filter(hasValueFilter);
+
+function hasValueFilter(value){
+  let hasValueStatus = false;
+  if(Array.isArray(item.value)){
+    // 如果是陣列的話，長度 > 0 的才return true
+    hasValueStatus = !!Number(item.value)
+  }else{
+    hasValueStatus = !!item.value
+  }
+  return hasValueStatus
+}
+
+// 存在問題：只有分開的控件資料有辦法篩選，html格式目前只有看到取得整篇的方法，沒有辦法拆分判斷哪段是哪個控件
+```
+
+可能要靠後台建立控件時，把分類的名字加在ITEM_ID裡面才有辦法分類，
+
+EX：`data_field01`、`action_field01`、`response_field01`、`teaching_field01`
+
+> Q：checkbox文字內容中有input，要怎麼判斷哪些input是哪個checkbox底下的？
 >
-> 但功能不是很懂
+> 想法：ITEM_ID再加下一層，EX：`data_field01_child1`、`data_field01_child2`、`data_field02_child1`

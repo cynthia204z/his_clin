@@ -1,0 +1,61 @@
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+}
+
+.m10 {
+  margin: 10px;
+}
+
+.box1 {
+  height: 100px;
+  line-height: 100px;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  width: 300px;
+  font-size: 20px;
+}
+
+.box2 {
+  height: 20px;
+  line-height: 20px;
+  padding: 0px 20px;
+}
+
+.imgStyle {
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  /* display: none; */
+}
+
+img {
+  width: calc(100% - 200px);
+  float: left;
+}
+
+.colorbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  box-shadow: none;
+  border: 3px solid transparent;
+  border-radius: 5px;
+  transition: all 0.1s linear;
+}
+.colorbox-collection {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 250px;
+}
