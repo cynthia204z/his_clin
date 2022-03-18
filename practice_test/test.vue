@@ -1,26 +1,26 @@
 <template>
   <div>
-    <input v-model="text"/>
-    <div class="colorbox">{{text}}</div>
+    <input v-model="newText" @input="updateChange"/>
+    <slot/>
   </div>
 </template>
 <script>
 module.exports = {
   name: 'test',
+  props: {
+    text: String
+  },
   data(){
     return{
-      text: '123456'
+      newText: 'Hello World!'
+    }
+  },
+  methods:{
+    updateChange(){
+      this.$emit('update:text', this.newText)
     }
   }
 }
 </script>
 <style scoped>
-.colorbox{
-  background-color:black;
-  color: gray;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  padding: 0 10px;
-}
 </style>

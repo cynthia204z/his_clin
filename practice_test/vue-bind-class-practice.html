@@ -6,124 +6,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>color theme test</title>
+  <link rel="stylesheet" href="./style.css"></link>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <script src="https://unpkg.com/http-vue-loader"></script>
-  <link rel="stylesheet" href="./style.css">
-  </link>
 </head>
 
 <body>
   <div id="app">
-    <label class="m10" for="secondFontSize">secondFontSize</label>
-    <input class="m10" v-model="secondFontSize" id="secondFontSize"></input>
-    <label class="m10" for="secondColor">secondColor</label>
-    <input class="m10" v-model="secondColor" id="secondColor"></input>
-    <div :style="majorStyle" class="box1 m10">123</div>
-    <div :style="secondStyle" class="box2 m10">toriaetsu write something, atarashino password</div>
-
-    <input type="file" class="m10" /><br>
-    <div class="m10 colorbox-collection">
-      <div v-for="(item, index) in imgThemeColorList" :key="index" class="colorbox"
-           :style="getImgThemeColor(index, item)" @click="setMajorThemeBG(item)"></div>
-    </div>
-    <img ref="myImg" class="preview imgStyle m10" />
-    <test />
+    <app/>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.0.1/color-thief.min.js"></script>
 
   <script type="text/javascript">
-    const test = httpVueLoader('./test.vue')
 
     const colorThief = new ColorThief();
     new Vue({
       el: '#app',
       components: {
-        test
+        'app': httpVueLoader('./app.vue')
       },
-      data: {
-        majorTheme: {
-          color: '#fff',
-          background: 'orange',
-          'font-weight': 'bold',
-          border: '1px solid #2e2e2e',
-        },
-        secondColor: 'orange',
-        secondBorder: 'gold',
-        secondFontSize: '16',
-        swatches: 3,
-        image: undefined,
-        input: undefined,
-        imgThemeColorList: [],
-        currentColorBox: undefined,
-      },
-      created() {
-        this.$nextTick(() => {
-          this.image = document.querySelector('.preview');
-          this.input = document.querySelector('[type="file"]');
-
-          this.input.onchange = e => {
-            this.image.src = URL.createObjectURL(this.input.files[0])
-          }
-
-          this.image.onload = () => {
-            this.imgThemeColorList = []
-            URL.revokeObjectURL(this.image.src);
-            let colors = colorThief.getPalette(this.$refs.myImg, this.swatches)
-            function getRGBString(rgb) {
-              return `${rgb[0]}, ${rgb[1]}, ${rgb[2]}`
-            }
-            function grayLevel(rgbArr) {
-              var r = rgbArr[0],
-                g = rgbArr[1],
-                b = rgbArr[2];
-              return r * 0.299 + g * 0.587 + b * 0.114;
-            }
-            colors.sort((a, b) => {
-              return grayLevel(a) - grayLevel(b)
-            })
-            colors.forEach((c, index) => {
-              let rgb = getRGBString(colors[index])
-              this.imgThemeColorList.push(rgb)
-            })
-
-          }
-        })
-      },
-      computed: {
-        secondStyle() {
-          return {
-            color: this.secondColor,
-            border: '2px solid ' + this.secondBorder,
-            'font-size': this.secondFontSize + 'px',
-          }
-        },
-        majorStyle() {
-          return this.majorTheme
-        },
-        'current-colorbox'() {
-          return {
-            border: '2px solid ' + this.majorTheme.background
-          }
-        }
-      },
-      methods: {
-        getImgThemeColor(num, item) {
-          let rgb = this.imgThemeColorList[num]
-          return {
-            background: `rgb(${rgb})`,
-            border: this.currentColorBox === item ? `solid 3px rgb${rgb}` : 'solid 3px transparent',
-            'box-shadow': this.currentColorBox === item ? `inset 0 0 0 2px #fff` : 'none'
-          }
-        },
-        setMajorThemeBG(rgb) {
-          this.currentColorBox = rgb
-          this.majorTheme.background = `rgb(${rgb})`
-        }
-      }
+      
     })
 
-
+    Vue.use(httpVueLoader)
   </script>
 </body>
 
