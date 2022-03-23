@@ -472,3 +472,27 @@ EX：`data_field01`、`action_field01`、`response_field01`、`teaching_field01`
 > Q：checkbox文字內容中有input，要怎麼判斷哪些input是哪個checkbox底下的？
 >
 > 想法：ITEM_ID再加下一層，EX：`data_field01_child1`、`data_field01_child2`、`data_field02_child1`
+
+
+
+# 簡轉繁
+
+紀錄
+
+> vueemreditor/public/ueditor/dialogs
+
+1. /emotion/emotion.html 
+
+   表情符號文字都沒改
+
+2. /map
+
+   跳過百度地圖
+
+3. /music
+
+   跳過音樂
+
+4. /video
+
+   跳過影片

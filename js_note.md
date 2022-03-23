@@ -412,6 +412,18 @@ for (let i of arr){
 }
 ```
 
+需要 index 的時候
+
+```js
+let arr = ['a', 'b']
+
+for (let [index, item] of arr){
+  console.log(index, item)
+  // 0, a
+  
+}
+```
+
 
 
 ## 型態

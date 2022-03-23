@@ -5,3 +5,4 @@
 欄位名稱：ENCOUNTER_NO => IPD_NO
 
 >in `obs_trans_mst` & `obs_transtime`
+
