@@ -58,6 +58,45 @@ export default{
 
 
 
+## Message
+
+### 等待某事件結束後關閉
+
+其他種類的message，如notify也可以這樣用
+
+```js
+this.waitSaveMsg = this.$message({
+  duration: 0, // 加了這個才不會自動關掉
+  message: '儲存中，請勿關閉視窗',
+  type: 'warning'
+})
+
+saveAsynchronous().then(()=>{
+  this.waitSaveMsg.close()
+  this.$message.success('儲存完畢!')
+})
+```
+
+
+
+## Notify
+
+```js
+this.waitSaveMsg = this.$notify({
+  title: '請注意',
+  message: '儲存主檔中，請勿關閉視窗',
+  type: 'warning',
+  duration: 0,
+  showClose: false
+})
+
+saveMst().then(()=>{
+  this.waitSaveMsg.message = '儲存明細中，請勿'
+})
+```
+
+
+
 
 
 # Element UI： His7應用
