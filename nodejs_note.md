@@ -405,6 +405,84 @@ module.exports = app => {
 
 
 
+#### 排序
+
+```js
+exports.functionName = (req, res) => {
+  const {columnValue} = req.query
+	modelName.findAll({
+    where: {columnName: columnValue},
+    order: [
+      ['columnName1', 'DESC'], // 降序
+      ['columnName2', 'ASC'] // 升序
+    ]
+  })
+}
+```
+
+#### 查詢語句
+
+[Sequelize API Reference](https://sequelize.org/master/manual/model-querying-basics.html)
+
+```js
+const Op = Sequelize.Op;
+// 或
+// const {Op} = require('@sequelize/core');
+
+exports.functionName = (req, res) => {
+  const {queryVal} = req.query
+  modelName.findAll({
+    where: {
+      // or
+      {
+      	[Op.or]: {
+        	title: 'gifted student',
+        	interest: { [Op.notLike]: '%ball' },
+      	},
+  	  },
+      status: {
+        [Op.or]: {
+          [Op.like]: 'new%',
+          [Op.eq]: 'transfer'
+        }              
+      },
+      // and
+      [Op.and]: [
+        {identity: 'student'},
+        {disabled: 0}
+      ],
+      createAt: {
+        [Op.tl]: new Date(),
+        [Op.gt]: new Date(new Date() - 24 * 60 * 60 * 1000)
+      },
+      // not
+      [Op.not]: [
+        { id: [1, 2, 3] },
+        { desc: { [Op.like]: '%sport%' } }
+      ],
+      mechanismType: { [Op.eq]: 'School' }, // = 'School'
+      userName: queryVal, // = queryVal
+      userInfo: { 
+        [Op.like]: '%learning%', // LIKE '%learning%'
+        [Op.notLike]: '%English' // NOT LIKE '%English'
+      }, 
+      education: { [Op.ne]: 'high school'}, // != 'high school'
+      destroyMark: { [Op.is]: null }, // IS NULL
+      closure: { [Op.not]: true }, // IS NOT TRUE
+      mother: { [Op.col]: 'user.guardian' }, // = "user"."guardian"
+      age: { [Op.gt]: 12 }, // > 12
+      relatives: { [Op.gte]: 2 }, // >= 2
+      repeat: { [Op.lt]: 1 }, // < 1
+      admonition: { [Op.lte]: 5 }, // <= 5
+      floor: { [Op.between]: [6, 8] }, // BETWEEN 6 AND 8
+      score: { [Op.notBetween]: [0, 59] }, // NOT BETWEEN 0 AND 59
+    },
+  })
+}
+```
+
+
+
 
 
 ### 中介軟體

@@ -449,6 +449,68 @@ new Array(1) == false; // true
 
 
 
+## Dom屬性方法
+
+### getElementById
+
+```js
+let mybox = document.getElementById('myBox');
+mybox.style.width = '100px';
+```
+
+
+
+### getElementsByClassName
+
+```js
+let boxList = document.getElementsByClassName('box');
+// elBRC 是陣列
+boxList[0].style.width = '100px';
+```
+
+
+
+### getBoundingClientRect
+
+取得元素和邊界的距離
+
+```js
+let mybox = document.getElementById('myBox');
+
+let bodyBRC = document.body.getBoundingClientRect();
+let myboxBRC = mybox.getBoundingClientRect();
+
+// 元素下邊界距離body下邊框
+let boxBottomToBodyBottom = bodyBRC.height - myboxBRC.bottom;
+// 元素上邊界距離body下邊框
+let boxTopToBodyBottom = bodyBRC.height - myboxBRC.bottom + myboxBRC.height;
+```
+
+<img src="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect/element-box-diagram.png" alt="img" style="zoom: 25%;" />
+
+
+
+### addEventListener
+
+應用
+
+```js
+// 如果元素是動態產生的，沒有在一開始就渲染，可以從target裡面找到觸發事件的元素屬性
+// 以className為例，當觸發事件的元素有box這個class時，執行myFucntion
+
+document.addEventListener('click', (e) => {
+  if (e.target.className.indexOf('box') !== -1) {
+    myFunction(e)
+  }
+})
+
+function myFunction(e) {
+	// d
+}
+```
+
+
+
 
 
 ## 其他
