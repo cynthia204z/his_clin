@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #app {
+      padding: 0;
+      margin: auto;
+      width: 350px;
+    }
+
+    #main-box {
+      margin-top: 30px;
+      /* width: 350px; */
+      max-height: 500px;
+      border: solid 1px royalblue;
+      border-radius: 10px;
+      background: aliceblue;
+      padding: 10px;
+      line-height: 25px;
+      font-family: 'Noto Sans TC', '微軟正黑體', Helvetica Neue, sans-serif;
+      color: gray;
+      overflow: auto;
+      cursor: pointer;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .box {
+      /* width: 350px; */
+      padding: 10px;
+      margin-top: 10px;
+      background: rgb(245, 242, 223);
+      border-radius: 10px;
+    }
+
+    .box span {
+      font-size: 12px;
+    }
+
+    .box h4 {
+      line-height: 30px;
+      margin: 0;
+      color: rgb(225, 188, 65);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="box">
+      <h4>Person</h4>
+      <input id="personInput" type="text"></input>
+      <button onclick="createNewPerson()">+</button>
+      <button onclick="clearList('who')">Clear All</button>
+      <br>
+      <span id="person-list"></span>
+    </div>
+    <div class="box">
+      <h4>Place</h4>
+      <input id="placeInput" type="text"></input>
+      <button onclick="createNewPlace()">+</button>
+      <button onclick="clearList('where')">Clear All</button>
+      <br>
+      <span id="place-list"></span>
+    </div>
+    <div class="box">
+      <h4>Action</h4>
+      <input id="actionInput" type="text"></input>
+      <button onclick="createNewAction()">+</button>
+      <button onclick="clearList('action')">Clear All</button>
+      <br>
+      <span id="action-list"></span>
+    </div>
+    <div id="main-box" onclick="makeSentence()">click</div>
+  </div>
+
+  <script>
+    function getRandomItem(list) {
+      let index = Math.floor(Math.random() * list.length);
+      return list[index];
+    }
+    function getRandom(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    let rowIndex = 0;
+    function makeSentence() {
+      let mainBox = document.getElementById("main-box");
+      if (!lists.whoList.length || !lists.whereList.length || !lists.actionList.length) {
+        mainBox.innerHTML = 'Incomplete conditions, please add options.';
+        return
+      }
+      if (rowIndex === 0) {
+        mainBox.innerText = '';
+      }
+      let sentence = '';
+      let personCount = getRandom(1, lists.whoList.length);
+      let person1 = getRandomItem(lists.whoList)
+      sentence += person1;
+      if (personCount > 1) {
+        let hasWho = [person1]
+        for (let i = 0; i < personCount - 1; i++) {
+          let newWhoList = lists.whoList.filter(t => hasWho.indexOf(t) === -1);
+          let person = getRandomItem(newWhoList);
+          hasWho.push(person)
+          sentence += '和' + person
+        }
+      }
+      sentence += '在' + getRandomItem(lists.whereList)
+      let actionCount = getRandom(1, 2);
+      if (actionCount > 1) {
+        let action1 = getRandomItem(lists.actionList);
+        let newActionList = lists.actionList.filter(t => t !== action1);
+        sentence += `邊${action1}邊${getRandomItem(newActionList)}`
+      } else {
+        sentence += getRandomItem(lists.actionList);
+      }
+      // let newRow = document.createElement('span');
+      mainBox.innerHTML = sentence + '<br>';
+      // mainBox.appendChild(newRow);
+    }
+
+    function createNewPerson() {
+      let personInput = document.getElementById('personInput');
+      let newPerson = personInput.value;
+      if (newPerson) {
+        lists.whoList.push(newPerson);
+        createLists();
+      }
+      personInput.value = '';
+    }
+    function createNewPlace() {
+      let placeInput = document.getElementById('placeInput');
+      let newPlace = placeInput.value;
+      if (newPlace) {
+        lists.whereList.push(newPlace);
+        createLists();
+      }
+      placeInput.value = '';
+    }
+    function createNewAction() {
+      let actionInput = document.getElementById('actionInput');
+      let newAction = actionInput.value;
+      if (newAction) {
+        lists.actionList.push(newAction);
+        createLists();
+      }
+      actionInput.value = '';
+    }
+
+    let lists = {
+      whoList: ['KAITO', '神代類', 'P助', '工讀生'],
+      whereList: ['草叢裡', '天堂', '地獄', '國際太空站', '空無一人的世界裡', '天馬家'],
+      actionList: ['寫程式', '學習JS', '開直播', 'PK', '跳PPAP', '打麻將', '舞龍舞獅']
+    }
+    function createLists() {
+      let plist = document.getElementById('person-list');
+      if (lists.whoList.length) {
+        plist.innerText = lists.whoList.join(', ');
+      } else {
+        plist.innerText = '';
+      }
+      let placeList = document.getElementById('place-list');
+      if (lists.whereList.length) {
+        placeList.innerText = lists.whereList.join(', ');
+      } else {
+        placeList.innerText = '';
+      }
+      let aList = document.getElementById('action-list');
+      if (lists.actionList.length) {
+        aList.innerText = lists.actionList.join(', ');
+      } else {
+        aList.innerText = '';
+      }
+    }
+    createLists();
+
+    function clearList(name) {
+      lists[`${name}List`] = []
+      createLists();
+    }
+  </script>
+</body>
+
+</html>

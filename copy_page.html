@@ -59,7 +59,7 @@
 
     .title {
       font-weight: 900;
-      color: #666;
+      color: rgb(91, 122, 189);
     }
 
     .big.title {
@@ -157,7 +157,7 @@
             <span class="btn-front-desc" v-for="(item, index) in his3AccountBtnGroup" :key="index">
               {{item.label}}:
               <el-button-group class="btn-group" v-if="item.group">
-                <el-button v-for="btnVal in item.list" size="mini" round plain type="info" v-clipboard:copy="btnVal"
+                <el-button v-for="(btnVal, indexH3) in item.list" :key="'h3_' + indexH3" size="mini" round plain type="info" v-clipboard:copy="his3Config[item.id][indexH3]"
                            v-clipboard:success="onCopy" v-clipboard:error="onError">
                   <span class="btn-val-color">{{btnVal}}</span>
                 </el-button>
@@ -215,8 +215,8 @@
             <span class="btn-front-desc" v-for="(item, index) in otherAccountBtnGroup" :key="index">
               {{item.label}}:
               <el-button-group class="btn-group" v-if="item.group">
-                <el-button v-for="btnVal in item.list" size="mini" round plain type="info" v-clipboard:copy="btnVal"
-                           v-clipboard:success="onCopy" v-clipboard:error="onError">
+                <el-button v-for="(btnVal, indexO) in item.list" :key="'o_' + indexO" size="mini" round plain type="info" v-clipboard:copy="otherConfig[item.id][indexO]"
+                           v-clipboard:success="(e)=>{onCopy(e, 'hide')}" v-clipboard:error="onError">
                   <span class="btn-val-color">{{btnVal}}</span>
                 </el-button>
               </el-button-group>
@@ -231,8 +231,11 @@
     </el-row>
   </div>
   <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+  <script src="https://cdn.bootcss.com/vue-i18n/5.0.3/vue-i18n.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-clipboard2/0.3.3/vue-clipboard.min.js"></script>
   <script src="https://unpkg.com/element-ui@2.13.0/lib/index.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/umd/locale/en.js"></script>
+  <script src="./config.js"></script>
   <script type="text/javascript">
     var Main = {
       data() {
@@ -250,13 +253,14 @@
             },
           ],
           his3AccountBtnGroup: [
-            { group: true, label: 'oer帳號', list: ['oer', '1qaz@WSX'] },
-            { group: true, label: '共用帳號', list: ['891003', '10031003'] },
-            { group: true, label: 'community帳號', list: ['community', '977016'] },
-            { group: true, label: 'reg掛號帳號1', list: ['141006', '123456'] },
-            { group: true, label: 'reg掛號帳號2', list: ['N201', '123456'] },
+            { id: 1, group: true, label: 'oer帳號', list: ['帳號', '密碼'] },
+            { id: 2, group: true, label: '共用帳號', list: ['帳號', '密碼'] },
+            { id: 3, group: true, label: 'community帳號', list: ['帳號', '密碼'] },
+            { id: 4, group: true, label: 'reg掛號帳號1', list: ['帳號', '密碼'] },
+            { id: 5, group: true, label: 'reg掛號帳號2', list: ['帳號', '密碼'] },
 
           ],
+          his3Config: getHis3(),
           his3SearchBtnGroup: [
             { group: true, sysCode: 'NIS', label: '住院護囑住院號', list: ['I22020002', 'I22020001'] },
             { sysCode: 'EMR-OER', label: '門診就醫序號', value: 'O21070900002' },
@@ -264,11 +268,13 @@
             { sysCode: 'EMR-IER', label: '住院醫師代碼查詢', value: '4066' },
           ],
           otherAccountBtnGroup: [
-            { group: true, label: 'SonarQube', list: ['smhc', '5tgb^YHN']},
-            { group: true, label: 'PNGTREE', list: ['smhc.aws@gmail.com', 'smhcwelcome1']},
-            { group: true, label: '公司網站WordPress後台', list: ['iAliceadmin', 'iAlice5466']},
-            { group: true, label: '若鄰', list: ['15858132388', 'a15858132388']},
-          ]
+            { id: 1, group: true, label: 'SonarQube', list: ['帳號', '密碼']},
+            { id: 2, group: true, label: 'PNGTREE', list: ['帳號', '密碼']},
+            { id: 3, group: true, label: '公司網站WordPress後台', list: ['帳號', '密碼']},
+            { id: 4, group: true, label: '若鄰', list: ['帳號', '密碼']},
+            { id: 5, group: true, label: 'ChartEditor後端後臺IP帳號密碼', list: ['IP', '帳號', '密碼']}
+          ],
+          otherConfig: getOther(),
         }
       },
       methods: {
@@ -276,15 +282,19 @@
           let bg = this.consoleHasBG ? `background:${this.consoleBackgroundColor};padding:5px;` : ''
           this.consoleText = `console.log(\`%c${this.consoleInput}\`, 'color:${this.consoleFontColor};font-weight:bold;${bg}')`
         },
-        onCopy(e) {
-          let text = `Copy finished!  Text:${e.text}`
-          this.$message({
+        onCopy(e, hide) {
+          let text = `Copy finished!<br>Text: <span style="color:rgb(115, 159, 216)">${e.text}</span>`
+          if(hide){
+            text = `Copy finished!`
+          }
+          this.$notify({
+            dangerouslyUseHTMLString: true,
             message: text,
             type: 'success'
           })
         },
         onError(e) {
-          this.$message({
+          this.$notify({
             message: e,
             type: 'danger'
           })
@@ -305,6 +315,7 @@
     }
     var Ctor = Vue.extend(Main)
     new Ctor().$mount('#app')
+    Vue.locale('en', ELEMENT.lang.en)
   </script>
 </body>
 
