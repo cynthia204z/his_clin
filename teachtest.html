@@ -11,13 +11,15 @@
       padding: 0;
       margin: auto;
       width: 350px;
+      height: 90%;
+      overflow: hidden;
     }
 
     #main-box {
       margin-top: 30px;
       /* width: 350px; */
       max-height: 500px;
-      border: solid 1px royalblue;
+      border: solid 1px rgb(167, 186, 243);
       border-radius: 10px;
       background: aliceblue;
       padding: 10px;
@@ -30,9 +32,13 @@
       font-size: 12px;
     }
 
+    #main-box:hover {
+      background: rgb(229, 243, 255);
+    }
+
     .box {
       /* width: 350px; */
-      padding: 10px;
+      padding: 10px 15px;
       margin-top: 10px;
       background: rgb(245, 242, 223);
       border-radius: 10px;
@@ -47,36 +53,176 @@
       margin: 0;
       color: rgb(225, 188, 65);
     }
+
+    .item-box {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 10px 0;
+    }
+
+    .list-item {
+      position: relative;
+      font-size: 12px;
+      border-radius: 5px;
+      border: solid 1px rgb(255, 232, 157);
+      background: rgb(255, 252, 244);
+      padding: 3px 15px;
+      margin: 2px;
+      line-height: 15px;
+      color: rgb(121, 108, 98);
+      cursor: pointer;
+    }
+
+    .list-item:hover:after {
+      content: "ｘ";
+      font-family: sans-serif;
+      color: #fff;
+      background: rgb(0, 0, 0, .5);
+      position: absolute;
+      right: -4px;
+      top: -4px;
+      line-height: 13px;
+      width: 13px;
+      text-align: center;
+      border-radius: 50%;
+    }
+
+    .title-box {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .person-limit {
+      color: gray;
+      font-size: 12px;
+    }
+
+    .person-limit input {
+      width: 30px;
+    }
+
+    .clear-btn {
+      font-size: 12px;
+      background: none;
+      color: gray;
+      border: none;
+      cursor: pointer;
+    }
+
+    .clear-btn:hover {
+      color: rgb(172, 172, 172);
+    }
+
+    input {
+      border-radius: 5px;
+      border: 1px solid rgb(185, 185, 185);
+    }
+
+    input:focus-visible {
+      border: 1px solid rgb(228, 179, 124);
+      outline: none;
+    }
+
+    .add-btn {
+      border-radius: 5px;
+      border: 1px solid transparent;
+      background: rgb(228, 179, 124);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .add-btn:hover {
+      background: rgb(228, 165, 71);
+    }
+
+    .top-btn {
+      border-radius: 3px;
+      border: none;
+      background: rgb(172, 172, 172);
+      color: white;
+      margin: 2px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .current-top-btn:after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      margin: auto;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: rgb(201, 165, 131) transparent transparent transparent;
+      border-width: 5px 6px 0 6px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .mod-box {
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .mod-box,
+    .top-btn,
+    .add-btn,
+    .clear-btn,
+    #main-box {
+      transition: all ease .3s;
+    }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <div class="box">
-      <h4>Person</h4>
-      <input id="personInput" type="text"></input>
-      <button onclick="createNewPerson()">+</button>
-      <button onclick="clearList('who')">Clear All</button>
-      <br>
-      <span id="person-list"></span>
+    <div class="top-tool">
+      <button id="top-btn-1" class="top-btn" onclick="changeCurrentMod('1')">誰在哪裡做什麼</button>
+      <button id="top-btn-2" class="top-btn" onclick="changeCurrentMod('2')">誰被誰做什麼</button>
+      <button id="top-btn-3" class="top-btn" onclick="changeCurrentMod('3')">自訂抽籤</button>
     </div>
-    <div class="box">
-      <h4>Place</h4>
-      <input id="placeInput" type="text"></input>
-      <button onclick="createNewPlace()">+</button>
-      <button onclick="clearList('where')">Clear All</button>
-      <br>
-      <span id="place-list"></span>
+    <div id="mod1" class="mod-box">
+      <div class="box">
+        <div class="title-box">
+          <h4>Person</h4>
+          <button onclick="clearList('who')" class="clear-btn">Clear All</button>
+        </div>
+        <div class="person-limit">人數限制：<input id="personNum" type="number" min="0"></input> 人</div>
+        <br>
+        <input id="personInput" type="text"></input>
+        <button onclick="createNewItem('person')" class="add-btn">+</button>
+        <br>
+        <div id="person-list" class="item-box"></div>
+      </div>
+      <div class="box">
+        <div class="title-box">
+          <h4>Place</h4>
+          <button onclick="clearList('where')" class="clear-btn">Clear All</button>
+        </div>
+        <input id="placeInput" type="text"></input>
+        <button onclick="createNewItem('place')" class="add-btn">+</button>
+        <br>
+        <div id="place-list" class="item-box"></div>
+      </div>
+      <div class="box">
+        <div class="title-box">
+          <h4>Action</h4>
+          <button onclick="clearList('action')" class="clear-btn">Clear All</button>
+        </div>
+        <input id="actionInput" type="text"></input>
+        <button onclick="createNewItem('action')" class="add-btn">+</button>
+        <br>
+        <div id="action-list" class="item-box"></div>
+      </div>
     </div>
-    <div class="box">
-      <h4>Action</h4>
-      <input id="actionInput" type="text"></input>
-      <button onclick="createNewAction()">+</button>
-      <button onclick="clearList('action')">Clear All</button>
-      <br>
-      <span id="action-list"></span>
-    </div>
-    <div id="main-box" onclick="makeSentence()">click</div>
+
+    <div id="mod2" class="mod-box"></div>
+    <div id="mod3" class="mod-box"></div>
+
+    <div id="main-box" onclick="makeSentence()">Click☜(ﾟヮﾟ☜)</div>
   </div>
 
   <script>
@@ -90,6 +236,15 @@
 
     let rowIndex = 0;
     function makeSentence() {
+      let modMap = new Map([
+        ['1', mod1Sentence],
+        ['2', mod2Sentence],
+        ['3', mod3Sentence],
+      ]);
+      let motion = modMap.get(currentModId);
+      motion();
+    }
+    function mod1Sentence() {
       let mainBox = document.getElementById("main-box");
       if (!lists.whoList.length || !lists.whereList.length || !lists.actionList.length) {
         mainBox.innerHTML = 'Incomplete conditions, please add options.';
@@ -99,7 +254,11 @@
         mainBox.innerText = '';
       }
       let sentence = '';
-      let personCount = getRandom(1, lists.whoList.length);
+      let personNum = document.getElementById('personNum').value;
+      if (!personNum || personNum > lists.whoList.length) {
+        personNum = lists.whoList.length
+      }
+      let personCount = getRandom(1, personNum);
       let person1 = getRandomItem(lists.whoList)
       sentence += person1;
       if (personCount > 1) {
@@ -112,11 +271,15 @@
         }
       }
       sentence += '在' + getRandomItem(lists.whereList)
-      let actionCount = getRandom(1, 2);
-      if (actionCount > 1) {
-        let action1 = getRandomItem(lists.actionList);
-        let newActionList = lists.actionList.filter(t => t !== action1);
-        sentence += `邊${action1}邊${getRandomItem(newActionList)}`
+      if (lists.actionList.length > 1) {
+        let actionCount = getRandom(1, 2);
+        if (actionCount > 1) {
+          let action1 = getRandomItem(lists.actionList);
+          let newActionList = lists.actionList.filter(t => t !== action1);
+          sentence += `邊${action1}邊${getRandomItem(newActionList)}`
+        } else {
+          sentence += getRandomItem(lists.actionList);
+        }
       } else {
         sentence += getRandomItem(lists.actionList);
       }
@@ -124,66 +287,98 @@
       mainBox.innerHTML = sentence + '<br>';
       // mainBox.appendChild(newRow);
     }
+    function mod2Sentence() { }
+    function mod3Sentence() { }
 
-    function createNewPerson() {
-      let personInput = document.getElementById('personInput');
-      let newPerson = personInput.value;
-      if (newPerson) {
-        lists.whoList.push(newPerson);
-        createLists();
-      }
-      personInput.value = '';
+    function getListName(type) {
+      let ListMap = new Map([
+        ['person', 'who'],
+        ['place', 'where'],
+        ['action', 'action'],
+        ['who', 'person'],
+        ['where', 'place'],
+      ])
+      return ListMap.get(type)
     }
-    function createNewPlace() {
-      let placeInput = document.getElementById('placeInput');
-      let newPlace = placeInput.value;
-      if (newPlace) {
-        lists.whereList.push(newPlace);
-        createLists();
+
+    function createNewItem(type) {
+      let listName = getListName(type);
+      let newItem = document.getElementById(`${type}Input`);
+      let newValue = newItem.value;
+      if (newValue) {
+        lists[`${listName}List`].push(newValue);
+        appendNewItem(type, newValue, listName);
       }
-      placeInput.value = '';
+      newItem.value = '';
     }
-    function createNewAction() {
-      let actionInput = document.getElementById('actionInput');
-      let newAction = actionInput.value;
-      if (newAction) {
-        lists.actionList.push(newAction);
-        createLists();
-      }
-      actionInput.value = '';
+    function appendNewItem(type, value, listName) {
+      let box = document.getElementById(`${type}-list`);
+      let newEl = document.createElement('span');
+      newEl.className = 'list-item';
+      newEl.innerText = value;
+      let id = listName + lists[`${listName}List`].length;
+      newEl.setAttribute("id", id);
+      newEl.onclick = function (e) {
+        console.log(this);
+        lists[`${listName}List`] = lists[`${listName}List`].filter(t => t !== value);
+        this.parentElement.removeChild(this);
+      };
+      box.appendChild(newEl);
     }
+
 
     let lists = {
-      whoList: ['KAITO', '神代類', 'P助', '工讀生'],
-      whereList: ['草叢裡', '天堂', '地獄', '國際太空站', '空無一人的世界裡', '天馬家'],
-      actionList: ['寫程式', '學習JS', '開直播', 'PK', '跳PPAP', '打麻將', '舞龍舞獅']
+      whoList: ['KAITO', '神代類', 'P助', '工讀生', '阿嬤'],
+      whereList: ['草叢裡', '巨人肩上', '召喚峽谷', '國際太空站', '空無一人的世界裡', '天馬家', '紅樹林', '墾丁', '總統大選開票所', '三更半夜裡', '摩天輪包廂裡', '警車車底', '玫瑰浴池裡', '婦產科病房裡', '世界末日前一天'],
+      actionList: ['寫程式', '飆高音', '開直播', 'PK', '跳PPAP', '打麻將', '舞龍舞獅', '種菜', '炎上', '召喚青眼白龍', '覆蓋一張陷阱卡', '吃滷味', '吹直笛', '居家隔離', '甩雙節棍', '划龍舟', '禱告', '肇事逃逸', '建立信賴關係']
     }
     function createLists() {
-      let plist = document.getElementById('person-list');
-      if (lists.whoList.length) {
-        plist.innerText = lists.whoList.join(', ');
-      } else {
-        plist.innerText = '';
-      }
-      let placeList = document.getElementById('place-list');
-      if (lists.whereList.length) {
-        placeList.innerText = lists.whereList.join(', ');
-      } else {
-        placeList.innerText = '';
-      }
-      let aList = document.getElementById('action-list');
-      if (lists.actionList.length) {
-        aList.innerText = lists.actionList.join(', ');
-      } else {
-        aList.innerText = '';
+      let listArr = ['who', 'where', 'action'];
+      for (let name of listArr) {
+        let list = lists[`${name}List`]
+        if (list.length) {
+          for (let item of list) {
+            appendNewItem(getListName(name), item, name);
+          }
+        }
       }
     }
     createLists();
 
     function clearList(name) {
       lists[`${name}List`] = []
-      createLists();
+      let box = document.getElementById(`${getListName(name)}-list`);
+      box.innerHTML = '';
     }
+    function resetTextArea() {
+      let box = document.getElementById('main-box');
+      box.innerText = 'Click☜(ﾟヮﾟ☜)';
+    }
+
+    let currentModId;
+    function changeCurrentMod(id) {
+      if (currentModId) {
+        let oldBtn = document.getElementById(`top-btn-${currentModId}`);
+        oldBtn.style.background = 'rgb(172, 172, 172)';
+        oldBtn.className = 'top-btn';
+        let oldBox = document.getElementById(`mod${currentModId}`);
+        oldBox.style.opacity = '0';
+        setTimeout(() => {
+          oldBox.style.display = 'none';
+        }, 150)
+      }
+      let btn = document.getElementById(`top-btn-${id}`);
+      btn.style.background = "rgb(201, 165, 131)";
+      btn.className = "top-btn current-top-btn";
+      let box = document.getElementById(`mod${id}`);
+      box.style.display = 'block';
+      setTimeout(() => {
+        box.style.opacity = '1';
+      }, 150)
+      currentModId = id;
+      resetTextArea();
+    }
+    changeCurrentMod('1');
   </script>
 </body>
 
