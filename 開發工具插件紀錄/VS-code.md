@@ -26,6 +26,8 @@ Auto Rename Tag
 
 Auto Close Tag
 
+
+
 ##### 輔助標示
 
 Rainbow Highlighter
@@ -33,6 +35,8 @@ Rainbow Highlighter
 Rainbow Tags
 
 Bracket Pair Colorizer 2
+
+
 
 ##### 圖示
 
@@ -48,6 +52,8 @@ Moxer Icons
 
 file-icons
 
+
+
 ##### 主題
 
 XD Theme
@@ -58,7 +64,7 @@ soft era
 
 Sodagreen Night Theme
 
-Sodagreen Theme
+==Sodagreen Theme==
 
 Rouge Theme
 
@@ -68,15 +74,15 @@ Retro Pastel Color Theme
 
 Pink-Cat-Boo Theme
 
-Ohh! A Flower!
+==Ohh! A Flower!==
 
 One Monokai Theme
 
 One Candy Dark
 
-NightCall
+==NightCall==
 
-Nanowise
+==Nanowise==
 
 mjolnir
 
@@ -104,7 +110,7 @@ bubblegum
 
 Astrolize
 
-Ancient One Dark
+==Ancient One Dark==
 
 
 

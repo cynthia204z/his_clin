@@ -275,3 +275,91 @@ Table: chred_trans_dtl
 
 - [ ] SHEET_ID (刪除)
 - [x] TRANS_ID (新增)
+
+
+
+# 0408 + OWNER_SYS查詢
+
+# 0408 + UNIT查詢
+
+**Back End**
+
+```markdown
+1. get orderInfo by UNIT
+	get FORDER_ID list
+	> api get "/orderInfo" add search parameter UNIT
+	> 樹型
+
+2. get orderInfo by UNIT
+	get FORDER_ID list
+	get sheetInfo by FORDER_ID list (or)
+	get SHEET_ID list
+	> add api get "/getSheetByUnit"
+
+3. get transmstInfo by SHEET_ID list (or)
+	get transmstList
+	> add api get "/getTransmstBySheetIds"
+```
+
+**Front End**
+
+1. 表單類型
+
+  ```js
+  getSheetByUnit ( ) { 
+    getSheetByUnit({ UNIT: this.config.query.unit }).then( res=> {
+      this.sheetList = res.data.result.rows
+      this.getTransmstBySheetIds()
+    })
+  }
+  ```
+
+2. 病患病歷
+
+  ```js
+  getTransmstBySheetIds ( ) {
+    let query = {
+      sheetIds: this.sheetList.map(sheet => sheet.SHEET_ID),
+      ENCOUNTER_NO: this.config.query.encounterNo,
+      CHART_NO: this.config.query.chartNo
+    }
+    getTransmstBySheetIds( query ).then( res => {
+      this.transList = res.data.result.rows
+  
+      for (let trans of this.transList) {
+        for (let sheet of this.sheetList) {
+          if (trans.SHEET_ID === sheet.SHEET_ID) {
+            trans = {
+              ...trans, 
+              SHEET_STYLETYPE: sheet.SHEET_STYLETYPE,
+              SHEET_TYPE: sheet.SHEET_TYPE,
+              FORDER_ID: sheet.FORDER_ID,
+              sheetdef_id: sheet.ID
+            }
+          }
+  
+        }
+      }
+      this.getForderByUnit( )
+    })  
+  }
+  ```
+
+3. 分類樹型
+
+  ```js
+  getForderByUnit ( ) { 
+    orderInfo({ UNIT: this.config.query.unit }).then( res => {
+      this.orderTreeData = res.data.result.rows
+      this.allSheetTree = JSON.parse(JSON.stringify(res.data.result.rows))
+      for (let folder of this.orderTreeData) {
+        this.getChildren(folder)
+      }
+      for (let folder of this.allSheetTree) {
+        this.getAllSheetTreeChildren(folder)
+      }
+    })
+  }
+  ```
+
+  

@@ -144,6 +144,11 @@
       margin: 2px;
       cursor: pointer;
       position: relative;
+      top: 0;
+    }
+
+    .current-top-btn{
+      top: 3px;
     }
 
     .current-top-btn:after {
@@ -181,11 +186,11 @@
   <div id="app">
     <div class="top-tool">
       <button id="top-btn-1" class="top-btn" onclick="changeCurrentMod('1')">誰在哪裡做什麼</button>
-      <button id="top-btn-2" class="top-btn" onclick="changeCurrentMod('2')">誰被誰做什麼</button>
+      <button id="top-btn-2" class="top-btn" onclick="changeCurrentMod('2')">CP</button>
       <button id="top-btn-3" class="top-btn" onclick="changeCurrentMod('3')">自訂抽籤</button>
     </div>
     <div id="mod1" class="mod-box">
-      <div class="box">
+      <!-- <div class="box">
         <div class="title-box">
           <h4>Person</h4>
           <button onclick="clearList('who')" class="clear-btn">Clear All</button>
@@ -216,16 +221,27 @@
         <button onclick="createNewItem('action')" class="add-btn">+</button>
         <br>
         <div id="action-list" class="item-box"></div>
-      </div>
+      </div> -->
     </div>
 
-    <div id="mod2" class="mod-box"></div>
+    <div id="mod2" class="mod-box">
+      <div style="display:flex;margin-top: 20px;">
+        <input id="topPerson" type="text" value="類"></input>
+        <input id="bottomPerson" type="text" value="KAITO"></input>
+      </div>
+    </div>
     <div id="mod3" class="mod-box"></div>
 
     <div id="main-box" onclick="makeSentence()">Click☜(ﾟヮﾟ☜)</div>
   </div>
 
   <script>
+    // mod2
+    // sentence-type
+    // 1: adj person1 on person2's organ do something
+    // 2: person1 on
+
+
     function getRandomItem(list) {
       let index = Math.floor(Math.random() * list.length);
       return list[index];
@@ -244,50 +260,38 @@
       let motion = modMap.get(currentModId);
       motion();
     }
-    function mod1Sentence() {
+
+
+    let topPerson, bottomPerson;
+
+
+    function mod2Sentence() {
+      topPerson = document.getElementById('topPerson').value
+      bottomPerson = document.getElementById('bottomPerson').value
+      if(!topPerson || !bottomPerson) {
+        return
+      }
+
       let mainBox = document.getElementById("main-box");
-      if (!lists.whoList.length || !lists.whereList.length || !lists.actionList.length) {
+      if (!lists.adjective.length || !lists.organs.length || !lists.action.length) {
         mainBox.innerHTML = 'Incomplete conditions, please add options.';
         return
       }
       if (rowIndex === 0) {
         mainBox.innerText = '';
       }
+
       let sentence = '';
-      let personNum = document.getElementById('personNum').value;
-      if (!personNum || personNum > lists.whoList.length) {
-        personNum = lists.whoList.length
-      }
-      let personCount = getRandom(1, personNum);
-      let person1 = getRandomItem(lists.whoList)
-      sentence += person1;
-      if (personCount > 1) {
-        let hasWho = [person1]
-        for (let i = 0; i < personCount - 1; i++) {
-          let newWhoList = lists.whoList.filter(t => hasWho.indexOf(t) === -1);
-          let person = getRandomItem(newWhoList);
-          hasWho.push(person)
-          sentence += '和' + person
-        }
-      }
-      sentence += '在' + getRandomItem(lists.whereList)
-      if (lists.actionList.length > 1) {
-        let actionCount = getRandom(1, 2);
-        if (actionCount > 1) {
-          let action1 = getRandomItem(lists.actionList);
-          let newActionList = lists.actionList.filter(t => t !== action1);
-          sentence += `邊${action1}邊${getRandomItem(newActionList)}`
-        } else {
-          sentence += getRandomItem(lists.actionList);
-        }
-      } else {
-        sentence += getRandomItem(lists.actionList);
-      }
+      let personList = [topPerson, bottomPerson];
+      let firstPerson = getRandomItem(personList);
+      let lastPerson = personList.find(t=>t!==firstPerson);
+      sentence += getRandomItem(lists.adjective)
+      + firstPerson + '在' + lastPerson + '的' + getRandomItem(lists.organs) + getRandomItem(lists.action)
       // let newRow = document.createElement('span');
       mainBox.innerHTML = sentence + '<br>';
       // mainBox.appendChild(newRow);
     }
-    function mod2Sentence() { }
+    function mod1Sentence() { }
     function mod3Sentence() { }
 
     function getListName(type) {
@@ -328,9 +332,9 @@
 
 
     let lists = {
-      whoList: ['KAITO', '神代類', 'P助', '工讀生', '阿嬤'],
-      whereList: ['草叢裡', '巨人肩上', '召喚峽谷', '國際太空站', '空無一人的世界裡', '天馬家', '紅樹林', '墾丁', '總統大選開票所', '三更半夜裡', '摩天輪包廂裡', '警車車底', '玫瑰浴池裡', '婦產科病房裡', '世界末日前一天'],
-      actionList: ['寫程式', '飆高音', '開直播', 'PK', '跳PPAP', '打麻將', '舞龍舞獅', '種菜', '炎上', '召喚青眼白龍', '覆蓋一張陷阱卡', '吃滷味', '吹直笛', '居家隔離', '甩雙節棍', '划龍舟', '禱告', '肇事逃逸', '建立信賴關係']
+      adjective: ['充滿決心的', '困惑的', '困擾的', '擔憂的', '臉色蒼白的', '疲倦的', '憂鬱的', '鬱悶的', '惱羞成怒的', '心情愉悅的', '歇斯底里的', '瘋狂的', '耍帥的', '裝可愛的', '認真的', '失落的', '無奈的', '酒測值超標的', '帶著迷人微笑的', '取得勝利的', '剛被阿嬤罵完的', '哄睡孩子後的', '內心的小宇宙大爆發的', '縮小的', '十年後的', '憔悴的', '滿臉笑容的', '冷漠的', '面無表情的', '喝醉的', '害羞的', '無聊的', '興奮的', '猶豫不決的', '神智不清的', '語無倫次的', '慵懶的', '手舞足蹈的', '開心的', '面露猙獰的', '忌妒的', '心情複雜的', '淚流滿面的', '大爆哭的', '悲傷的', '心疼的', '生氣的', '憤恨的', '性感的', '冷淡的', '通宵完的', '精神振奮的', '滿心期待的', '精力充沛的', '心狠手辣的', '內心小鹿亂撞的', '無動於衷的', '覺得未來充滿希望的', '絕望的', '做好覺悟的', '失去耐心的', '衝動的', '凶狠的', '狼狽的', '溫柔的', '很久很久以後的', '睡著了的', '滿腦子黃色廢料的', '激渴難耐的', '委屈的', '心不甘情不願的', '無言以對的', '衣衫不整的', '喘息不止的', '小心翼翼的', '失神的', '心不在焉的', '懷疑人生的'],
+      organs: ['手心', '指尖', '手背上', '頸側', '肩膀上', '臉頰上', '額頭上', '腳底', '腳背上', '背上', '頭頂', '後腦杓', '耳朵上', '鼻尖', '嘴唇上', '胸前', '肚臍上方', '大腿上', '腳踝上', '股間', '臀尖', '鎖骨上', '墓碑上', '下腹', '衣服上', '褲子上', '腰側', '床上', '內褲上', '枕頭上', '後頸', '下巴上', '髖骨上', '手腕上', '手臂上', '小腿上', '腳趾縫', '膝蓋上', '腋下', '鬢角', '腿根', '人魚線上'],
+      action: ['抹了點肥皂泡泡', '擦了藥膏', '加了點香菜和醬油膏', '貼了一塊撒隆巴斯', '寫上了自己的名字', '貼了一堆閃亮貼紙', '用指尖畫了一朵花', '留下一排牙印', '盯著看了很久', '摸了兩把', '揉了揉', '戳了一下', '拍了一掌', '咬了一口', '流口水', '滴下一滴淚水', '貼上查封封條', '捏了一下', '貼了OK繃', '纏了一段紅線', '親了一下', '抹開剛沾上的液體', '留下記號', '抹了點精油', '埋頭猛聞', '深吸一口氣', '吹氣', '呼呼', '刺了個精忠報國', '打翻了一罐養樂多', '擠上一坨奶油']
     }
     function createLists() {
       let listArr = ['who', 'where', 'action'];
@@ -343,7 +347,7 @@
         }
       }
     }
-    createLists();
+    // createLists();
 
     function clearList(name) {
       lists[`${name}List`] = []
@@ -378,7 +382,7 @@
       currentModId = id;
       resetTextArea();
     }
-    changeCurrentMod('1');
+    changeCurrentMod('2');
   </script>
 </body>
 
