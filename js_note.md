@@ -511,7 +511,66 @@ function myFunction(e) {
 
 
 
+## Class
 
+```js
+class Human{
+  // 建構子
+  constructor(name, home){
+    this.name = name
+    this.home = home
+  }
+  // 原型(property)方法 Getter
+  get selfIntroduction(){
+    return `我是${this.name}，我住在${this.home}`
+  }
+  // 原型(property)方法 Method
+  walk(){
+    return this.name + '正在走路'
+  }
+  // 靜態方法
+  static migration(who = '人類'){
+    return who + '大遷徙'
+  }
+}
+
+let person1 = new Human('志明', '胡志明市')
+person1.selfIntroduction // 我是志明，我住在胡志明市
+person1.walk() // 志明正在走路
+Human.extinction() // 人類大遷徙
+```
+
+```js
+// 子類別
+class Taiwanese extends Human{
+  get country(){
+    return '台灣'
+  }
+  get selfIntroduction(){
+    // let age = 計算
+    return `我是${this.country}人，我叫${this.name}，現居${this.home}`
+  }
+  static stateBuilding(){
+    return '台灣人進行了國家建設'
+  }
+  static migration(who){
+    return super.migration(who)
+  }
+}
+let person2 = new Taiwanese('春嬌', '宜蘭')
+person2.selfIntroduction // 我是台灣人，我叫春嬌，現居宜蘭 
+person2.country // 台灣
+Taiwanese.stateBuilding() // 台灣人進行了國家建設
+Taiwanese.migration('宇宙人') // 宇宙人大遷徙
+```
+
+git@gitlab.ialice.com:charles_his7_grp/obs.git
+
+```
+PASSWORD: "",
+HOST: "192.168.1.176",
+USER: "ching",
+```
 
 ## 其他
 
