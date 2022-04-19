@@ -554,6 +554,7 @@ class Taiwanese extends Human{
     return '台灣人進行了國家建設'
   }
   static migration(who){
+		who += '世紀'
     return super.migration(who)
   }
 }
@@ -561,16 +562,10 @@ let person2 = new Taiwanese('春嬌', '宜蘭')
 person2.selfIntroduction // 我是台灣人，我叫春嬌，現居宜蘭 
 person2.country // 台灣
 Taiwanese.stateBuilding() // 台灣人進行了國家建設
-Taiwanese.migration('宇宙人') // 宇宙人大遷徙
+Taiwanese.migration('宇宙人') // 宇宙人世紀大遷徙
 ```
 
-git@gitlab.ialice.com:charles_his7_grp/obs.git
 
-```
-PASSWORD: "",
-HOST: "192.168.1.176",
-USER: "ching",
-```
 
 ## 其他
 
