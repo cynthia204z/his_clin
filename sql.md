@@ -61,4 +61,31 @@
   where t1.SHEET_TYPE like '%text%';
   ```
 
-  
+
+
+
+HMS 片語建資料(Oracle)
+
+```sql
+update HMS_ITEM_PHRASE p set PHRASE_CONTENT =
+    (
+      select listagg(REPORT_CHNAME,',') within group ( order by REPORT_CHNAME) from HMS_REPORT_ITEMDTL t
+      where t.ITEM_CODE=p.ITEM_CODE
+      group by ITEM_CODE
+    )
+
+where p.ITEM_CODE in (
+  'RIC200909051',
+  'RIC200909070',
+  'RIC200909162',
+  'RIC200909166',
+  'RIC201112002',
+  'RIC201204001',
+  'RIC201204002',
+  'RIC201206001',
+  'RIC201206002',
+  'RIC201206003'
+);
+;
+```
+
