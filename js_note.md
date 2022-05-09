@@ -163,6 +163,30 @@ arr.aplice(2, 2, "♠♣♦♥")
 
 
 
+### Array.every / Array.some
+
+```js
+let member = ['Jack', 'Amy', 'Kevin', 'Tom', 'Sandy']
+```
+
+Array.every
+
+```js
+// Array.every: 全真為真
+member.every(person => person.name === 'Amy') // false
+member.every(person => typeof person.name === 'string') // true
+```
+
+Array.some
+
+```js
+// Array.some: 有真為真
+member.some(person => person.name === 'Amy') // true 
+member.som(person => typeof person.name === 'string') // true
+```
+
+
+
 ### 排序
 
 一般
@@ -568,6 +592,27 @@ Taiwanese.migration('宇宙人') // 宇宙人世紀大遷徙
 
 
 ## 其他
+
+### 多欄位資料篩選
+
+```js
+arr = arr.filter(item => {filterTableData(item)})
+
+function filterTableData(item) {
+  let queryColumnKeys = Object.keys(query)
+  return queryColumnKeys.every(key => {
+    if(!query[key]){
+      return true
+    }
+    if(!ITEM[key]){
+      return false
+    }
+    return ITEM[key].indexOf(query[key]) !== -1
+  })
+}
+```
+
+
 
 ### 隨機HEX色碼
 
