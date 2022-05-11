@@ -77,6 +77,111 @@ export default {
 
 
 
+## 保留跨頁/搜尋勾選狀態
+
+狀況1：資料庫裡面有存選取狀態
+
+```vue
+<JNPFTable
+  ref="List"
+  :data="list"
+  @selection-change="handleSelectChange">
+</JNPFTable>
+```
+
+```js
+/* 此範例的allSelection只有存特定欄位 */
+
+// 1. 取得DB裡的選取狀態，賦值給 this.allSelection
+// EX: this.allSelection = res.data.list[0].selectedIds
+//                                           ↑ ["1", "2", "3"]
+
+initData(){
+  // 2. 取得table list
+  this.list = res.data.list
+ 	// 3. 篩選list中的已勾選資料
+	let selectionList = this.list.filter(item => this.allSelection.includes(item.id))
+  this.handleSelectChange(selectionList)
+  this.resetSelection()
+}
+
+// 4. 重新取得完整的selection
+handleSelectChange(data) {
+  // 暫存新的勾選data
+  let newSelection = []
+  if (data.length) {
+    newSelection = data.map(item => item.id)
+  }
+  // 未變更的勾選data (不在list中的資料)
+  let unchangedSelection = []
+  this.allSelection.forEach(slc => {
+    if (!this.list.find(item => slc === item.id)) {
+      unchangedSelection.push(slc)
+    }
+  })
+  // 和未篩選前的勾選項目合併
+  this.allSelection = [...filterKeywordSelection, ...unchangedSelection]
+}
+
+// 重設UI上的勾選標記
+resetSelection() {
+  this.allSelection.forEach(slc => {
+    let row = this.list.find(item => slc === item.id)
+    // 當前頁存在的資料才顯示勾選
+    if (row) {
+      this.$nextTick(() => {
+        this.$refs.List.$refs.JNPFTable.toggleRowSelection(row, true)
+      })
+    }
+  })
+}
+```
+
+狀況2：只在UI上暫存list的勾選狀態
+
+```vue
+<JNPFTable 
+  ref="List"
+  :data="list"
+  @selection-change="handleSelectChange">
+</JNPFTable>
+```
+
+```js
+initData(){
+  this.list = res.data.list
+  let selectionList = this.custData.filter(cust => this.selection.find(slc => slc.id === cust.id))
+  this.handleSelectChange(selectionList)
+  this.resetSelection()
+}
+
+handleSelectChange(data) {
+  let newSelection = data ? data : []
+  let unchangeSelection = []
+  this.selection.forEach(slc => {
+    if(!this.l.find(cust => cust.id === slc.id)){
+      unchangeSelection.push(slc)
+    }
+  })
+  this.selection = [...new Set([...newSelection, ...unchangeSelection])]
+}
+
+resetSelection(){
+  this.selection.forEach(slc => {
+    let row = this.list.find(item => slc === item.id)
+    if (row) {
+      this.$nextTick(() => {
+        this.$refs.List.$refs.JNPFTable.toggleRowSelection(row, true)
+      })
+    }
+  })
+}
+```
+
+
+
+
+
 # 企業組件
 
 ## List EditPage
