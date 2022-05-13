@@ -642,6 +642,29 @@ function grayLevel(rgbArr) {
 
 
 
+### 2022/05/13
+
+```js
+resetItemList(){
+  // 取所有檢查報告
+  let phyDtlList = this.list.map(mst => mst.hmsPhydtlItemList)
+  // 取得有上下限值的資料
+  phyDtlList.forEach(arr => {
+    arr = arr.filter(item => item.updownFlag === 'Y')
+  })
+  // 展開嵌套Array
+  let allItemList = phyDtlList.flat()
+  // 簡化
+  let simpleList = allItemList.map(row => {return {itemCode: row.itemCode, itemChName: row.itemChName}})
+  // 去重
+  let map = new Map();
+  simpleList.forEach(item=>{map.set(item.itemCode,item.itemChName)})
+  // 重組資料行
+  let mapList = [...map]
+  this.itemList = mapList.map(row => {return{itemCode: row[0], itemChName: row[1]}})
+}
+```
+
 
 
 # Moment.js Note
@@ -691,4 +714,41 @@ let endTime = moment().endOf('day').format('YYYY-MM-DD HH:mm') //xxxx-xx-xx 2
 //單位：'years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds'
 
 let monthCount = moment(後面的時間).diff(moment(前面的時間), 單位)
+```
+
+
+
+## 加工作日
+
+```js
+/**
+ * @param baseDate 基準日
+ * @param days 天數
+ * @returns {string}
+ */
+addWeekdays(baseDate, days) {
+  baseDate = moment(baseDate)
+  while (days > 0){
+    baseDate =  baseDate.add(1, 'days')
+    if(date.isoWeekday() === 6 || date.isoWeekday() === 7){
+      days += 1
+    }
+  }
+  return moment(baseDate).format('YYYY-MM-DD')
+},
+```
+
+
+
+## 秒數轉時分秒
+
+```js
+secondsFormat(seconds) {
+  seconds = Number(seconds)
+  let time = moment.duration(seconds, 'seconds')
+  let h = time.hours()
+  let m = time.minutes()
+  let s = time.seconds()
+  return moment({ h: h, m: m, s: s }).format('HH:mm:ss')
+},
 ```
