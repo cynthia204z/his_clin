@@ -78,6 +78,12 @@ XML_CONTENT：
 {"id":"ICD10","label":"ICD10","usageOei":"A","menu":[{"pageType":"freqTreeBox","id":"DOC","label":"醫師常用","usageOei":"A"},{"pageType":"freqTreeBox","id":"Dept","label":"科常用","usageOei":"A"},{"pageType":"icd10DeptBox","id":"ICD10CMDept","label":"健保科常用(CM)","usageOei":"A"},{"pageType":"treeSearchBox","id":"ICD10CM","label":"ICD10CM(全)","usageOei":"A"},{"pageType":"searchBox","id":"Search","label":"ICD10CM搜尋","usageOei":"A"},{"pageType":"icd10DeptBox","id":"ICD10PCSDept","label":"健保科常用(PCS)","usageOei":"A"},{"pageType":"icd10PCSSearchBox","id":"ICD10PCS","label":"ICD10PCS搜尋","usageOei":"A"}]}
 ```
 
+2022 6月demo需求：隱藏健保科常用
+
+```json
+{"id":"ICD10","label":"ICD10","usageOei":"A","menu":[{"pageType":"freqTreeBox","id":"DOC","label":"醫師常用","usageOei":"A"},{"pageType":"freqTreeBox","id":"Dept","label":"科常用","usageOei":"A"},{"pageType":"icd10DeptBox","id":"ICD10CMDept","label":"健保科常用(CM)","usageOei":"X"},{"pageType":"treeSearchBox","id":"ICD10CM","label":"ICD10CM(全)","usageOei":"A"},{"pageType":"searchBox","id":"Search","label":"ICD10CM搜尋","usageOei":"A"},{"pageType":"icd10DeptBox","id":"ICD10PCSDept","label":"健保科常用(PCS)","usageOei":"X"},{"pageType":"icd10PCSSearchBox","id":"ICD10PCS","label":"ICD10PCS搜尋","usageOei":"A"}]}
+```
+
 
 
 ### PHM

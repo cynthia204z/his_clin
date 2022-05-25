@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	<link rel="stylesheet" href="./style.css">
+	<style>
+		html,
+		body {
+			height: 100%;
+			padding: 0;
+			margin: 0;
+			font-family: 'Noto Sans TC', 'system-ui', 'Courier New', Courier, monospace, sans-serif;
+			font-size: 12px;
+			color: #333;
+		}
+
+		#app {
+			height: calc(100% - 20px);
+			width: calc(100% - 20px);
+			top: 10px;
+			left: 10px;
+			position: relative;
+			border: 1px solid gray;
+		}
+
+		.JNPF-common-layout {
+			display: flex;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			background: rgb(223, 223, 223);
+		}
+
+		.JNPF-common-layout-center {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+
+		.red-border-box {
+			/* box-shadow: inset 0 0 0 5px rgb(175, 82, 82); */
+			border: 5px solid rgb(175, 82, 82);
+		}
+
+		.blue-border-box {
+			/* box-shadow: inset 0 0 0 5px rgb(104, 186, 248); */
+			border: 5px solid rgb(104, 186, 248);
+		}
+
+		.border-box {
+			/* box-shadow: inset 0 0 0 5px rgb(84, 157, 75); */
+			border: 1px solid #333;
+		}
+
+		.yellow-bg-box {
+			background: rgb(255, 236, 193);
+		}
+
+		.el-table {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<div class="JNPF-common-layout">
+			<div class="JNPF-common-layout-center">
+				<div class="smhc-column-child pd-10">
+					<el-form class="border-box pd-10" lable-position="right" label-width="100px">
+						<el-row v-for="row in 2">
+							<el-col :span="12" v-for="col in 2">
+								<el-form-item label="formItem">
+									<el-input v-model="input" />
+								</el-form-item>
+							</el-col>
+						</el-row>
+					</el-form>
+				</div>
+				<div class="smhc-column-child pd-10">
+					<el-form class="border-box pd-10" lable-position="right" label-width="100px">
+						<el-row v-for="row in 2">
+							<el-col :span="12" v-for="col in 2">
+								<el-form-item label="formItem">
+									<el-input v-model="input" />
+								</el-form-item>
+							</el-col>
+						</el-row>
+					</el-form>
+				</div>
+				<div class="smhc-inline pd-10">
+					<!-- 1. 都沒加remainder：平均分配，可以用flex去算幾等份(所有子物件都要設定)，也可以用寬度百分比(所有子物件都要設定) -->
+					<!-- 2. 一個加remainder：其他物件去分配(父層-有remainder的子物件寬)，EX：有remainder的物件設寬度60%，則其他物件自動分配剩下的40%-->
+
+					<div class="smhc-inline-child border-box" style="margin-right: 10px;width: 30%;">
+						<el-table :data="table" height="100%">
+							<el-table-column v-for="col in 8" prop="name" label="name" />
+						</el-table>
+					</div>
+					<div class="smhc-inline-child border-box" style="margin-right: 10px;width: 50%;">
+						<el-table :data="table" height="100%">
+							<el-table-column v-for="col in 8" prop="name" label="name" />
+						</el-table>
+					</div>
+					<div class="smhc-inline-child border-box" style="width: 20%;">
+						<el-table :data="table" height="100%">
+							<el-table-column v-for="col in 8" prop="name" label="name" />
+						</el-table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data() {
+				return {
+					input: '',
+					table: [
+						{ name: 'name1' },
+						{ name: 'name2' },
+						{ name: 'name3' },
+						{ name: 'name4' },
+						{ name: 'name5' },
+						{ name: 'name6' },
+						{ name: 'name7' },
+						{ name: 'name8' },
+						{ name: 'name9' },
+						{ name: 'name10' },
+						{ name: 'name11' },
+						{ name: 'name12' },
+						{ name: 'name13' },
+						{ name: 'name14' },
+						{ name: 'name15' }
+					],
+				}
+			}
+		})
+	</script>
+</body>
+
+</html>

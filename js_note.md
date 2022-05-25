@@ -109,7 +109,7 @@ let citrus1 = fruits.slice(1, 3);
 
 
 
-### 比較2個陣列
+### ⭐比較2個陣列
 
 > C 是一個陣列
 
@@ -254,23 +254,65 @@ document.onkeydown = (e) => {
 
 
 
-### 迴圈等非同步結束
+### ⭐非同步
+
+等多個非同步結束
 
 ```js
-function 方法名 () {
+async function save(){
+  try {
+    const responses = await Promise.all([saveTable1(), saveTable2()])
+    const datasPromise = responses.map(response => {
+      if (response.status !== 200) {
+        throw new Error('HTTP 500/400 Error')
+      }
+      return response.json()
+    })
+    const datas = await Promise.all(datasPromise)
+    return datas
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+function saveTable1(){
   return new Promise(resolve => {
-    調用非同步方法.then(參數=>{
-      // do something
-      resolve();
+    調用非同步方法.then(res => {
+      resolve(res)
     })
   })
 }
 
-fot(let i = 0; i < list.length; i++) {
-  await 方法名().then(()=>{
-    if(i === list.length - 1){
-      //do something
+function saveTable2(){
+  return new Promise(resolve => {
+    調用非同步方法.then(res => {
+      resolve(res)
+    })
+  })
+}
+```
+
+等非同步迴圈
+
+```js
+function saveAllTable(){
+  return new Promise(async resolve => {
+    let saveTableForLoop = async() => {
+      for(let key of tableName){
+        await saveTable(api, data)
+      }
     }
+    await saveTableForLoop().then(()=>{
+      resolve()
+    })
+  })
+}
+
+function saveTable(api, data){
+  return new Promise(resolve => {
+    調用非同步方法.then(res => {
+      resolve(res)
+    })
   })
 }
 ```

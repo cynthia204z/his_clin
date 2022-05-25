@@ -1,0 +1,36 @@
+.smhc-inline-box{
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  overflow: hidden;
+  &.remainder{
+    flex-grow: 1;
+  }
+  .smhc-child{
+    height: 100%;
+    box-sizing: border-box;
+    &:not(.remainder){
+      overflow: hidden;
+    }
+  }
+}
+.smhc-column-box{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
+  &.remainder{
+    flex-grow: 1;
+  }
+  .smhc-child{
+    width: 100%;
+    box-sizing: border-box;
+    &:not(.remainder){
+      overflow: hidden;
+    }
+  }
+}
+.pd-10{
+  padding: 10px;
+}
