@@ -684,6 +684,18 @@ function grayLevel(rgbArr) {
 
 
 
+### HTML轉純文字
+
+```js
+freplaceHtmlToText(str){
+  str = str.replace(/<\/?.+?>/g, "");
+  str = str.replace(/&nbsp;/g, "");
+  return str
+}
+```
+
+
+
 ### 2022/05/13
 
 ```js
