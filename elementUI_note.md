@@ -97,6 +97,30 @@ saveMst().then(()=>{
 
 
 
+## Table
+
+無表頭勾選框的勾選欄位：改表頭文字
+
+```vue
+<el-table :data="data" class="no-header-checkbox-table">
+	<el-table-column type="selection" label-class-name="no-checkbox-header"></el-table-column>
+</el-table>
+```
+
+```scss
+.no-header-checkbox-table >>> .no-checkbox-header .cell .el-checkbox__inner{
+  display: none;
+  position: relative;
+}
+.no-header-checkbox-table >>> .no-checkbox-header .cell::before{
+  content: "選取";
+  position: absolute;
+  
+}
+```
+
+
+
 
 
 # Element UI： His7應用
