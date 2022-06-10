@@ -84,3 +84,63 @@ this.$confirm('提示', {
 </script>
 ```
 
+
+
+## 在keep-alive中轉跳路由取得資料查詢
+
+page1
+
+```js
+methods: {
+gotoHms3040(){
+  //取得 客戶姓名
+  let lGuestChname = this.$refs.MstForm.getGuestChname()
+  if (lGuestChname) {
+    this.$router.push({
+      path: '/his7/hms/customer/hms3040',
+      query: {data: lGuestChname}
+    })
+  }
+},
+}
+```
+
+轉跳目標
+
+```js
+data(){
+  return{
+    //接收 link 的參數
+    linkDTO: undefined,
+    queryPanel04: false
+  }
+}
+
+beforeRouteEnter(to, from, next){
+  next((vm)=>{
+    if(to.query.data){
+      vm.linkDTO = to.query.data
+      vm.queryPanel04 = true
+    }
+  })
+}
+
+watch:{
+  queryPanel04(newVal){
+    if(newVal){
+      this.searchPanel04()
+      this.queryPanel04 = false
+    }
+  }
+}
+
+methods: {
+  searchPanel04(){
+    this.$nextTick(()=>{
+      this.activePane = '4'
+      this.$refs.Panel04.setQueryColumn('guestChname', this.linkDTO)
+    })
+  }
+}
+```
+

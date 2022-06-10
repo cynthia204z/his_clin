@@ -189,6 +189,22 @@
       <el-col :span="12" class="big-title-group">
         <h2 class="big title">HIS7</h2>
         <div class="div">
+          <h4 class="title">帳號</h4>
+          <div class="flex wrap column btn-box">
+            <span class="btn-front-desc" v-for="(item, index) in his7AccountBtnGroup" :key="index">
+              {{item.label}}:
+              <el-button-group class="btn-group" v-if="item.group">
+                <el-button v-for="(btnVal, indexH7) in item.list" :key="'h7_' + indexH7" size="mini" round plain type="info" v-clipboard:copy="his7Config[item.id][indexH7]"
+                           v-clipboard:success="onCopy" v-clipboard:error="onError">
+                  <span class="btn-val-color">{{btnVal}}</span>
+                </el-button>
+              </el-button-group>
+              <el-button v-else size="mini" round plain type="info" v-clipboard:copy="item.value"
+                         v-clipboard:success="onCopy" v-clipboard:error="onError">
+                <span class="btn-val-color">{{item.value}}</span>
+              </el-button>
+            </span>
+          </div>
           <h4 class="title">測試病患/查詢</h4>
           <div class="flex wrap column btn-box">
             <span class="btn-front-desc" v-for="(item, index) in his7SearchBtnGroup" :key="index">
@@ -252,12 +268,19 @@
               ]
             },
           ],
+          his7AccountBtnGroup: [
+            { id: 1, group: true, label: 'JNPF個人帳號1', list: ['帳號', '密碼'] },
+            { id: 2, group: true, label: 'JNPF個人帳號2', list: ['帳號', '密碼'] },
+            { id: 3, group: true, label: 'JNPF管理員帳號', list: ['帳號', '密碼'] },
+          ],
+          his7Config: getHis7(),
           his3AccountBtnGroup: [
             { id: 1, group: true, label: 'oer帳號', list: ['帳號', '密碼'] },
             { id: 2, group: true, label: '共用帳號', list: ['帳號', '密碼'] },
             { id: 3, group: true, label: 'community帳號', list: ['帳號', '密碼'] },
             { id: 4, group: true, label: 'reg掛號帳號1', list: ['帳號', '密碼'] },
             { id: 5, group: true, label: 'reg掛號帳號2', list: ['帳號', '密碼'] },
+            { id: 6, group: true, label: 'nis維護帳號', list: ['帳號', '密碼'] },
 
           ],
           his3Config: getHis3(),
@@ -272,7 +295,8 @@
             { id: 2, group: true, label: 'PNGTREE', list: ['帳號', '密碼']},
             { id: 3, group: true, label: '公司網站WordPress後台', list: ['帳號', '密碼']},
             { id: 4, group: true, label: '若鄰', list: ['帳號', '密碼']},
-            { id: 5, group: true, label: 'ChartEditor後端後臺IP帳號密碼', list: ['IP', '帳號', '密碼']}
+            { id: 5, group: true, label: '176(ChrEd/OBS後端後臺) IP帳號密碼', list: ['IP', '帳號', '密碼']},
+            { id: 6, group: true, label: 'ialicebook/share', list: ['位址', '帳號', '密碼']},
           ],
           otherConfig: getOther(),
         }
