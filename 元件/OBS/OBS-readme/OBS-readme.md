@@ -128,3 +128,19 @@ searchKind=`ONE_SHEET` ：
 - encounterNo
 - chartNo
 - sheetId
+
+## 就醫序號與病歷號
+
+存檔時會從config取得要存的就醫序號(IPD_NO)及病歷號(CHART_NO)
+
+## 欄位和UI
+
+### 前台
+
+![](OBS_TRANS_ID.png)
+
+### 後台
+
+![](OBS醫療表單管理.png)
+
+![](OBS醫療表單類別樹.png)

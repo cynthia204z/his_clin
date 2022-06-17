@@ -267,6 +267,7 @@
                 'I2021071201', 'I12090392', 'O12010100005', 'E12032000001'
               ]
             },
+            { group: true, sysCode: 'OER', label: '門診醫囑就醫序號', list: ['O22052600001', 'O22051900031', 'O22052000003'] }
           ],
           his7AccountBtnGroup: [
             { id: 1, group: true, label: 'JNPF個人帳號1', list: ['帳號', '密碼'] },
@@ -290,12 +291,16 @@
             { group: true, sysCode: 'EMR-ER', label: '急診就醫序號', list: ['E21082000002', 'E19112000059', 'E20071700094'] },
             { sysCode: 'EMR-IER', label: '住院醫師代碼查詢', value: '4066' },
           ],
+          databaseConfig: getDatabase(),
+          databaseBtnGroup: [
+            { group: true, databaseType: '' }
+          ],
           otherAccountBtnGroup: [
             { id: 1, group: true, label: 'SonarQube', list: ['帳號', '密碼']},
             { id: 2, group: true, label: 'PNGTREE', list: ['帳號', '密碼']},
             { id: 3, group: true, label: '公司網站WordPress後台', list: ['帳號', '密碼']},
             { id: 4, group: true, label: '若鄰', list: ['帳號', '密碼']},
-            { id: 5, group: true, label: '176(ChrEd/OBS後端後臺) IP帳號密碼', list: ['IP', '帳號', '密碼']},
+            { id: 5, group: true, label: '176(chred/obs後端後臺) IP帳號密碼', list: ['IP', '帳號', '密碼']},
             { id: 6, group: true, label: 'ialicebook/share', list: ['位址', '帳號', '密碼']},
           ],
           otherConfig: getOther(),

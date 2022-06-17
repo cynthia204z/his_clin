@@ -19,6 +19,12 @@ const his7AccountList = {
   2: ['cynthia', '123456'],
   3: ['admin', '123456'],
 }
+const databaseAccountList = {
+  1: ['192.168.1.240', 'dpohai', 'JNPF', 'mrtg0422'], 
+  2: ['192.168.1.240', 'dpohai', 'EMR', 'mrtg0422'], 
+  3: ['192.168.1.176', 'ching', 'welcome1'], 
+  4: ['192.168.1.176', 'ching', 'welcome1'], 
+}
 function getOther(){
   return otherAccountList
 }
@@ -27,4 +33,7 @@ function getHis3(){
 }
 function getHis7(){
   return his7AccountList
+}
+function getDatabase(){
+  return databaseAccountList
 }

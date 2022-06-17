@@ -18,7 +18,7 @@ element-tiptap沒有提供此功能，以下為使用javascript達成目標功�
    }
    ```
 
-2. 給富文本框加點擊事件
+2. 給富文本框加點擊事件、keyup事件
 
    ```js
    mounted() {
@@ -32,6 +32,11 @@ element-tiptap沒有提供此功能，以下為使用javascript達成目標功�
          // 獲取文件中選中區域
          THIS.currentRange = document.getSelection().getRangeAt(0)
          THIS.currentNode = document.createElement('p')
+       }
+       
+       textareaInput.onkeyup = function() {
+         // 獲取文件中選中區域
+         THIS.currentRange = document.getSelection().getRangeAt(0)
        }
      }, 500)
    }
@@ -59,10 +64,14 @@ element-tiptap沒有提供此功能，以下為使用javascript達成目標功�
        this.currentNode = null
        this.currentRange = null
      } else {
-       this.content += newText
+       if(this.content) {
+         this.content += newText  
+       } else {
+         this.content = newText
+       }
      }
    }
    ```
-
+   
    
 

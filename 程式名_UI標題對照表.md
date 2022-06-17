@@ -58,7 +58,7 @@
   <br>
   <br>
   <div id="COMM"></div>
-  <h2 class="comm">COMM</h2>
+  <h2 class="comm">COMM醫囑共用</h2>
   <div class="title comm">dialog</div><br>
   <div class="codeName comm">allergyRecordDialog</div> 過敏記錄 <br>
   <br>
@@ -92,7 +92,7 @@
   <br>
   <br>
   <div id="CPOE"></div>
-  <h2 class="cpoe">CPOE</h2>
+  <h2 class="cpoe">CPOE全院項</h2>
   <div class="title cpoe">dialog</div><br>
   <div class="codeName cpoe">InsCodeToPcsDialog</div> ICD10PCS Search Dialog <br>
   <div class="codeName cpoe">OrderCircleDialog</div> 可用頻次(用法) <br>
@@ -113,7 +113,7 @@
   <br>
   <br>
   <div id="IERPAT"></div>
-  <h2 class="ierpat">IERPAT</h2>
+  <h2 class="ierpat">IERPAT住院醫囑</h2>
   <div class="title ierpat">dialog</div><br>
   <div class="codeName ierpat">comm5080Dialog</div> 預約入院作業 <br>
   <div class="codeName ierpat">Ier1080_DittoDialog</div> 病患問題 Ditto Dialog <br>
@@ -148,7 +148,7 @@
   <br>
   <br>
   <div id="OERPAT"></div>
-  <h2 class="oerpat">OERPAT</h2>
+  <h2 class="oerpat">OERPAT門診醫囑</h2>
   <div class="title oerpat">dialog</div><br>
   <div class="codeName oerpat">allergyRecordDialog</div> 過敏記錄 <br>
   <div class="codeName oerpat">capHcLogDialog</div> 檳菸史 <br>
