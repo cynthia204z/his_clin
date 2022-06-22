@@ -144,3 +144,67 @@ methods: {
 }
 ```
 
+## beforeRouteEnter
+
+```js
+beforeRouteEnter (to, from, next) {
+  next(vm => {
+    if(vm.$route.params && typeof vm.$route.params === 'object') {
+      for (const key in vm.$route.params) {
+        vm.query[key] = vm.$route.params[key]
+      }
+      vm.$nextTick(function() {
+        vm.$refs.Search.search()
+      })
+    }
+  })
+},
+```
+
+```js
+beforeRouteEnter(to, from, next) {
+  next((vm) => {
+    if (vm.userInfo.prevLogin == 1 && from.path == '/login') {
+      //右下角提示上次登錄信息
+      vm.openNotify()
+    }
+  })
+},
+```
+
+```js
+beforeRouteEnter(to, from, next){
+  next((vm)=>{
+    if(to.query.data){
+      vm.linkDTO = to.query.data
+      vm.queryPanel04 = true
+    }
+  })
+},
+```
+
+## beforeRouteLeave
+
+```js
+beforeRouteLeave(to, from, next) {
+	// do something 12345
+  next()
+},
+```
+
+## 選中行取消show-overflow-tooltip效果
+
+```vue
+<el-table-column  prop="hesName1" label="建議"  min-width="220" show-overflow-tooltip>
+  <template slot-scope="scope">
+		<span :class="{'show-all-text': currentRow && currentRow.id === scope.row.id}">{{scope.row.hesName1}}</span>
+  </template>
+</el-table-column>
+```
+
+```css
+.show-all-text{
+  white-space: break-spaces;
+}
+```
+

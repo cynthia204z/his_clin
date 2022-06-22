@@ -16,8 +16,8 @@
     }
     .codeName {
       font-weight: bold;
-      padding: 0 15px 5px 0;
-      width: 120px;
+      padding: 2.5px 15px 2.5px 0;
+      width: 180px;
       display: inline-block;
       text-align: -webkit-right;
     }
@@ -33,8 +33,34 @@
       color: #fff;
     }
     .thin{
+     	width: calc(52% - 150px);
       font-weight: 300;
-      mix-blend-mode: difference;
+      mix-blend-mode: color-dodge;
+      margin-left: 150px;
+      text-align: left;
+    }
+    .thin.c-2nd{
+      mix-blend-mode: color-burn;
+      margin-left: 180px;
+    }
+    .thin.c-3rd{
+      mix-blend-mode: luminosity;
+      margin-left: 210px;
+    }
+    .row{
+      vertical-align: middle;
+    }
+    .row:hover{
+      position: relative;
+      background: #433535;
+    }
+    .row:hover::before{
+      content: "▶";
+      padding: 2.5px 0;
+      color: gray;
+      font-weight: bold;
+      position: absolute;
+      left: 10px;
     }
   </style>
   <br>
@@ -49,10 +75,25 @@
   <div class="codeName nis">nis9020</div> 出院護理 <br>
   <br>
   <div class="title nis">handOver</div><br>
-  <div class="codeName nis">nis8020</div> 交班 <br>
-  <div class="codeName nis">nis8030</div> 交班作業 <br>
-  <div class="codeName nis">nis8040Table</div> 跨單位交班查詢 <br>
-  <div class="codeName nis">nis8050</div> 簽收 <br>
+  <div class="row"><div class="codeName nis">nis8020</div> 交班(X) </div></div>
+<div class="row"><div class="codeName nis">nis8030</div> 交班作業=>交班 </div>
+<div class="row"><div class="codeName nis thin">⌊___ nisEventHandOverPage</div> 交辦事項 </div>
+<div class="row"><div class="codeName nis thin c-2nd">⌊___ NisHandOverNewForm</div> 交辦事項 </div>
+<div class="row"><div class="codeName nis thin c-2nd c-3rd">⌊___ handOverEvent</div> 醫囑交辦事項 </div>
+<div class="row"><div class="codeName nis thin c-2nd c-3rd">⌊___ recordShift</div> 當班處置事項 </div>
+<div class="row"><div class="codeName nis thin c-2nd c-3rd">⌊___ record</div> 新增交辦事項 </div>
+<div class="row"><div class="codeName nis thin c-2nd">⌊___ NisNonconfirmHandOverForm</div> 未執行事項 </div>
+<div class="row"><div class="codeName nis thin c-2nd">⌊___ NisChgEventHandOverForm</div> 異動摘要 </div>
+<div class="row"><div class="codeName nis thin">⌊___ nisOrder</div> 醫囑 </div>
+<div class="row"><div class="codeName nis thin">⌊___ nisMed</div> 藥囑 </div>
+<div class="row"><div class="codeName nis thin">⌊___ nisConsult</div> 會診 </div>
+<div class="row"><div class="codeName nis thin">⌊___ nisOr</div> 手術 </div>
+<div class="row"><div class="codeName nis thin">⌊___ nisDiet</div> 飲食 </div>
+<div class="row"><div class="codeName nis thin">⌊___ nisBlod</div> 輸血 </div>
+<div class="row"><div class="codeName nis thin">⌊___ nisHealthProblem</div> 健康問題 </div>
+<div class="row"><div class="codeName nis thin">⌊___ nisHandoverPlatform</div> 團隊交班平台 </div>
+<div class="row"><div class="codeName nis">nis8040Table</div> 跨單位交班查詢 </div>
+<div class="row"><div class="codeName nis">nis8050</div> 簽收 </div>
   <br>
   <div class="title nis">ordercomfirm</div><br>
   <div class="codeName nis">nis3021S</div> <br>  

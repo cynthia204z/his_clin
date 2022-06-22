@@ -51,6 +51,9 @@
       color: #fff;
     }
     .thin{
+      width: calc(50% - 150px);
+		  margin-left: 150px;
+      text-align: left;
       font-weight: 300;
       mix-blend-mode: difference;
     }
@@ -69,21 +72,21 @@
   <div class="codeName comm">Comm2010RegisterPage</div> 門診預約掛號 <br>
   <div class="codeName comm">Comm3010Page</div> 重要病史 <br>
   <div class="codeName comm">Comm5050newPage</div> 化療處方 <br>
-  <div class="codeName comm thin">Comm5050_ApyLog</div> ﹍﹍﹍ 事前審查紀錄 <br>
-  <div class="codeName comm thin">Comm5050_History</div> ﹍﹍﹍ 歷史療程 <br>
-  <div class="codeName comm thin">Comm5050_Order</div> ﹍﹍﹍ 化療表單 <br>
-  <div class="codeName comm thin">Comm5050_OrderTW</div> ﹍﹍﹍ 化療處方明細 <br>
-  <div class="codeName comm thin">Comm5050_TypeSelectionTW</div> ﹍﹍﹍ 選擇化療處方明細種類 <br>
+  <div class="codeName comm thin">⌊___ Comm5050_ApyLog</div> 事前審查紀錄 <br>
+  <div class="codeName comm thin">⌊___ Comm5050_History</div> 歷史療程 <br>
+  <div class="codeName comm thin">⌊___ Comm5050_Order</div> 化療表單 <br>
+  <div class="codeName comm thin">⌊___ Comm5050_OrderTW</div> 化療處方明細 <br>
+  <div class="codeName comm thin">⌊___ Comm5050_TypeSelectionTW</div> 選擇化療處方明細種類 <br>
   <div class="codeName comm">Comm5060Page</div> 診斷書 <br>
-  <div class="codeName comm thin">comm5060_CBorn</div> ﹍﹍﹍ 中文出生證明書 <br>
-  <div class="codeName comm thin">comm5060_Death</div> ﹍﹍﹍ 死亡證明書 <br>
-  <div class="codeName comm thin">comm5060_EBorn</div> ﹍﹍﹍ 英文出生證明書 <br>
-  <div class="codeName comm thin">comm5060_EDeath</div> ﹍﹍﹍ 英文死亡證明書 <br>
-  <div class="codeName comm thin">comm5060_English</div> ﹍﹍﹍ 英文診斷書 <br>
-  <div class="codeName comm thin">comm5060_General</div> ﹍﹍﹍ 一般診斷書 <br>
+  <div class="codeName comm thin">⌊___ comm5060_CBorn</div> 中文出生證明書 <br>
+  <div class="codeName comm thin">⌊___ comm5060_Death</div> 死亡證明書 <br>
+  <div class="codeName comm thin">⌊___ comm5060_EBorn</div> 英文出生證明書 <br>
+  <div class="codeName comm thin">⌊___ comm5060_EDeath</div> 英文死亡證明書 <br>
+  <div class="codeName comm thin">⌊___ comm5060_English</div> 英文診斷書 <br>
+  <div class="codeName comm thin">⌊___ comm5060_General</div> 一般診斷書 <br>
   <div class="codeName comm">Comm5080Page</div> 預約入院作業 <br>
   <div class="codeName comm">Comm5090Page</div> 會診醫師排班 <br>
-  <div class="codeName comm thin">Comm5090_TW</div> ﹍﹍﹍ 複製月排班表 <br>
+  <div class="codeName comm thin">⌊___ Comm5090_TW</div> 複製月排班表 <br>
   <div class="codeName comm">Comm6040Page</div> 會診單填寫 <br>
   <div class="codeName comm">Comm6041Page</div> 會診單回覆 <br>
   <br>
@@ -102,14 +105,14 @@
   <br>
   <div class="title cpoe">view</div><br>
   <div class="codeName cpoe">CpoeFrequentPage</div> 常用項設定 <br>
-  <div class="codeName cpoe thin">deptEmrfrequent.vue</div> ﹍﹍﹍ 科常用 <br>
-  <div class="codeName cpoe thin">docEmrfrequent.vue</div> ﹍﹍﹍ 醫師常用 <br>
+  <div class="codeName cpoe thin">⌊___ deptEmrfrequent.vue</div> 科常用 <br>
+  <div class="codeName cpoe thin">⌊___ docEmrfrequent.vue</div> 醫師常用 <br>
   <div class="codeName cpoe">CpoePkgPage</div> 套餐設定 <br>
-  <div class="codeName cpoe thin">deptEmrpkg.vue</div> ﹍﹍﹍ 科套餐 <br>
-  <div class="codeName cpoe thin">docEmrpkg.vue</div> ﹍﹍﹍ 醫師套餐 <br>
+  <div class="codeName cpoe thin">⌊___ deptEmrpkg.vue</div> 科套餐 <br>
+  <div class="codeName cpoe thin">⌊___ docEmrpkg.vue</div> 醫師套餐 <br>
   <div class="codeName cpoe">CpoeFrerquentImagePage</div> 常用圖檔 <br>
-  <div class="codeName cpoe thin">deptimg.vue</div> ﹍﹍﹍ 科圖檔 <br>
-  <div class="codeName cpoe thin">docimg.vue</div> ﹍﹍﹍ 醫師圖檔 <br>
+  <div class="codeName cpoe thin">⌊___ deptimg.vue</div> 科圖檔 <br>
+  <div class="codeName cpoe thin">⌊___ docimg.vue</div> 醫師圖檔 <br>
   <br>
   <br>
   <div id="IERPAT"></div>
@@ -175,7 +178,7 @@
   <div class="codeName oerpat">IpdShiftHistoryDialog</div> 出院交班歷程 <br>
   <div class="codeName oerpat">LisResultDialog</div> 檢驗資料 <br>
   <div class="codeName oerpat">oerPatImageDialog</div> 門診病患圖檔 <br>
-  <div class="codeName oerpat thin">freqImgDialog</div> ﹍﹍﹍ 從常用新增圖檔 <br>
+  <div class="codeName oerpat thin">⌊___ freqImgDialog</div> 從常用新增圖檔 <br>
   <div class="codeName oerpat">PhraseDialog</div> 常用片語 <br>
   <div class="codeName oerpat">regRegisterDialog</div> 門診預掛 <br>
   <div class="codeName oerpat">rePrintDialog</div> 重印報表 <br>
@@ -199,10 +202,10 @@
   <div class="codeName oerpat">EerPatinsListDocPage</div> 急診病患清單(醫師) <br>
   <div class="codeName oerpat">EmrRecordPage</div> 歷次就醫紀錄 <br>
   <div class="codeName oerpat">ErCareCenterListPage</div> 急診照護查詢 <br>
-  <div class="codeName oerpat thin">EmrReportACS001Table</div> ﹍﹍﹍ 急性冠心症 ACS <br>
-  <div class="codeName oerpat thin">EmrReportCVA001Table</div> ﹍﹍﹍ 急性腦中風 CVA <br>
-  <div class="codeName oerpat thin">EmrReportTRAUMA001Table</div> ﹍﹍﹍ 緊急外傷 TRAUMA <br>
-  <div class="codeName oerpat thin">EmrReportSepsis001Table</div> ﹍﹍﹍ 敗血性休克/嚴重敗血症 <br>
+  <div class="codeName oerpat thin">⌊___ EmrReportACS001Table</div> 急性冠心症 ACS <br>
+  <div class="codeName oerpat thin">⌊___ EmrReportCVA001Table</div> 急性腦中風 CVA <br>
+  <div class="codeName oerpat thin">⌊___ EmrReportTRAUMA001Table</div> 緊急外傷 TRAUMA <br>
+  <div class="codeName oerpat thin">⌊___ EmrReportSepsis001Table</div> 敗血性休克/嚴重敗血症 <br>
   <div class="codeName oerpat">ErPatinsPage</div> 急診醫囑病患首頁 <br>
   <div class="codeName oerpat">OerMainPage</div> 門診醫囑病患首頁 <br>
   <div class="codeName oerpat">OerPatBasList</div> 門診病患清單 <br>
