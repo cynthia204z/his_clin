@@ -16,7 +16,7 @@
     }
     .codeName {
       font-weight: bold;
-      padding: 0 15px 5px 0;
+      padding: 2.5px 15px 2.5px 0;
       width: 200px;
       display: inline-block;
       text-align: -webkit-right;
@@ -57,41 +57,58 @@
       font-weight: 300;
       mix-blend-mode: difference;
     }
+    .row{
+      vertical-align: middle;
+      transition: all 0.1s linear;
+    }
+    .row:hover{
+      position: relative;
+      background: #272727;
+    }
+    .row:hover::before{
+      content: "▶";
+      transition: all 0.1s linear;
+      padding: 2.5px 0;
+      color: gray;
+      font-weight: bold;
+      position: absolute;
+      left: 10px;
+    }
   </style>
   <br>
   <br>
   <div id="COMM"></div>
   <h2 class="comm">COMM醫囑共用</h2>
   <div class="title comm">dialog</div><br>
-  <div class="codeName comm">allergyRecordDialog</div> 過敏記錄 <br>
+  <div class="row"><div class="codeName comm">allergyRecordDialog</div> 過敏記錄 </div>
   <br>
   <div class="title comm">page</div><br>
-  <div class="codeName comm">Comm1010Page</div> 代碼主檔 <br>
-  <div class="codeName comm">Comm1020Page</div> 衛教檔案設定 <br>
-  <div class="codeName comm">Comm1030Page</div> 醫療目標點數 <br>
-  <div class="codeName comm">Comm2010RegisterPage</div> 門診預約掛號 <br>
-  <div class="codeName comm">Comm3010Page</div> 重要病史 <br>
-  <div class="codeName comm">Comm5050newPage</div> 化療處方 <br>
-  <div class="codeName comm thin">⌊___ Comm5050_ApyLog</div> 事前審查紀錄 <br>
-  <div class="codeName comm thin">⌊___ Comm5050_History</div> 歷史療程 <br>
-  <div class="codeName comm thin">⌊___ Comm5050_Order</div> 化療表單 <br>
-  <div class="codeName comm thin">⌊___ Comm5050_OrderTW</div> 化療處方明細 <br>
-  <div class="codeName comm thin">⌊___ Comm5050_TypeSelectionTW</div> 選擇化療處方明細種類 <br>
-  <div class="codeName comm">Comm5060Page</div> 診斷書 <br>
-  <div class="codeName comm thin">⌊___ comm5060_CBorn</div> 中文出生證明書 <br>
-  <div class="codeName comm thin">⌊___ comm5060_Death</div> 死亡證明書 <br>
-  <div class="codeName comm thin">⌊___ comm5060_EBorn</div> 英文出生證明書 <br>
-  <div class="codeName comm thin">⌊___ comm5060_EDeath</div> 英文死亡證明書 <br>
-  <div class="codeName comm thin">⌊___ comm5060_English</div> 英文診斷書 <br>
-  <div class="codeName comm thin">⌊___ comm5060_General</div> 一般診斷書 <br>
-  <div class="codeName comm">Comm5080Page</div> 預約入院作業 <br>
-  <div class="codeName comm">Comm5090Page</div> 會診醫師排班 <br>
-  <div class="codeName comm thin">⌊___ Comm5090_TW</div> 複製月排班表 <br>
-  <div class="codeName comm">Comm6040Page</div> 會診單填寫 <br>
-  <div class="codeName comm">Comm6041Page</div> 會診單回覆 <br>
+  <div class="row"><div class="codeName comm">Comm1010Page</div> 代碼主檔 </div>
+  <div class="row"><div class="codeName comm">Comm1020Page</div> 衛教檔案設定 </div>
+  <div class="row"><div class="codeName comm">Comm1030Page</div> 醫療目標點數 </div>
+  <div class="row"><div class="codeName comm">Comm2010RegisterPage</div> 門診預約掛號 </div>
+  <div class="row"><div class="codeName comm">Comm3010Page</div> 重要病史 </div>
+  <div class="row"><div class="codeName comm">Comm5050newPage</div> 化療處方 </div>
+  <div class="row"><div class="codeName comm thin">⌊___ Comm5050_ApyLog</div> 事前審查紀錄 </div>
+  <div class="row"><div class="codeName comm thin">⌊___ Comm5050_History</div> 歷史療程 </div>
+  <div class="row"><div class="codeName comm thin">⌊___ Comm5050_Order</div> 化療表單 </div>
+  <div class="row"><div class="codeName comm thin">⌊___ Comm5050_OrderTW</div> 化療處方明細 </div>
+  <div class="row"><div class="codeName comm thin">⌊___ Comm5050_TypeSelectionTW</div> 選擇化療處方明細種類 </div>
+	<div class="row"><div class="codeName comm">Comm5060Page</div> 診斷書 </div>
+  <div class="row"><div class="codeName comm thin">⌊___ comm5060_CBorn</div> 中文出生證明書 </div>
+  <div class="row"><div class="codeName comm thin">⌊___ comm5060_Death</div> 死亡證明書 </div>
+  <div class="row"><div class="codeName comm thin">⌊___ comm5060_EBorn</div> 英文出生證明書 </div>
+  <div class="row"><div class="codeName comm thin">⌊___ comm5060_EDeath</div> 英文死亡證明書 </div>
+  <div class="row"><div class="codeName comm thin">⌊___ comm5060_English</div> 英文診斷書 </div>
+  <div class="row"><div class="codeName comm thin">⌊___ comm5060_General</div> 一般診斷書 </div>
+  <div class="row"><div class="codeName comm">Comm5080Page</div> 預約入院作業 </div>
+  <div class="row"><div class="codeName comm">Comm5090Page</div> 會診醫師排班 </div>
+  <div class="row"><div class="codeName comm thin">⌊___ Comm5090_TW</div> 複製月排班表 </div>
+  <div class="row"><div class="codeName comm">Comm6040Page</div> 會診單填寫 </div>
+  <div class="row"><div class="codeName comm">Comm6041Page</div> 會診單回覆 </div>
   <br>
   <div class="title comm">view</div><br>
-  <div class="codeName comm">EmrChemoPackage</div> 化療套餐 <br>  
+  <div class="row"><div class="codeName comm">EmrChemoPackage</div> 化療套餐 </div>  
   <br>
   <br>
   <div id="CPOE"></div>
@@ -151,7 +168,7 @@
   <br>
   <br>
   <div id="OERPAT"></div>
-  <h2 class="oerpat">OERPAT門診醫囑</h2>
+  <h2 class="oerpat">OERPAT門急診醫囑</h2>
   <div class="title oerpat">dialog</div><br>
   <div class="codeName oerpat">allergyRecordDialog</div> 過敏記錄 <br>
   <div class="codeName oerpat">capHcLogDialog</div> 檳菸史 <br>
