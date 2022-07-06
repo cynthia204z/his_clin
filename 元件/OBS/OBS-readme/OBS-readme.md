@@ -6,7 +6,7 @@
 
 預設為readonly
 
-```vue
+```html
 <template>
 <div class="JNPF-common-layout">
   <div class="JNPF-common-layout-center">
@@ -38,7 +38,7 @@ export default {
 
 <img src="image-20220421154145335.png" alt="image-20220421154145335" style="zoom:70%;" />
 
-```vue
+```html
 <template>
 <div class="JNPF-common-layout">
   <div class="JNPF-common-layout-center">
@@ -90,7 +90,7 @@ searchKind=`UNIT` ：
 
 <img src="image-20220421154215050.png" alt="image-20220421154215050" style="zoom:70%;" />
 
-```vue
+```html
 <template>
   <div class="JNPF-common-layout">
     <div class="JNPF-common-layout-center">
@@ -144,3 +144,11 @@ searchKind=`ONE_SHEET` ：
 ![](OBS醫療表單管理.png)
 
 ![](OBS醫療表單類別樹.png)
+
+## SHEET_TYPE
+
+表單類型
+- A: list form
+- B: form
+- C: chapter form
+- D: master-list from
