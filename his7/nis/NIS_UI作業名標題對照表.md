@@ -69,8 +69,11 @@
     position: absolute;
     left: 10px;
   }
-  .util-pkg{
+  .util{
     color: #009926;
+  }
+  .util.c-2nd{
+    color: #447550;
   }
   .tab{
     background: #272727;
@@ -125,15 +128,17 @@
 <div class="title nis">focus</div><br>
 <div class="row">  <div class="codeName nis">nis4020</div> 護理紀錄 </div>  
 <div class="row"><div class="codeName nis thin">⌊___ divideBox</div> <p class="tab">tab1</p> 焦點表單 </div>
-<div class="row"><div class="codeName nis thin c-2nd">⌊___ NisPatFocusSheetADGTable</div> (左) </div>
-<div class="row"><div class="codeName nis thin c-2nd">⌊___ NisPatFocusItemTable</div> (右上) </div>
+<div class="row"><div class="codeName nis thin c-2nd">⌊___ NisPatFocusSheetADGTable</div> (左: 護紀焦點主檔) </div>
+<div class="row"><div class="codeName nis thin c-2nd">⌊___ NisPatFocusItemTable</div> (右上: 焦點明細) </div>
 <div class="row"><div class="codeName nis thin">⌊___ nisPatFocus</div> <p class="tab">tab2</p> 焦點總表 </div>
-<div class="row"><div class="codeName nis thin util-pkg">⌊___ dialog</div>  </div>
-<div class="row"><div class="codeName nis thin c-2nd">⌊___ FocusSheetItemDialog</div> 焦點編輯=>新增焦點 </div>
+<div class="row"><div class="codeName nis thin util">⌊___ dialog</div>  </div>
+<div class="row"><div class="codeName nis thin util c-2nd">⌊___ FocusSheetItemDialog</div> 焦點編輯=>新增焦點 </div>
+<div class="row"><div class="codeName nis thin util c-2nd">⌊___ NisPatFocusMentionDialog</div> 提示=>提示焦點清單 </div>
 
 <br>
 <div class="title nis">plan</div><br>
 <div class="row">  <div class="codeName nis">nis5020</div> 計畫 </div> 
+<div class="row"><div class="codeName nis thin">⌊___ NisPlanTransmstCustomTable</div> 計畫清單 </div>
 
 <br>
 <div class="title nis">consult</div><br>
@@ -164,11 +169,11 @@
 <div class="row"><div class="codeName nis thin">⌊___ nisBlod</div> <p class="tab">tab12</p> 輸血 </div>
 <div class="row"><div class="codeName nis thin">⌊___ nisHealthProblem</div> <p class="tab">tab14</p> 健康問題 </div>
 <div class="row"><div class="codeName nis thin">⌊___ nisHandoverPlatform</div> 團隊交班平台 </div>
-<div class="row"><div class="codeName nis thin util-pkg">⌊___ dialog</div>  </div>
-<div class="row"><div class="codeName nis thin c-2nd">⌊___ NisHandOverDtlRemedyDialog</div> 帶回上一班事項 </div>
-<div class="row"><div class="codeName nis thin c-2nd">⌊___ PublishMsgDialog</div> 重要訊息清單 </div>
-<div class="row"><div class="codeName nis thin c-2nd">⌊___ NisHandOverQueryDialog</div> (交班/交辦事項/查詢按鈕) </div>
-<div class="row"><div class="codeName nis thin c-2nd">⌊___ NisHandOverCompleteDialog</div> 交接班完成 </div>
+<div class="row"><div class="codeName nis thin util">⌊___ dialog</div>  </div>
+<div class="row"><div class="codeName nis thin util c-2nd">⌊___ NisHandOverDtlRemedyDialog</div> 帶回上一班事項 </div>
+<div class="row"><div class="codeName nis thin util c-2nd">⌊___ PublishMsgDialog</div> 重要訊息清單 </div>
+<div class="row"><div class="codeName nis thin util c-2nd">⌊___ NisHandOverQueryDialog</div> (交班/交辦事項/查詢按鈕) </div>
+<div class="row"><div class="codeName nis thin util c-2nd">⌊___ NisHandOverCompleteDialog</div> 交接班完成 </div>
 <div class="row"><div class="codeName nis">nis8040Table</div> 跨單位交班查詢 </div>
 <div class="row"><div class="codeName nis">nis8050</div> 簽收 </div>
 

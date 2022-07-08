@@ -91,7 +91,7 @@ this.waitSaveMsg = this.$notify({
 })
 
 saveMst().then(()=>{
-  this.waitSaveMsg.message = '儲存明細中，請勿'
+  this.waitSaveMsg.message = '儲存明細中，請勿關閉視窗'
 })
 ```
 
@@ -99,7 +99,9 @@ saveMst().then(()=>{
 
 ## Table
 
-無表頭勾選框的勾選欄位：改表頭文字
+### 改表頭文字
+
+無表頭勾選框的勾選欄位
 
 ```vue
 <el-table :data="data" class="no-header-checkbox-table">
@@ -116,6 +118,177 @@ saveMst().then(()=>{
   content: "選取";
   position: absolute;
   
+}
+```
+
+
+
+### 表頭加樹狀狀態控制
+
+```vue
+<el-table-column prop="focusDatetime" width="200" show-overflow-tooltip sortable="custom">
+  <template #header>
+    <el-tooltip :content="treeExpandedStatus ? '全部收起' : '全部展開'" placement="top">
+      <el-button type="text" @click.stop="toggleRowExpansion">
+        <em v-if="treeExpandedStatus" class="ym-custom ym-custom-view-list"/>
+        <em v-else class="ym-custom ym-custom-file-tree"/>
+      </el-button>
+    </el-tooltip>
+    紀錄時間
+  </template>
+  <template slot-scope="scope">
+    <span class="font-color-1">{{ scope.row.focusDatetime }}</span>
+  </template>
+</el-table-column>
+```
+
+```js
+// 樹狀展開/收起全部
+toggleRowExpansion(){
+  this.treeExpandedStatus = !this.treeExpandedStatus
+  this.list.forEach(row => {
+    this.$refs.table.$refs.JNPFTable.toggleRowExpansion(row, this.treeExpandedStatus)
+  })
+}
+```
+
+
+
+### 樹狀合併儲存格
+
+```vue
+<JNPFTable :data="list"
+           v-loading="false"
+           :hasNO="false"
+           highlight-current-row
+           @current-change="handleCurrentChange"
+           @expand-change="handleExpandChange"
+           class="bottom-line"
+           size="mini"
+           @sort-change="handleSortChange"
+           :span-method="objectSpanMethod"
+           :row-key="(row) => {return row.id + row.itemOrder + row.isFirstrow}"
+           :tree-props="{children: 'children', hasChildren: ''}"
+           default-expand-all
+           ref="table"
+           >
+  <el-table-column prop="focusDatetime" label="紀錄時間" width="200" show-overflow-tooltip sortable="custom"></el-table-column>
+  <el-table-column prop="sheetName" label="焦點名稱" width="180" show-overflow-tooltip></el-table-column>
+  <el-table-column prop="itemDart" label="類別" width="60" align="center">
+    <template slot-scope="scope">
+      {{scope.row.expanded ? scope.row.itemDart: ''}}
+    </template>
+  </el-table-column>
+  <el-table-column prop="itemContent" label="紀錄內容" min-width="300" show-overflow-tooltip>
+    <template slot-scope="scope">
+      {{scope.row.expanded ? scope.row.itemContent: ''}}
+    </template>
+  </el-table-column>
+  <el-table-column prop="focusRecorderName" label="紀錄者" width="80" show-overflow-tooltip>
+    <template slot-scope="scope">
+      {{scope.row.expanded ? scope.row.focusRecorderName: ''}}
+    </template>
+  </el-table-column>
+</JNPFTable>
+```
+
+```js
+export default {
+  data() {
+    return {
+      // 合併依據
+      spanArr: [],
+      // UI上的變平數據
+      flatListAll: []
+    }
+  },
+  created() {
+    this.initData()
+  },
+  methods: {
+    initData() {
+      postData(uiDoGetPatFocusSheetItemList, this.query).then(res => {
+        this.list = res.data
+        this.list.forEach(item => this.handleExpandChange(item, true))
+        this.flatList()
+        this.flitterData()
+      })
+    },
+    // 合併儲存格方法
+    objectSpanMethod({ row, column, rowIndex, columnIndex }) {
+      if (columnIndex === 0 || columnIndex === 1) {
+        console.warn(row.expanded, row.isFirstrow, rowIndex, this.spanArr[rowIndex])
+        if (this.spanArr[rowIndex] && row.expanded) {
+          return {
+            rowspan: this.spanArr[rowIndex],
+            colspan: 1
+          }
+        } else if(row.isFirstrow === 'Y'){
+          return {
+            rowspan: 1,
+            colspan: 1
+          }
+        }else{
+          return {
+            rowspan: 0,
+            colspan: 0
+          }
+        }
+      }
+    },
+    // 合併設定
+    flitterData() {
+      if (!this.list.length) {
+        this.spanArr = []
+        return
+      }
+      let flatList = this.flatListAll
+      let spanArr = []
+      let contactDot = 0
+      flatList.forEach((item, index) => {
+        if (index === 0) {
+          spanArr.push(1)
+        } else {
+          let current = item.id
+          let next = flatList[index - 1].id
+          if (current === next) {
+            spanArr[contactDot] += 1
+            spanArr.push(0)
+          } else {
+            contactDot = index
+            spanArr.push(1)
+          }
+        }
+      })
+      this.spanArr = spanArr
+      console.warn(spanArr)
+    },
+    // 資料扁平化
+    flatList() {
+      let list = JSON.parse(JSON.stringify(this.list))
+      list.forEach(row => {
+        if (row.children && row.children.length) {
+          row.children.unshift(row)
+        } else {
+          row.children = []
+        }
+      })
+      this.flatListAll = list.map(row => row.children).flat()
+    },
+    // 樹狀行展開狀態變更
+    handleExpandChange(row, expanded) {
+      this.list.forEach(listRow => {
+        if (listRow.id === row.id) {
+          listRow.expanded = expanded
+          if (listRow.children && listRow.children.length) {
+            listRow.children.forEach(child => child.expanded = expanded)
+          }
+        }
+      })
+      this.flatList()
+      this.flitterData()
+    }
+  }
 }
 ```
 
@@ -219,77 +392,77 @@ export default {
 
 ```vue
 <!--index.vue menu-->
-	<el-menu
-      :default-active="activeIndex"
-      class="el-menu-demo bg-color-3 selector"
-      mode="horizontal"
-      menu-trigger="hover"
-      @select="menuSelect"
-      style="display:flex"
-    >
-      <div v-for="(item, index) in menuOptions" :key="index">
-        <el-submenu v-if="item.children" class="submenu" :index="item.name">
-          <template slot="title">{{ item.title }}</template>
-          <template v-for="subitem in item.children">
-            <el-menu-item
-              class="hover-font-color-3 bg-color-2"
-              style="height: 30px !important; line-height: 30px !important;"
-              :index="subitem.name">
-              {{ subitem.title }}
-            </el-menu-item>
-            <el-divider class="menu-divider" v-if="subitem.hasDivider"></el-divider>
-          </template>
-        </el-submenu>
-        <el-menu-item v-if="!item.children" :index="item.name">{{ item.title }}</el-menu-item>
-      </div>
-    </el-menu>
+<el-menu
+         :default-active="activeIndex"
+         class="el-menu-demo bg-color-3 selector"
+         mode="horizontal"
+         menu-trigger="hover"
+         @select="menuSelect"
+         style="display:flex"
+         >
+  <div v-for="(item, index) in menuOptions" :key="index">
+    <el-submenu v-if="item.children" class="submenu" :index="item.name">
+      <template slot="title">{{ item.title }}</template>
+      <template v-for="subitem in item.children">
+        <el-menu-item
+                      class="hover-font-color-3 bg-color-2"
+                      style="height: 30px !important; line-height: 30px !important;"
+                      :index="subitem.name">
+          {{ subitem.title }}
+        </el-menu-item>
+        <el-divider class="menu-divider" v-if="subitem.hasDivider"></el-divider>
+      </template>
+    </el-submenu>
+    <el-menu-item v-if="!item.children" :index="item.name">{{ item.title }}</el-menu-item>
+  </div>
+</el-menu>
 ```
 
 ```vue
 <!--index.vue tabs-->
-			<el-tabs
-          v-model="editableTabsValue"
-          type="border-card"
-          class="JNPF-el_tabs _tabs"
-          closable
-          @tab-remove="removeTab"
-          @tab-click="clickTab"
-        >
-          <el-tab-pane
-            lazy
-            class="JNPF-common-layout"
-            style="width: 100%; background: #fff"
-            v-for="(item, index) in editableTabs"
-            :key="item.name"
-            :index="index"
-            :label="item.title"
-            :name="item.name"
-          >
-            <!-- 彙總病歷資訊、查詢檢驗報告、查詢檢查報告、查詢病歷類別 -->
-            <EmrQueryMain
-              v-if="item.name.indexOf('EmrQueryMain') !== -1"
-              :fromExtraSystemPatientData="data"
-              :fromExtraSystem="true"
-              :activePanel="EmrQueryMainActivePanel"
-            ></EmrQueryMain>
-            <component
-              v-else
-              :ref="item.name"
-              :is="item.name"
-              :patData="data"
-              :patInfo="data"
-              :docInfo="docInfo"
-              :toolbar="false"
-              :childDialogModal="true"
-              @openIer2011="menuSelect('Ier2011')"
-              @openIer2012="menuSelect('Ier2012')"
-              @openComm2010="menuSelect('Comm2010')"
-              @openAllergyRecord="menuSelect('Comm3020')"
-              @openComm5060="menuSelect('Comm5060')"
-              @openComm6010="menuSelect('Comm6010')"
-            ></component>
-          </el-tab-pane>
-        </el-tabs>
+<el-tabs
+         v-model="editableTabsValue"
+         type="border-card"
+         class="JNPF-el_tabs _tabs"
+         closable
+         @tab-remove="removeTab"
+         @tab-click="clickTab"
+         >
+  <el-tab-pane
+               lazy
+               class="JNPF-common-layout"
+               style="width: 100%; background: #fff"
+               v-for="(item, index) in editableTabs"
+               :key="item.name"
+               :index="index"
+               :label="item.title"
+               :name="item.name"
+               >
+    <!-- 彙總病歷資訊、查詢檢驗報告、查詢檢查報告、查詢病歷類別 -->
+    <EmrQueryMain
+                  v-if="item.name.indexOf('EmrQueryMain') !== -1"
+                  :fromExtraSystemPatientData="data"
+                  :fromExtraSystem="true"
+                  :activePanel="EmrQueryMainActivePanel"
+                  ></EmrQueryMain>
+    <component
+               v-else
+               :ref="item.name"
+               :is="item.name"
+               :patData="data"
+               :patInfo="data"
+               :docInfo="docInfo"
+               :toolbar="false"
+               :childDialogModal="true"
+               @openIer2011="menuSelect('Ier2011')"
+               @openIer2012="menuSelect('Ier2012')"
+               @openComm2010="menuSelect('Comm2010')"
+               @openAllergyRecord="menuSelect('Comm3020')"
+               @openComm5060="menuSelect('Comm5060')"
+               @openComm6010="menuSelect('Comm6010')"
+               ></component>
+  </el-tab-pane>
+</el-tabs>
 ```
 
 ```js

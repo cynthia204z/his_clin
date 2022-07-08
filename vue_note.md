@@ -57,13 +57,12 @@ this.$confirm('提示', {
 
 ```vue
 <template>
-<div v-for="(item, index) in arr" :key="index" @contextmenu.prevent="openMenu($event, index)">
-  <!-- div內容 -->
-  <Contextmenu
-               ref="contextmenu"
-               :contextmenuData="contextmenuData"
-               @handleContextMenuClick="handleContextMenuClick"
-               ></Contextmenu>
+  <div v-for="(item, index) in arr" :key="index" @contextmenu.prevent="openMenu($event, index)">
+    <!-- div內容 -->
+    <Contextmenu ref="contextmenu"
+                 :contextmenuData="contextmenuData"
+                 @handleContextMenuClick="handleContextMenuClick">
+    </Contextmenu>
   </div>
 </template>
 <script>
@@ -92,16 +91,16 @@ page1
 
 ```js
 methods: {
-gotoHms3040(){
-  //取得 客戶姓名
-  let lGuestChname = this.$refs.MstForm.getGuestChname()
-  if (lGuestChname) {
-    this.$router.push({
-      path: '/his7/hms/customer/hms3040',
-      query: {data: lGuestChname}
-    })
-  }
-},
+  gotoHms3040(){
+    //取得 客戶姓名
+    let lGuestChname = this.$refs.MstForm.getGuestChname()
+    if (lGuestChname) {
+      this.$router.push({
+        path: '/his7/hms/customer/hms3040',
+        query: {data: lGuestChname}
+      })
+    }
+  },
 }
 ```
 
