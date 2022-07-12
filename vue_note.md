@@ -28,27 +28,6 @@ EX： `<el-table-column v-if="blabla" key="1"/>` 、 `<el-table-column v-if="bla
 
 
 
-## 多行comfirm
-
-```js
-const h = this.$createElement
-this.$confirm('提示', {
-  title: '提示',
-  message: h('div', [
-    h('p', '第一行'),
-    h('p', '第二行'),
-  ]),
-  confirmButtonText: '確定',
-  cancelButtonText: '取消'
-}).then(() => {
-  // do something
-}).catch(() => {
-  // do something
-})
-```
-
-
-
 ## 在v-for中使用ref
 
 包在迴圈裡的組件ref只會定義一個
@@ -84,6 +63,8 @@ this.$confirm('提示', {
 ```
 
 
+
+# vue-router
 
 ## 在keep-alive中轉跳路由取得資料查詢
 
@@ -143,6 +124,8 @@ methods: {
 }
 ```
 
+
+
 ## beforeRouteEnter
 
 ```js
@@ -182,6 +165,8 @@ beforeRouteEnter(to, from, next){
 },
 ```
 
+
+
 ## beforeRouteLeave
 
 ```js
@@ -189,21 +174,5 @@ beforeRouteLeave(to, from, next) {
 	// do something 12345
   next()
 },
-```
-
-## 選中行取消show-overflow-tooltip效果
-
-```vue
-<el-table-column  prop="hesName1" label="建議"  min-width="220" show-overflow-tooltip>
-  <template slot-scope="scope">
-		<span :class="{'show-all-text': currentRow && currentRow.id === scope.row.id}">{{scope.row.hesName1}}</span>
-  </template>
-</el-table-column>
-```
-
-```css
-.show-all-text{
-  white-space: break-spaces;
-}
 ```
 

@@ -79,6 +79,29 @@ saveAsynchronous().then(()=>{
 
 
 
+## Comfirm
+
+### 多行comfirm
+
+```js
+const h = this.$createElement
+this.$confirm('提示', {
+  title: '提示',
+  message: h('div', [
+    h('p', '第一行'),
+    h('p', '第二行'),
+  ]),
+  confirmButtonText: '確定',
+  cancelButtonText: '取消'
+}).then(() => {
+  // do something
+}).catch(() => {
+  // do something
+})
+```
+
+
+
 ## Notify
 
 ```js
@@ -99,6 +122,24 @@ saveMst().then(()=>{
 
 ## Table
 
+### 選中行取消show-overflow-tooltip效果
+
+```vue
+<el-table-column  prop="hesName1" label="建議"  min-width="220" show-overflow-tooltip>
+  <template slot-scope="scope">
+		<span :class="{'show-all-text': currentRow && currentRow.id === scope.row.id}">{{scope.row.hesName1}}</span>
+  </template>
+</el-table-column>
+```
+
+```css
+.show-all-text{
+  white-space: break-spaces;
+}
+```
+
+
+
 ### 改表頭文字
 
 無表頭勾選框的勾選欄位
@@ -110,14 +151,34 @@ saveMst().then(()=>{
 ```
 
 ```scss
-.no-header-checkbox-table >>> .no-checkbox-header .cell .el-checkbox__inner{
+.no-header-checkbox-table >>> .no-checkbox-header.cell {
+  width: 100%;
+  padding: 0;
+}
+.no-header-checkbox-table > > > .no-checkbox-header .cell .el-checkbox__inner {
   display: none;
   position: relative;
 }
-.no-header-checkbox-table >>> .no-checkbox-header .cell::before{
-  content: "選取";
+
+.no-header-checkbox-table > > > .no-checkbox-header .cell::before {
+  content: "刪";
   position: absolute;
-  
+  width: 100%;
+  text-align: center;
+}
+```
+
+
+
+### 每一行的勾選框是否禁用
+
+```vue
+ <el-table-column type="selection" :selectable="checkDeletable"></el-table-column>
+```
+
+```js
+checkDeletable(row, index){
+  return // 判斷(Boolean)
 }
 ```
 
