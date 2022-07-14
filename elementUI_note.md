@@ -184,6 +184,42 @@ checkDeletable(row, index){
 
 
 
+### 自定義勾選欄
+
+> 參考文章：[element表格（el-table）自定义复选框（添加提示el-tooltip）](https://blog.csdn.net/fufu_good/article/details/120750328)
+
+```vue
+<el-table :data="list">
+  <el-table-column label="選" width="55" align="center">
+      <template slot-scope="scope">
+        <el-tooltip placement="left"
+                    content="不可選取"
+                    :disabled="checkDeletable(scope.row)"
+        >
+          <!-- selection可在watch中監測到變化 -->
+          <el-checkbox-group size="mini" v-model="selection" style="margin-left: 8px;">
+            <el-checkbox :disabled="!checkDeletable(scope.row)"
+                         :key="scope.row.id"
+                         :label="scope.row"
+            >
+              {{ '' }}
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-tooltip>
+      </template>
+    </el-table-column>
+</el-table>
+```
+
+```js
+// 判斷是否可勾選
+checkDeletable(row) {
+  return // 判斷(Boolean)
+}
+```
+
+
+
 ### 表頭加樹狀狀態控制
 
 ```vue
