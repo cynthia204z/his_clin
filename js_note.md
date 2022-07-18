@@ -231,6 +231,59 @@ let arr = ["A", "B", "C"];
 
 
 
+### 用物件key對陣列進行分類
+
+```js
+let people = [
+  {gender: 'M', name: '楊過'},
+  {gender: 'F', name: '黃蓉'},
+  {gender: 'M', name: '張飛'},
+  {gender: 'M', name: '段譽'},
+  {gender: 'F', name: '趙敏'},
+  {gender: 'F', name: '貂蟬'}
+]
+
+// 1. 封裝方法
+function getGroup(itemList, keyName){
+  return itemList.reduce((groups, item) => {
+    let key = item[keyName]
+    groups[key] = groups[key] || []
+    groups[key].push(item)
+    return groups
+  }, {})
+}
+let groupList = getGroup(people, 'gender')
+
+// 2. Array原型
+Array.prototype.groupBy = function(prop) {
+  return this.reduce(function(groups, item) {
+    const val = item[prop]
+    groups[val] = groups[val] || []
+    groups[val].push(item)
+    return groups
+  }, {})
+};
+let groupList2 = people.groupBy('gender');
+```
+
+```js
+// 結果
+groupList = {
+  "M": [
+    {gender: 'M', name: '楊過'},
+    {gender: 'M', name: '張飛'},
+  	{gender: 'M', name: '段譽'}
+  ],
+  "F": [
+    {gender: 'F', name: '黃蓉'},
+    {gender: 'F', name: '趙敏'},
+    {gender: 'F', name: '貂蟬'}
+  ]
+}
+```
+
+
+
 ### 鍵盤事件
 
 > keyCode，例： `keyCode === 46` 這種用法已經被棄用了，要避免使用。
